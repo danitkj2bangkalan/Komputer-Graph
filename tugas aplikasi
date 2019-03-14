@@ -15,10 +15,8 @@ float posY = 0.0, posX = 0.0,color1 = 0.1,color2 = 0.5,color3 = 0.1,nilai_awal =
 void display(){
 
 glClear (GL_COLOR_BUFFER_BIT);
-    //glPointSize(1);
-
+    glPointSize(15);
     // objek target
-
     glColor3f(1.0,0.0,0.0);
     glBegin(GL_POLYGON);
         glVertex2f(9.5,10.0);
@@ -47,51 +45,41 @@ glClear (GL_COLOR_BUFFER_BIT);
         glVertex2f(10.0,-10.0);
         glVertex2f(10.0,-9.5);
     glEnd();
-
     // objek target
 
     // objek utama
-     glColor3f(color1,color2,color3);
+    glColor3f(1.0,0.0,0.0);
     glBegin(GL_POLYGON);
-        glVertex2f(0.0+posX,3.0+posY);
-        glVertex2f(-0.58+posX,2.07+posY);
-        glVertex2f(0.64+posX,2.07+posY);
+        glVertex2f(1.19,1.2);
+        glVertex2f(0.57,1.21);
+        glVertex2f(1.18,0.6);
     glEnd();
-    glColor3f(color1,color2,color3);
+
+    glColor3f(1.0,0.0,0.0);
     glBegin(GL_POLYGON);
-        glVertex2f(-1.52+posX,2.03+posY);
-        glVertex2f(-0.86+posX,1.25+posY);
-        glVertex2f(-0.58+posX,2.07+posY);
+        glVertex2f(0.8,1.0);
+        glVertex2f(0.41,0.62);
+        glVertex2f(0.6,0.43);
+        glVertex2f(0.99,0.78);
     glEnd();
-    glColor3f(color1,color2,color3);
-    glBegin(GL_POLYGON);
-        glVertex2f(-0.86+posX,1.25+posY);
-        glVertex2f(-1.48+posX,0.27+posY);
-        glVertex2f(0.0+posX,0.67+posY);
+
+    glColor3f(1.0,1.0,0.0);
+    glBegin(GL_POINTS);
+        glVertex2f(0.23,0.57);
+        glVertex2f(0.24,0.34);
+        glVertex2f(0.05,0.34);
+        glVertex2f(-0.16,0.26);
+        glVertex2f(0.11,0.16);
+        glVertex2f(0.13,-0.05);
+        glVertex2f(0.0,0.0);
+        glVertex2f(0.44,0.23);
+        glVertex2f(-0.3,0.12);
+        glVertex2f(-0.24,-0.09);
+        glVertex2f(0.18,-0.22);
+        glVertex2f(0.37,0.0);
     glEnd();
-    glColor3f(color1,color2,color3);
-    glBegin(GL_POLYGON);
-        glVertex2f(0.0+posX,0.67+posY);
-        glVertex2f(1.44+posX,0.31+posY);
-        glVertex2f(0.92+posX,1.27+posY);
-    glEnd();
-    glColor3f(color1,color2,color3);
-    glBegin(GL_POLYGON);
-        glVertex2f(0.92+posX,1.27+posY);
-        glVertex2f(1.54+posX,2.03+posY);
-        glVertex2f(0.64+posX,2.07+posY);
-    glEnd();
-    glColor3f(color1,color2,color3);
-    glBegin(GL_POLYGON);
-        glVertex2f(-0.58+posX,2.07+posY);
-        glVertex2f(-0.86+posX,1.25+posY);
-        glVertex2f(0.0+posX,0.67+posY);
-        glVertex2f(0.92+posX,1.27+posY);
-        glVertex2f(0.64+posX,2.07+posY);
-glEnd();
     //objek utama
 glFlush();
-}
 
 void react(unsigned char key, int x, int y){
     if(key == 'i' || key == 'I'){
