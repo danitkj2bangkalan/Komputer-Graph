@@ -10,7 +10,14 @@
 
 #include <stdlib.h>
 using namespace std;
+//untuk pergerakan dan edit warna objek
 float posY = 0.0, posX = 0.0,color1 = 0.1,color2 = 0.5,color3 = 0.1,nilai_awal = 1.0,kelipatan = 2.0,kecepatan = 0.0;
+
+//untuk interaksi objek
+float objekx = 1.19,objeky =1.2;
+
+//ubah background
+float a= 1.0,b=1.0,c=1.0,t=4.5;
 
 void display(){
 
@@ -19,68 +26,76 @@ glClear (GL_COLOR_BUFFER_BIT);
     // objek target
     glColor3f(1.0,0.0,0.0);
     glBegin(GL_POLYGON);
-        glVertex2f(9.5,10.0);
-        glVertex2f(9.5,9.5);
-        glVertex2f(10.0,9.5);
-        glVertex2f(10.0,10.0);
+        glVertex2f(4.5,5.0);
+        glVertex2f(t,t);
+        glVertex2f(5.0,4.5);
+        glVertex2f(5.0,5.0);
     glEnd();
     glColor3f(1.0,0.0,0.0);
     glBegin(GL_POLYGON);
-        glVertex2f(-10.0,10.0);
-        glVertex2f(-10.0,9.5);
-        glVertex2f(-9.5,9.5);
-        glVertex2f(-9.5,10.0);
+        glVertex2f(-5.0,5.0);
+        glVertex2f(-5.0,4.5);
+        glVertex2f(-4.5,4.5);
+        glVertex2f(-4.5,5.0);
+    glEnd();
+    glColor3f(1.0,a,0.0);
+    glBegin(GL_POLYGON);
+        glVertex2f(-5.0,-4.5);
+        glVertex2f(-5.0,-5.0);
+        glVertex2f(-4.5,-5.0);
+        glVertex2f(-4.5,-4.5);
     glEnd();
     glColor3f(1.0,0.0,0.0);
     glBegin(GL_POLYGON);
-        glVertex2f(-10.0,-9.5);
-        glVertex2f(-10.0,-10.0);
-        glVertex2f(-9.5,-10.0);
-        glVertex2f(-9.5,-9.5);
-    glEnd();
-    glColor3f(1.0,0.0,0.0);
-    glBegin(GL_POLYGON);
-        glVertex2f(9.5,-9.5);
-        glVertex2f(9.5,-10.0);
-        glVertex2f(10.0,-10.0);
-        glVertex2f(10.0,-9.5);
+        glVertex2f(4.5,-4.5);
+        glVertex2f(4.5,-5.0);
+        glVertex2f(5.0,-5.0);
+        glVertex2f(5.0,-4.5);
     glEnd();
     // objek target
 
     // objek utama
-    glColor3f(1.0,0.0,0.0);
+    glColor3f(color1,color2,color3);
     glBegin(GL_POLYGON);
-        glVertex2f(1.19,1.2);
-        glVertex2f(0.57,1.21);
-        glVertex2f(1.18,0.6);
+        glVertex2f(objekx+posX,objeky+posY);
+        glVertex2f(0.57+posX,1.21+posY);
+        glVertex2f(1.19+posX,0.6+posY);
     glEnd();
 
-    glColor3f(1.0,0.0,0.0);
+    glColor3f(color1,color2,color3);
     glBegin(GL_POLYGON);
-        glVertex2f(0.8,1.0);
-        glVertex2f(0.41,0.62);
-        glVertex2f(0.6,0.43);
-        glVertex2f(0.99,0.78);
+        glVertex2f(0.8+posX,1.0+posY);
+        glVertex2f(0.41+posX,0.62+posY);
+        glVertex2f(0.6+posX,0.43+posY);
+        glVertex2f(0.99+posX,0.79+posY);
     glEnd();
 
     glColor3f(1.0,1.0,0.0);
     glBegin(GL_POINTS);
-        glVertex2f(0.23,0.57);
-        glVertex2f(0.24,0.34);
-        glVertex2f(0.05,0.34);
-        glVertex2f(-0.16,0.26);
-        glVertex2f(0.11,0.16);
-        glVertex2f(0.13,-0.05);
-        glVertex2f(0.0,0.0);
-        glVertex2f(0.44,0.23);
-        glVertex2f(-0.3,0.12);
-        glVertex2f(-0.24,-0.09);
-        glVertex2f(0.18,-0.22);
-        glVertex2f(0.37,0.0);
+        glVertex2f(0.23+posX,0.57+posY);
+        glVertex2f(0.24+posX,0.34+posY);
+        glVertex2f(0.05+posX,0.34+posY);
+        glVertex2f(-0.16+posX,0.26+posY);
+        glVertex2f(0.11+posX,0.16+posY);
+        glVertex2f(0.13+posX,-0.05+posY);
+        glVertex2f(0.0+posX,0.0+posY);
+        glVertex2f(0.44+posX,0.23+posY);
+        glVertex2f(-0.3+posX,0.12+posY);
+        glVertex2f(-0.24+posX,-0.09+posY);
+        glVertex2f(0.18+posX,-0.22+posY);
+        glVertex2f(0.37+posX,0.0+posY);
     glEnd();
     //objek utama
-glFlush();
 
+glFlush();
+//respon();
+}
+void respon(){
+    if(objekx+posX >= t | objeky+posY >= t){
+        a=0.0;
+        display();
+    }
+}
 void react(unsigned char key, int x, int y){
     if(key == 'i' || key == 'I'){
         posY +=0.2;
@@ -125,7 +140,8 @@ void react(unsigned char key, int x, int y){
         display();
     }else{
         cout <<"salah pencet"<<endl;
-}
+    }
+    respon();
 }
 void arah(int key, int x, int y){
     if(key == GLUT_KEY_UP){ //untuk mengubah kecepatan
@@ -148,12 +164,12 @@ void arah(int key, int x, int y){
         display();
     }else {
         cout <<"salah pencet"<<endl;
-}
+    }
 }
 void myinit(){
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    gluOrtho2D(-20.0,20.0,-20.0,20.0);
+    gluOrtho2D(-10.0,10.0,-10.0,10.0);
     glMatrixMode(GL_MODELVIEW);
     glClearColor(1.0,1.0,1.0,1.0);
     glColor3f (0.0, 1.0, 0.0);
@@ -167,6 +183,7 @@ int main(int argc, char* argv[]){
     glutDisplayFunc(display);
     glutKeyboardFunc(react);
     glutSpecialFunc(arah);
+    //respon();
     myinit();
     glutMainLoop();
     return 0;
