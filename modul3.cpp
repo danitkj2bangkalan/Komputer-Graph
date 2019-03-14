@@ -100,21 +100,21 @@ void react(unsigned char key, int x, int y){
     }
 }
 void arah(int key, int x, int y){
-    if(key == GLUT_KEY_UP){ //untuk mengubah kecepatan
+    if(key == GLUT_KEY_LEFT){ //untuk mengubah kecepatan
         nilai_awal *= kelipatan;
         kecepatan = nilai_awal;
         display();
         cout <<kecepatan<<endl;
-    }else if(key == GLUT_KEY_DOWN){ //untuk mengubah kecepatan
+    }else if(key == GLUT_KEY_RIGHT){ //untuk mengubah kecepatan
         nilai_awal /= kelipatan;
         kecepatan = nilai_awal;
         display();
         cout <<kecepatan<<endl;
-    }else if(key == GLUT_KEY_LEFT){//untuk mengubah warna
+    }else if(key == GLUT_KEY_UP){//untuk mengubah warna
         color1 += 0.1;
         color3 -= 0.1;
         display();
-    }else if(key == GLUT_KEY_RIGHT){//untuk mengubah warna
+    }else if(key == GLUT_KEY_DOWN){//untuk mengubah warna
         color3 += 0.1;
         color1 -= 0.1;
         display();
