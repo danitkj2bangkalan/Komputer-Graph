@@ -20,7 +20,8 @@ float a= 1.0,b=1.0,c=0.5;
 //untuk interaksi objek target
 float t=9.5;
 // reaksi objek
-float down8=0.0,down1=0.0,down2=0.0,down3=0.0,down4=0.0,down5=0.0,down6=0.0,down7=0.0;
+float down1=0.0,down2=0.0,down3=0.0,down4=0.0,down5=0.0,down6=0.0,down7=0.0;
+float up1=0.0,up2=0.0,up3=0.0,up4=0.0,up5=0.0,up6=0.0,up7=0.0;
 //
 void display(){
 
@@ -44,39 +45,89 @@ glClear (GL_COLOR_BUFFER_BIT);
     glBegin(GL_POLYGON);
         glVertex2f(-6.0,29.0+down3);
         glVertex2f(-6.0,26.5+down3);
-        glVertex2f(-3.0,26.5+down4);
-        glVertex2f(-3.0,29.0+down4);
+        glVertex2f(-3.0,26.5+down3);
+        glVertex2f(-3.0,29.0+down3);
     glEnd();
 
     glBegin(GL_POLYGON);
-        glVertex2f(-2.0,29.0+down5);
-        glVertex2f(-2.0,26.5+down5);
-        glVertex2f(1.0,26.5+down5);
-        glVertex2f(1.0,29.0+down5);
+        glVertex2f(-2.0,29.0+down4);
+        glVertex2f(-2.0,26.5+down4);
+        glVertex2f(1.0,26.5+down4);
+        glVertex2f(1.0,29.0+down4);
     glEnd();
 
     glBegin(GL_POLYGON);
-        glVertex2f(2.0,29.0+down6);
-        glVertex2f(2.0,26.5+down6);
-        glVertex2f(5.0,26.5+down6);
-        glVertex2f(5.0,29.0+down6);
+        glVertex2f(2.0,29.0+down5);
+        glVertex2f(2.0,26.5+down5);
+        glVertex2f(5.0,26.5+down5);
+        glVertex2f(5.0,29.0+down5);
     glEnd();
 
     glBegin(GL_POLYGON);
-        glVertex2f(6.0,29.0+down7);
-        glVertex2f(6.0,26.5+down7);
-        glVertex2f(9.0,26.5+down7);
-        glVertex2f(9.0,29.0+down7);
+        glVertex2f(6.0,29.0+down6);
+        glVertex2f(6.0,26.5+down6);
+        glVertex2f(9.0,26.5+down6);
+        glVertex2f(9.0,29.0+down6);
     glEnd();
 
     glBegin(GL_POLYGON);
-        glVertex2f(10.0,29.0+down8);
-        glVertex2f(10.0,26.5+down8);
-        glVertex2f(13.0,26.5+down8);
-        glVertex2f(13.0,29.0+down8);
+        glVertex2f(10.0,29.0+down7);
+        glVertex2f(10.0,26.5+down7);
+        glVertex2f(13.0,26.5+down7);
+        glVertex2f(13.0,29.0+down7);
     glEnd();
-
     // objek reaksi 1
+    // objek reaksi 2
+    glColor3f(1.0,1.0,0.0);
+    glBegin(GL_POLYGON);
+        glVertex2f(-14.0,-29.0+up1);
+        glVertex2f(-14.0,-26.5+up1);
+        glVertex2f(-11.0,-26.5+up1);
+        glVertex2f(-11.0,-29.0+up1);
+    glEnd();
+
+    glBegin(GL_POLYGON);
+        glVertex2f(-10.0,-29.0+up2);
+        glVertex2f(-10.0,-26.5+up2);
+        glVertex2f(-7.0,-26.5+up2);
+        glVertex2f(-7.0,-29.0+up2);
+    glEnd();
+
+    glBegin(GL_POLYGON);
+        glVertex2f(-6.0,-29.0+up3);
+        glVertex2f(-6.0,-26.5+up3);
+        glVertex2f(-3.0,-26.5+up3);
+        glVertex2f(-3.0,-29.0+up3);
+    glEnd();
+
+    glBegin(GL_POLYGON);
+        glVertex2f(-2.0,-29.0+up4);
+        glVertex2f(-2.0,-26.5+up4);
+        glVertex2f(1.0,-26.5+up4);
+        glVertex2f(1.0,-29.0+up4);
+    glEnd();
+
+    glBegin(GL_POLYGON);
+        glVertex2f(2.0,-29.0+up5);
+        glVertex2f(2.0,-26.5+up5);
+        glVertex2f(5.0,-26.5+up5);
+        glVertex2f(5.0,-29.0+up5);
+    glEnd();
+
+    glBegin(GL_POLYGON);
+        glVertex2f(6.0,-29.0+up6);
+        glVertex2f(6.0,-26.5+up6);
+        glVertex2f(9.0,-26.5+up6);
+        glVertex2f(9.0,-29.0+up6);
+    glEnd();
+
+    glBegin(GL_POLYGON);
+        glVertex2f(10.0,-29.0+up7);
+        glVertex2f(10.0,-26.5+up7);
+        glVertex2f(13.0,-26.5+up7);
+        glVertex2f(13.0,-29.0+up7);
+    glEnd();
+    // objek reaksi 2
     // objek target
     glColor3f(1.0,0.0,c);
     glBegin(GL_POLYGON);
@@ -189,7 +240,7 @@ void respon(){
         down5 -= 4.8;
         down6 -= 5.0;
         down7 -= 5.2;
-        down8 -= 5.4;
+
 //        for(i=1;i<=-26.0;--i){
 //            rdy-=0.1;
 //            display();
