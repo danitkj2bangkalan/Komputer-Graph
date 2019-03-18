@@ -1,5 +1,6 @@
-#include <windows.h>
 #include <iostream>
+#include <windows.h>
+#include <MMSystem.h>
 #include <stdio.h>
 #ifdef __APPLE__
 #include <GLUT/glut.h>
@@ -14,132 +15,211 @@ using namespace std;
 float posY = 0.0, posX = 0.0,color1 = 0.1,color2 = 0.5,color3 = 0.1,nilai_awal = 1.0,kelipatan = 2.0,kecepatan = 0.0;
 
 //untuk interaksi objek
-float objekx = 1.19,objeky =1.2;
+float objekx = 2.5,objeky =2.5;
 
 //ubah background
-float a= 1.0,b=1.0,c=1.0,t=4.5;
-
+float a= 1.0,b=1.0,c=0.5,t=9.5;
+//BOOL PlaySound(LPCTSTR pszSound, HMODULE hmod, DWORD fdwSound);
 void display(){
 
 glClear (GL_COLOR_BUFFER_BIT);
-    glPointSize(15);
-    // objek target
-    glColor3f(1.0,0.0,0.0);
-    glBegin(GL_POLYGON);
-        glVertex2f(4.5,5.0);
-        glVertex2f(t,t);
-        glVertex2f(5.0,4.5);
-        glVertex2f(5.0,5.0);
-    glEnd();
-    glColor3f(1.0,0.0,0.0);
-    glBegin(GL_POLYGON);
-        glVertex2f(-5.0,5.0);
-        glVertex2f(-5.0,4.5);
-        glVertex2f(-4.5,4.5);
-        glVertex2f(-4.5,5.0);
-    glEnd();
-    glColor3f(1.0,a,0.0);
-    glBegin(GL_POLYGON);
-        glVertex2f(-5.0,-4.5);
-        glVertex2f(-5.0,-5.0);
-        glVertex2f(-4.5,-5.0);
-        glVertex2f(-4.5,-4.5);
-    glEnd();
-    glColor3f(1.0,0.0,0.0);
-    glBegin(GL_POLYGON);
-        glVertex2f(4.5,-4.5);
-        glVertex2f(4.5,-5.0);
-        glVertex2f(5.0,-5.0);
-        glVertex2f(5.0,-4.5);
-    glEnd();
-    // objek target
-
-    // objek utama
-    glColor3f(color1,color2,color3);
-    glBegin(GL_POLYGON);
-        glVertex2f(objekx+posX,objeky+posY);
-        glVertex2f(0.57+posX,1.21+posY);
-        glVertex2f(1.19+posX,0.6+posY);
-    glEnd();
-
-    glColor3f(color1,color2,color3);
-    glBegin(GL_POLYGON);
-        glVertex2f(0.8+posX,1.0+posY);
-        glVertex2f(0.41+posX,0.62+posY);
-        glVertex2f(0.6+posX,0.43+posY);
-        glVertex2f(0.99+posX,0.79+posY);
-    glEnd();
-
+    // objek reaksi
     glColor3f(1.0,1.0,0.0);
-    glBegin(GL_POINTS);
-        glVertex2f(0.23+posX,0.57+posY);
-        glVertex2f(0.24+posX,0.34+posY);
-        glVertex2f(0.05+posX,0.34+posY);
-        glVertex2f(-0.16+posX,0.26+posY);
-        glVertex2f(0.11+posX,0.16+posY);
-        glVertex2f(0.13+posX,-0.05+posY);
-        glVertex2f(0.0+posX,0.0+posY);
-        glVertex2f(0.44+posX,0.23+posY);
-        glVertex2f(-0.3+posX,0.12+posY);
-        glVertex2f(-0.24+posX,-0.09+posY);
-        glVertex2f(0.18+posX,-0.22+posY);
-        glVertex2f(0.37+posX,0.0+posY);
+    glBegin(GL_POLYGON);
+        glVertex2f(-14.0,15.0);
+        glVertex2f(-14.0,12.5);
+        glVertex2f(-11.0,12.5);
+        glVertex2f(-11.0,15.0);
     glEnd();
-    //objek utama
+    glBegin(GL_POLYGON);
+        glVertex2f(-10.0,15.0);
+        glVertex2f(-10.0,12.5);
+        glVertex2f(-7.0,12.5);
+        glVertex2f(-7.0,15.0);
+    glEnd();
+    glBegin(GL_POLYGON);
+        glVertex2f(-6.0,15.0);
+        glVertex2f(-6.0,12.5);
+        glVertex2f(-3.0,12.5);
+        glVertex2f(-3.0,15.0);
+    glEnd();
+    glBegin(GL_POLYGON);
+        glVertex2f(-2.0,15.0);
+        glVertex2f(-2.0,12.5);
+        glVertex2f(1.0,12.5);
+        glVertex2f(1.0,15.0);
+    glEnd();
+    glBegin(GL_POLYGON);
+        glVertex2f(2.0,15.0);
+        glVertex2f(2.0,12.5);
+        glVertex2f(5.0,12.5);
+        glVertex2f(5.0,15.0);
+    glEnd();
+    glBegin(GL_POLYGON);
+        glVertex2f(6.0,15.0);
+        glVertex2f(6.0,12.5);
+        glVertex2f(9.0,12.5);
+        glVertex2f(9.0,15.0);
+    glEnd();
+    glBegin(GL_POLYGON);
+        glVertex2f(10.0,15.0);
+        glVertex2f(10.0,12.5);
+        glVertex2f(13.0,12.5);
+        glVertex2f(13.0,15.0);
+    glEnd();
 
+    // objek reaksi
+    // objek target
+    glColor3f(1.0,0.0,c);
+    glBegin(GL_POLYGON);
+        glVertex2f(9.5,12.0);
+        glVertex2f(9.5,9.5);
+        glVertex2f(12.0,9.5);
+        glVertex2f(12.0,12.0);
+    glEnd();
+    glColor3f(1.0,0.0,c);
+    glBegin(GL_POLYGON);
+        glVertex2f(-9.5,12.0);
+        glVertex2f(-9.5,9.5);
+        glVertex2f(-12.0,9.5);
+        glVertex2f(-12.0,12.0);
+    glEnd();
+    glColor3f(1.0,0.0,c);
+    glBegin(GL_POLYGON);
+        glVertex2f(-9.5,-12.0);
+        glVertex2f(-9.5,-9.5);
+        glVertex2f(-12.0,-9.5);
+        glVertex2f(-12.0,-12.0);
+    glEnd();
+    glColor3f(1.0,0.0,c);
+    glBegin(GL_POLYGON);
+        glVertex2f(9.5,-12.0);
+        glVertex2f(9.5,-9.5);
+        glVertex2f(12.0,-9.5);
+        glVertex2f(12.0,-12.0);
+    glEnd();
+    //objek target
+    //objek utama
+    glColor3f(1.0,0.0,0.0);
+    //simbol tambahan
+    glLineWidth(5);
+     glBegin(GL_LINE_LOOP);
+        glVertex2f(-1.5+posX,0.0+posY);
+        glVertex2f(0.0+posX,-1.5+posY);
+        glVertex2f(1.5+posX,0.0+posY);
+        glVertex2f(0.0+posX,1.5+posY);
+    glEnd();
+    glBegin(GL_LINE_LOOP);
+        glVertex2f(-2.5+posX,0.0+posY);
+        glVertex2f(0.0+posX,-2.5+posY);
+        glVertex2f(2.5+posX,0.0+posY);
+        glVertex2f(0.0+posX,2.5+posY);
+    glEnd();
+     glBegin(GL_LINE_LOOP);
+        glVertex2f(-3.5+posX,0.0+posY);
+        glVertex2f(0.0+posX,-3.5+posY);
+        glVertex2f(3.5+posX,0.0+posY);
+        glVertex2f(0.0+posX,3.5+posY);
+    glEnd();
+     glBegin(GL_LINE_LOOP);
+        glVertex2f(-4.5+posX,0.0+posY);
+        glVertex2f(0.0+posX,-4.5+posY);
+        glVertex2f(4.5+posX,0.0+posY);
+        glVertex2f(0.0+posX,4.5+posY);
+    glEnd();
+    //simbol tambahan
+    //simbol plus
+    glColor3f(color1,0.0,color3);
+    glBegin(GL_POLYGON);
+        glVertex2f(-4.0+posX,0.5+posY);
+        glVertex2f(-5.0+posX,0.0+posY);
+        glVertex2f(-4.0+posX,-0.5+posY);
+        glVertex2f(4.0+posX,-0.5+posY);
+        glVertex2f(5.0+posX,0.0+posY);
+        glVertex2f(4.0+posX,0.5+posY);
+    glEnd();
+    glBegin(GL_POLYGON);
+        glVertex2f(0.5+posX,4.0+posY);
+        glVertex2f(0.0+posX,5.0+posY);
+        glVertex2f(-0.5+posX,4.0+posY);
+        glVertex2f(-0.5+posX,-4.0+posY);
+        glVertex2f(0.0+posX,-5.0+posY);
+        glVertex2f(0.5+posX,-4.0+posY);
+    glEnd();
+    // simbol plus
+
+    // simbol x
+    glBegin(GL_POLYGON);
+        glVertex2f(-2.0+posX,2.5+posY);
+        glVertex2f(-2.5+posX,2.5+posY);
+        glVertex2f(-2.5+posX,2.0+posY);
+        glVertex2f(2.0+posX,-2.5+posY);
+        glVertex2f(2.5+posX,-2.5+posY);
+        glVertex2f(2.5+posX,-2.0+posY);
+    glEnd();
+    glBegin(GL_POLYGON);
+        glVertex2f(2.0+posX,2.5+posY);
+        glVertex2f(2.5+posX,2.5+posY);
+        glVertex2f(2.5+posX,2.0+posY);
+        glVertex2f(-2.0+posX,-2.5+posY);
+        glVertex2f(-2.5+posX,-2.5+posY);
+        glVertex2f(-2.5+posX,-2.0+posY);
+    glEnd();
+    //simbol x
+    //objek utama
 glFlush();
-//respon();
 }
 void respon(){
-    if(objekx+posX >= t | objeky+posY >= t){
-        a=0.0;
+    if(objekx+posX >= t & objeky+posY >= t){
+        c=0.0;
+        PlaySound("D:\\Laser.wav",NULL, SND_FILENAME);
         display();
     }
 }
 void react(unsigned char key, int x, int y){
-    if(key == 'i' || key == 'I'){
+    if(key == 'w' || key == 'W'){
         posY +=0.2;
         posY +=kecepatan;
         display();
     }
-    else if(key == 'k' || key == 'K'){
+    else if(key == 'x' || key == 'X'){
         posY -=0.2;
         posY -= kecepatan;
         display();
-    }else if(key == 'l' || key == 'L'){
+    }else if(key == 'd' || key == 'D'){
         posX+=0.2;
         posX+= kecepatan;
         display();
-    }else if(key == 'j' || key == 'J'){
+    }else if(key == 'a' || key == 'A'){
         posX -= 0.2;
         posX -= kecepatan;
         display();
-    }else if(key == 'u' || key == 'U'){
+    }else if(key == 'q' || key == 'Q'){
         posX-=0.2;
         posY+=0.2;
         posX-=kecepatan;
         posY+=kecepatan;
         display();
-    }else if(key == 'o' || key == 'O'){
+    }else if(key == 'e' || key == 'E'){
         posX+=0.2;
         posY+=0.2;
         posX+=kecepatan;
         posY+=kecepatan;
         display();
-    }else if(key == 'n' || key == 'N'){
+    }else if(key == 'z' || key == 'Z'){
         posX-=0.2;
         posY-=0.2;
         posX-=kecepatan;
         posY-=kecepatan;
         display();
-    }else if(key == 'm' || key == 'M'){
+    }else if(key == 'c' || key == 'C'){
         posX+=0.2;
         posY-=0.2;
         posX+=kecepatan;
         posY-=kecepatan;
         display();
     }else{
-        cout <<"salah pencet"<<endl;
+        cout<<"salah pencet"<<endl;
     }
     respon();
 }
@@ -148,12 +228,12 @@ void arah(int key, int x, int y){
         nilai_awal *= kelipatan;
         kecepatan = nilai_awal;
         display();
-        cout <<kecepatan<<endl;
+        cout <<"Nilai Kecepatan :"<<kecepatan<<endl;
     }else if(key == GLUT_KEY_DOWN){ //untuk mengubah kecepatan
         nilai_awal /= kelipatan;
         kecepatan = nilai_awal;
         display();
-        cout <<kecepatan<<endl;
+        cout <<"Nilai Kecepatan :"<<kecepatan<<endl;
     }else if(key == GLUT_KEY_LEFT){//untuk mengubah warna
         color1 += 0.1;
         color3 -= 0.1;
@@ -169,9 +249,9 @@ void arah(int key, int x, int y){
 void myinit(){
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    gluOrtho2D(-10.0,10.0,-10.0,10.0);
+    gluOrtho2D(-25.0,25.0,-25.0,25.0);
     glMatrixMode(GL_MODELVIEW);
-    glClearColor(1.0,1.0,1.0,1.0);
+    glClearColor(0.5,0.5,1.0,1.0);
     glColor3f (0.0, 1.0, 0.0);
 }
 int main(int argc, char* argv[]){
