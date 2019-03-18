@@ -13,62 +13,70 @@
 using namespace std;
 //untuk pergerakan dan edit warna objek
 float posY = 0.0, posX = 0.0,color1 = 0.1,color2 = 0.5,color3 = 0.1,nilai_awal = 1.0,kelipatan = 2.0,kecepatan = 0.0;
-
-//untuk interaksi objek
-float objekx = 2.5,objeky =2.5;
-
-//ubah background
-float a= 1.0,b=1.0,c=0.5,t=9.5;
-//BOOL PlaySound(LPCTSTR pszSound, HMODULE hmod, DWORD fdwSound);
+//untuk interaksi objek utam
+float x2up = 2.5,x2down =2.5;
+//ubah warna
+float a= 1.0,b=1.0,c=0.5;
+//untuk interaksi objek target
+float t=9.5;
+// reaksi objek
+float down8=0.0,down1=0.0,down2=0.0,down3=0.0,down4=0.0,down5=0.0,down6=0.0,down7=0.0;
+//
 void display(){
 
 glClear (GL_COLOR_BUFFER_BIT);
-    // objek reaksi
+    // objek reaksi 1
     glColor3f(1.0,1.0,0.0);
     glBegin(GL_POLYGON);
-        glVertex2f(-14.0,15.0);
-        glVertex2f(-14.0,12.5);
-        glVertex2f(-11.0,12.5);
-        glVertex2f(-11.0,15.0);
-    glEnd();
-    glBegin(GL_POLYGON);
-        glVertex2f(-10.0,15.0);
-        glVertex2f(-10.0,12.5);
-        glVertex2f(-7.0,12.5);
-        glVertex2f(-7.0,15.0);
-    glEnd();
-    glBegin(GL_POLYGON);
-        glVertex2f(-6.0,15.0);
-        glVertex2f(-6.0,12.5);
-        glVertex2f(-3.0,12.5);
-        glVertex2f(-3.0,15.0);
-    glEnd();
-    glBegin(GL_POLYGON);
-        glVertex2f(-2.0,15.0);
-        glVertex2f(-2.0,12.5);
-        glVertex2f(1.0,12.5);
-        glVertex2f(1.0,15.0);
-    glEnd();
-    glBegin(GL_POLYGON);
-        glVertex2f(2.0,15.0);
-        glVertex2f(2.0,12.5);
-        glVertex2f(5.0,12.5);
-        glVertex2f(5.0,15.0);
-    glEnd();
-    glBegin(GL_POLYGON);
-        glVertex2f(6.0,15.0);
-        glVertex2f(6.0,12.5);
-        glVertex2f(9.0,12.5);
-        glVertex2f(9.0,15.0);
-    glEnd();
-    glBegin(GL_POLYGON);
-        glVertex2f(10.0,15.0);
-        glVertex2f(10.0,12.5);
-        glVertex2f(13.0,12.5);
-        glVertex2f(13.0,15.0);
+        glVertex2f(-14.0,29.0+down1);
+        glVertex2f(-14.0,26.5+down1);
+        glVertex2f(-11.0,26.5+down1);
+        glVertex2f(-11.0,29.0+down1);
     glEnd();
 
-    // objek reaksi
+    glBegin(GL_POLYGON);
+        glVertex2f(-10.0,29.0+down2);
+        glVertex2f(-10.0,26.5+down2);
+        glVertex2f(-7.0,26.5+down2);
+        glVertex2f(-7.0,29.0+down2);
+    glEnd();
+
+    glBegin(GL_POLYGON);
+        glVertex2f(-6.0,29.0+down3);
+        glVertex2f(-6.0,26.5+down3);
+        glVertex2f(-3.0,26.5+down4);
+        glVertex2f(-3.0,29.0+down4);
+    glEnd();
+
+    glBegin(GL_POLYGON);
+        glVertex2f(-2.0,29.0+down5);
+        glVertex2f(-2.0,26.5+down5);
+        glVertex2f(1.0,26.5+down5);
+        glVertex2f(1.0,29.0+down5);
+    glEnd();
+
+    glBegin(GL_POLYGON);
+        glVertex2f(2.0,29.0+down6);
+        glVertex2f(2.0,26.5+down6);
+        glVertex2f(5.0,26.5+down6);
+        glVertex2f(5.0,29.0+down6);
+    glEnd();
+
+    glBegin(GL_POLYGON);
+        glVertex2f(6.0,29.0+down7);
+        glVertex2f(6.0,26.5+down7);
+        glVertex2f(9.0,26.5+down7);
+        glVertex2f(9.0,29.0+down7);
+    glEnd();
+
+    glBegin(GL_POLYGON);
+        glVertex2f(10.0,29.0+down8);
+        glVertex2f(10.0,26.5+down8);
+        glVertex2f(13.0,26.5+down8);
+        glVertex2f(13.0,29.0+down8);
+    glEnd();
+
+    // objek reaksi 1
     // objek target
     glColor3f(1.0,0.0,c);
     glBegin(GL_POLYGON);
@@ -170,9 +178,22 @@ glClear (GL_COLOR_BUFFER_BIT);
 glFlush();
 }
 void respon(){
-    if(objekx+posX >= t & objeky+posY >= t){
+    if(x2up+posX >= t & x2down+posY >= t){
         c=0.0;
         PlaySound("D:\\Laser.wav",NULL, SND_FILENAME);
+        int i = 0;
+        down1 -= 4.0;
+        down2 -= 4.2;
+        down3 -= 4.4;
+        down4 -= 4.6;
+        down5 -= 4.8;
+        down6 -= 5.0;
+        down7 -= 5.2;
+        down8 -= 5.4;
+//        for(i=1;i<=-26.0;--i){
+//            rdy-=0.1;
+//            display();
+//        }
         display();
     }
 }
