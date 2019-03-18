@@ -14,11 +14,11 @@ using namespace std;
 //untuk pergerakan dan edit warna objek
 float posY = 0.0, posX = 0.0,color1 = 0.1,color2 = 0.5,color3 = 0.1,nilai_awal = 1.0,kelipatan = 2.0,kecepatan = 0.0;
 //untuk interaksi objek utam
-float x2up = 2.5,x2down =2.5;
+float d1upx = 2.5,d1upy =2.5;
 //ubah warna
 float a= 1.0,b=1.0,c=0.5;
 //untuk interaksi objek target
-float t=9.5;
+float t1x=9.5,t1y=9.5,t2x=-12.0,t2y=9.5,t3x=-12.0,t3y=-12.0,t4x=9.5,t4y=-12.0;
 // reaksi objek
 float down1=0.0,down2=0.0,down3=0.0,down4=0.0,down5=0.0,down6=0.0,down7=0.0;
 float up1=0.0,up2=0.0,up3=0.0,up4=0.0,up5=0.0,up6=0.0,up7=0.0;
@@ -132,7 +132,7 @@ glClear (GL_COLOR_BUFFER_BIT);
     glColor3f(1.0,0.0,c);
     glBegin(GL_POLYGON);
         glVertex2f(9.5,12.0);
-        glVertex2f(9.5,9.5);
+        glVertex2f(9.5,9.5); //
         glVertex2f(12.0,9.5);
         glVertex2f(12.0,12.0);
     glEnd();
@@ -140,7 +140,7 @@ glClear (GL_COLOR_BUFFER_BIT);
     glBegin(GL_POLYGON);
         glVertex2f(-9.5,12.0);
         glVertex2f(-9.5,9.5);
-        glVertex2f(-12.0,9.5);
+        glVertex2f(-12.0,9.5); //
         glVertex2f(-12.0,12.0);
     glEnd();
     glColor3f(1.0,0.0,c);
@@ -148,11 +148,11 @@ glClear (GL_COLOR_BUFFER_BIT);
         glVertex2f(-9.5,-12.0);
         glVertex2f(-9.5,-9.5);
         glVertex2f(-12.0,-9.5);
-        glVertex2f(-12.0,-12.0);
+        glVertex2f(-12.0,-12.0); //
     glEnd();
     glColor3f(1.0,0.0,c);
     glBegin(GL_POLYGON);
-        glVertex2f(9.5,-12.0);
+        glVertex2f(9.5,-12.0); //
         glVertex2f(9.5,-9.5);
         glVertex2f(12.0,-9.5);
         glVertex2f(12.0,-12.0);
@@ -229,7 +229,7 @@ glClear (GL_COLOR_BUFFER_BIT);
 glFlush();
 }
 void respon(){
-    if(x2up+posX >= t & x2down+posY >= t){
+    if(d1upx+posX >= t1x & d1upy+posY >= t1y){
         c=0.0;
         PlaySound("D:\\Laser.wav",NULL, SND_FILENAME);
         int i = 0;
@@ -240,12 +240,20 @@ void respon(){
         down5 -= 4.8;
         down6 -= 5.0;
         down7 -= 5.2;
-
-//        for(i=1;i<=-26.0;--i){
-//            rdy-=0.1;
-//            display();
-//        }
         display();
+    }else if((d1upx+posX >= t2x & d1upy+posY >= t2y)){
+        up1 += 4.0;
+        up2 += 4.2;
+        up3 += 4.4;
+        up4 += 4.6;
+        up5 += 4.8;
+        up6 += 5.0;
+        up7 += 5.2;
+        display();
+    }else if((d1upx+posX >= t3x & d1upy+posY >= t3y)){
+
+    }else if((d1upx+posX >= t1x & d1upy+posY >= t1y)){
+
     }
 }
 void react(unsigned char key, int x, int y){
