@@ -1,0 +1,68 @@
+/*nomer 1*/
+
+//    glColor3f (1.0, 1.0, 0.0);
+//    float t = 0.0;
+//    glBegin(GL_POINTS);
+//    for(t = -1.0; t<=1.0; t+=0.01){
+//    float x = -0.8*1.6*t;
+//    float y = -1+2*t;
+//    //glVertex3f (-1.0 + 2.0*t, 0.0, 0.0);
+//    glVertex2f(x,y);
+//    }
+//    glEnd();
+
+/*nomer 2*/
+
+//    glColor3f (1.0, 1.0, 0.0);
+//    float t = 0.0;
+//    glBegin(GL_POINTS);
+//    for(t = -1.0; t<=1.0; t+=0.01){
+//    /* x(t) = -1 + 2t; y(t) = 0 */
+//    glVertex3f (0.5+t*(-t), t, 0.0);
+//    }
+//    glEnd();
+//    glBegin(GL_LINE_STRIP);
+//        glVertex2f(-10,0);
+//        glVertex2f(10,0);
+//        glVertex2f(0,-10);
+//        glVertex2f(0,10);
+//    glEnd();
+
+/* nomwe 3 */
+//glColor3f (1.0, 1.0, 0.0);
+//float t = 0.0;
+////f(x) = 1/14 (x+4)(x+1)(x-1)(x-3) + 0.5
+//glBegin(GL_POINTS);
+//    for(t = -10.0; t<=10.0; t+=0.1){
+////        glVertex3f (t, (t+4)*(t+1)*(t-1)*(t-3)/14 + 0.5, 0.0);
+//        float y =(t-3)*(t-2)*(t-1)*(t)*(t+1)*(t+2)*(t+3)/14;
+//    glVertex2f(y,t);
+//    }
+//
+//    glEnd();
+//    glBegin(GL_LINES);
+//        glVertex3f(-10.0,0.0,0.0);
+//        glVertex3f(10.0,0.0,0.0);
+//        glVertex3f(0.0,-10.0,0.0);
+//        glVertex3f(0.0,10.0,0.0);
+//    glEnd();
+
+//no 4
+
+glColor3f (1.0, 1.0, 0.0);
+ float x = 0.0;
+ float a=4.0,b=5.0,c=0.3,d=1.0;
+ glBegin(GL_POINTS);
+ //perhitungan sudut di openGL menggunakan radian, bukan derajat
+ for(x=0.0; x<=6.28; x+=0.01)
+ {
+    float y = a*sin(x*b+c)+d;
+    glVertex2f(x,y);
+ }
+ glEnd();
+ glBegin(GL_LINES);
+ glVertex3f(-10.0,0.0,0.0);
+ glVertex3f(10.0,0.0,0.0);
+ glVertex3f(0.0,-10.0,0.0);
+ glVertex3f(0.0,10.0,0.0);
+ glEnd();
