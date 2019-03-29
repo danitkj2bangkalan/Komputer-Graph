@@ -13,15 +13,20 @@
 using namespace std;
 //untuk pergerakan dan edit warna objek
 float posY = 0.0, posX = 0.0,color1 = 0.1,color2 = 0.5,color3 = 0.1,nilai_awal = 1.0,kelipatan = 2.0,kecepatan = 0.0;
-//untuk interaksi objek utam
-float d1upx = 2.5,d1upy =2.5;
+//untuk interaksi objek utama
+float d1upx =2.5,d1upy =2.5,d1downx =-2.5,d1downy=-2.5;
+float d2upx =-2.5,d2upy =2.5,d2downx =2.5,d2downy=-2.5;
+float p1upx =0.0,p1upy =5.0,p1downx =0.0,p1downy=-5.0;
+float p2lx =-5.0,p2ly =0.0,p2rx =0.0,p2ry=5.0;
 //ubah warna
 float a= 1.0,b=1.0,c=0.5;
 //untuk interaksi objek target
-float t1x=9.5,t1y=9.5,t2x=-12.0,t2y=9.5,t3x=-12.0,t3y=-12.0,t4x=9.5,t4y=-12.0;
+float t1x=9.5,t1y=9.5,t2x=-12.0,t2y=9.5,t3x=-9.5,t3y=-9.5,t4x=9.5,t4y=-12.0;
 // reaksi objek
 float down1=0.0,down2=0.0,down3=0.0,down4=0.0,down5=0.0,down6=0.0,down7=0.0;
 float up1=0.0,up2=0.0,up3=0.0,up4=0.0,up5=0.0,up6=0.0,up7=0.0;
+float right1=0.0,right2=0.0,right3=0.0,right4=0.0,right5=0.0,right6=0.0,right7=0.0;
+float left1=0.0,left2=0.0,left3=0.0,left4=0.0,left5=0.0,left6=0.0,left7=0.0;
 //
 void display(){
 
@@ -128,6 +133,108 @@ glClear (GL_COLOR_BUFFER_BIT);
         glVertex2f(13.0,-29.0+up7);
     glEnd();
     // objek reaksi 2
+    // objek reaksi 3
+    glColor3f(1.0,1.0,0.0);
+    glBegin(GL_POLYGON);
+        glVertex2f(-29.0+right1,-14.0);
+        glVertex2f(-26.0+right1,-14.0);
+        glVertex2f(-26.0+right1,-11.0);
+        glVertex2f(-29.0+right1,-11.0);
+    glEnd();
+
+    glBegin(GL_POLYGON);
+        glVertex2f(-29.0+right2,-10.0);
+        glVertex2f(-26.0+right2,-10.0);
+        glVertex2f(-26.0+right2,-7.0);
+        glVertex2f(-29.0+right2,-7.0);
+    glEnd();
+
+    glBegin(GL_POLYGON);
+        glVertex2f(-29.0+right3,-6.0);
+        glVertex2f(-26.0+right3,-6.0);
+        glVertex2f(-26.0+right3,-3.0);
+        glVertex2f(-29.0+right3,-3.0);
+    glEnd();
+
+    glBegin(GL_POLYGON);
+        glVertex2f(-29.0+right4,-2.0);
+        glVertex2f(-26.0+right4,-2.0);
+        glVertex2f(-26.0+right4,1.0);
+        glVertex2f(-29.0+right4,1.0);
+    glEnd();
+
+    glBegin(GL_POLYGON);
+        glVertex2f(-29.0+right5,2.0);
+        glVertex2f(-26.0+right5,2.0);
+        glVertex2f(-26.0+right5,5.0);
+        glVertex2f(-29.0+right5,5.0);
+    glEnd();
+
+    glBegin(GL_POLYGON);
+        glVertex2f(-29.0+right6,6.0);
+        glVertex2f(-26.0+right6,6.0);
+        glVertex2f(-26.0+right6,9.0);
+        glVertex2f(-29.0+right6,9.0);
+    glEnd();
+
+    glBegin(GL_POLYGON);
+        glVertex2f(-29.0+right7,10.0);
+        glVertex2f(-26.0+right7,10.0);
+        glVertex2f(-26.0+right7,13.0);
+        glVertex2f(-29.0+right7,13.0);
+    glEnd();
+    // objek reaksi 3
+    // objek reaksi 4
+    glColor3f(1.0,1.0,0.0);
+    glBegin(GL_POLYGON);
+        glVertex2f(29.0+left1,-14.0);
+        glVertex2f(26.0+left1,-14.0);
+        glVertex2f(26.0+left1,-11.0);
+        glVertex2f(29.0+left1,-11.0);
+    glEnd();
+
+    glBegin(GL_POLYGON);
+        glVertex2f(29.0+left2,-10.0);
+        glVertex2f(26.0+left2,-10.0);
+        glVertex2f(26.0+left2,-7.0);
+        glVertex2f(29.0+left2,-7.0);
+    glEnd();
+
+    glBegin(GL_POLYGON);
+        glVertex2f(29.0+left3,-6.0);
+        glVertex2f(26.0+left3,-6.0);
+        glVertex2f(26.0+left3,-3.0);
+        glVertex2f(29.0+left3,-3.0);
+    glEnd();
+
+    glBegin(GL_POLYGON);
+        glVertex2f(29.0+left4,-2.0);
+        glVertex2f(26.0+left4,-2.0);
+        glVertex2f(26.0+left4,1.0);
+        glVertex2f(29.0+left4,1.0);
+    glEnd();
+
+    glBegin(GL_POLYGON);
+        glVertex2f(29.0+left5,2.0);
+        glVertex2f(26.0+left5,2.0);
+        glVertex2f(26.0+left5,5.0);
+        glVertex2f(29.0+left5,5.0);
+    glEnd();
+
+    glBegin(GL_POLYGON);
+        glVertex2f(29.0+left6,6.0);
+        glVertex2f(26.0+left6,6.0);
+        glVertex2f(26.0+left6,9.0);
+        glVertex2f(29.0+left6,9.0);
+    glEnd();
+
+    glBegin(GL_POLYGON);
+        glVertex2f(29.0+left7,10.0);
+        glVertex2f(26.0+left7,10.0);
+        glVertex2f(26.0+left7,13.0);
+        glVertex2f(29.0+left7,13.0);
+    glEnd();
+    // objek reaksi 4
     // objek target
     glColor3f(1.0,0.0,c);
     glBegin(GL_POLYGON);
@@ -250,10 +357,304 @@ void respon(){
         up6 += 5.0;
         up7 += 5.2;
         display();
-    }else if((d1upx+posX >= t3x & d1upy+posY >= t3y)){
-
-    }else if((d1upx+posX >= t1x & d1upy+posY >= t1y)){
-
+    }else if((d1upx+posX <= t3x & d1upy+posY <= t3y)){
+        right1 += 4.0;
+        right2 += 4.2;
+        right3 += 4.4;
+        right4 += 4.6;
+        right5 += 4.8;
+        right6 += 5.0;
+        right7 += 5.2;
+        display();
+    }else if((d1upx+posX >= t4x & d1upy+posY >= t4y)){
+        left1 -= 4.0;
+        left2 -= 4.2;
+        left3 -= 4.4;
+        left4 -= 4.6;
+        left5 -= 4.8;
+        left6 -= 5.0;
+        left7 -= 5.2;
+        display();
+    }
+    if(d1downx+posX >= t1x & d1downy+posY >= t1y){
+        c=0.0;
+        PlaySound("D:\\Laser.wav",NULL, SND_FILENAME);
+        int i = 0;
+        down1 -= 4.0;
+        down2 -= 4.2;
+        down3 -= 4.4;
+        down4 -= 4.6;
+        down5 -= 4.8;
+        down6 -= 5.0;
+        down7 -= 5.2;
+        display();
+    }else if((d1downx+posX >= t2x & d1downy+posY >= t2y)){
+        up1 += 4.0;
+        up2 += 4.2;
+        up3 += 4.4;
+        up4 += 4.6;
+        up5 += 4.8;
+        up6 += 5.0;
+        up7 += 5.2;
+        display();
+    }else if((d1downx+posX <= t3x & d1downy+posY <= t3y)){
+        right1 += 4.0;
+        right2 += 4.2;
+        right3 += 4.4;
+        right4 += 4.6;
+        right5 += 4.8;
+        right6 += 5.0;
+        right7 += 5.2;
+        display();
+    }else if((d1downx+posX >= t4x & d1downy+posY >= t4y)){
+        left1 -= 4.0;
+        left2 -= 4.2;
+        left3 -= 4.4;
+        left4 -= 4.6;
+        left5 -= 4.8;
+        left6 -= 5.0;
+        left7 -= 5.2;
+        display();
+    }
+    if(d2upx+posX >= t1x & d2upy+posY >= t1y){
+        c=0.0;
+        PlaySound("D:\\Laser.wav",NULL, SND_FILENAME);
+        int i = 0;
+        down1 -= 4.0;
+        down2 -= 4.2;
+        down3 -= 4.4;
+        down4 -= 4.6;
+        down5 -= 4.8;
+        down6 -= 5.0;
+        down7 -= 5.2;
+        display();
+    }else if((d2upx+posX >= t2x & d2upy+posY >= t2y)){
+        up1 += 4.0;
+        up2 += 4.2;
+        up3 += 4.4;
+        up4 += 4.6;
+        up5 += 4.8;
+        up6 += 5.0;
+        up7 += 5.2;
+        display();
+    }else if((d2upx+posX <= t3x & d2upy+posY <= t3y)){
+        right1 += 4.0;
+        right2 += 4.2;
+        right3 += 4.4;
+        right4 += 4.6;
+        right5 += 4.8;
+        right6 += 5.0;
+        right7 += 5.2;
+        display();
+    }else if((d2upx+posX >= t4x & d2upy+posY >= t4y)){
+        left1 -= 4.0;
+        left2 -= 4.2;
+        left3 -= 4.4;
+        left4 -= 4.6;
+        left5 -= 4.8;
+        left6 -= 5.0;
+        left7 -= 5.2;
+        display();
+    }
+    if(d2downx+posX >= t1x & d2downy+posY >= t1y){
+        c=0.0;
+        PlaySound("D:\\Laser.wav",NULL, SND_FILENAME);
+        int i = 0;
+        down1 -= 4.0;
+        down2 -= 4.2;
+        down3 -= 4.4;
+        down4 -= 4.6;
+        down5 -= 4.8;
+        down6 -= 5.0;
+        down7 -= 5.2;
+        display();
+    }else if((d2downx+posX >= t2x & d2downy+posY >= t2y)){
+        up1 += 4.0;
+        up2 += 4.2;
+        up3 += 4.4;
+        up4 += 4.6;
+        up5 += 4.8;
+        up6 += 5.0;
+        up7 += 5.2;
+        display();
+    }else if((d2downx+posX <= t3x & d2downy+posY <= t3y)){
+        right1 += 4.0;
+        right2 += 4.2;
+        right3 += 4.4;
+        right4 += 4.6;
+        right5 += 4.8;
+        right6 += 5.0;
+        right7 += 5.2;
+        display();
+    }else if((d2downx+posX >= t4x & d2downy+posY >= t4y)){
+        left1 -= 4.0;
+        left2 -= 4.2;
+        left3 -= 4.4;
+        left4 -= 4.6;
+        left5 -= 4.8;
+        left6 -= 5.0;
+        left7 -= 5.2;
+        display();
+    }
+    if(p1upx+posX >= t1x & p1upy+posY >= t1y){
+        c=0.0;
+        PlaySound("D:\\Laser.wav",NULL, SND_FILENAME);
+        int i = 0;
+        down1 -= 4.0;
+        down2 -= 4.2;
+        down3 -= 4.4;
+        down4 -= 4.6;
+        down5 -= 4.8;
+        down6 -= 5.0;
+        down7 -= 5.2;
+        display();
+    }else if((p1upx+posX >= t2x & p1upy+posY >= t2y)){
+        up1 += 4.0;
+        up2 += 4.2;
+        up3 += 4.4;
+        up4 += 4.6;
+        up5 += 4.8;
+        up6 += 5.0;
+        up7 += 5.2;
+        display();
+    }else if((p1upx+posX <= t3x & p1upy+posY <= t3y)){
+        right1 += 4.0;
+        right2 += 4.2;
+        right3 += 4.4;
+        right4 += 4.6;
+        right5 += 4.8;
+        right6 += 5.0;
+        right7 += 5.2;
+        display();
+    }else if((p1upx+posX >= t4x & p1upy+posY >= t4y)){
+        left1 -= 4.0;
+        left2 -= 4.2;
+        left3 -= 4.4;
+        left4 -= 4.6;
+        left5 -= 4.8;
+        left6 -= 5.0;
+        left7 -= 5.2;
+        display();
+    }
+    if(p1downx+posX >= t1x & p1downy+posY >= t1y){
+        c=0.0;
+        PlaySound("D:\\Laser.wav",NULL, SND_FILENAME);
+        int i = 0;
+        down1 -= 4.0;
+        down2 -= 4.2;
+        down3 -= 4.4;
+        down4 -= 4.6;
+        down5 -= 4.8;
+        down6 -= 5.0;
+        down7 -= 5.2;
+        display();
+    }else if((p1downx+posX >= t2x & p1downy+posY >= t2y)){
+        up1 += 4.0;
+        up2 += 4.2;
+        up3 += 4.4;
+        up4 += 4.6;
+        up5 += 4.8;
+        up6 += 5.0;
+        up7 += 5.2;
+        display();
+    }else if((p1downx+posX <= t3x & p1downy+posY <= t3y)){
+        right1 += 4.0;
+        right2 += 4.2;
+        right3 += 4.4;
+        right4 += 4.6;
+        right5 += 4.8;
+        right6 += 5.0;
+        right7 += 5.2;
+        display();
+    }else if((p1downx+posX >= t4x & p1downy+posY >= t4y)){
+        left1 -= 4.0;
+        left2 -= 4.2;
+        left3 -= 4.4;
+        left4 -= 4.6;
+        left5 -= 4.8;
+        left6 -= 5.0;
+        left7 -= 5.2;
+        display();
+    }
+    if(p2lx+posX >= t1x & p2ly+posY >= t1y){
+        c=0.0;
+        PlaySound("D:\\Laser.wav",NULL, SND_FILENAME);
+        int i = 0;
+        down1 -= 4.0;
+        down2 -= 4.2;
+        down3 -= 4.4;
+        down4 -= 4.6;
+        down5 -= 4.8;
+        down6 -= 5.0;
+        down7 -= 5.2;
+        display();
+    }else if((p2lx+posX >= t2x & p2ly+posY >= t2y)){
+        up1 += 4.0;
+        up2 += 4.2;
+        up3 += 4.4;
+        up4 += 4.6;
+        up5 += 4.8;
+        up6 += 5.0;
+        up7 += 5.2;
+        display();
+    }else if((p2lx+posX <= t3x & p2ly+posY <= t3y)){
+        right1 += 4.0;
+        right2 += 4.2;
+        right3 += 4.4;
+        right4 += 4.6;
+        right5 += 4.8;
+        right6 += 5.0;
+        right7 += 5.2;
+        display();
+    }else if((p2lx+posX >= t4x & p2ly+posY >= t4y)){
+        left1 -= 4.0;
+        left2 -= 4.2;
+        left3 -= 4.4;
+        left4 -= 4.6;
+        left5 -= 4.8;
+        left6 -= 5.0;
+        left7 -= 5.2;
+        display();
+    }
+    if(p2rx+posX >= t1x & p2ry+posY >= t1y){
+        c=0.0;
+        PlaySound("D:\\Laser.wav",NULL, SND_FILENAME);
+        int i = 0;
+        down1 -= 4.0;
+        down2 -= 4.2;
+        down3 -= 4.4;
+        down4 -= 4.6;
+        down5 -= 4.8;
+        down6 -= 5.0;
+        down7 -= 5.2;
+        display();
+    }else if((p2rx+posX >= t2x & p2ry+posY >= t2y)){
+        up1 += 4.0;
+        up2 += 4.2;
+        up3 += 4.4;
+        up4 += 4.6;
+        up5 += 4.8;
+        up6 += 5.0;
+        up7 += 5.2;
+        display();
+    }else if((p2rx+posX <= t3x & p2ry+posY <= t3y)){
+        right1 += 4.0;
+        right2 += 4.2;
+        right3 += 4.4;
+        right4 += 4.6;
+        right5 += 4.8;
+        right6 += 5.0;
+        right7 += 5.2;
+        display();
+    }else if((p2rx+posX >= t4x & p2ry+posY >= t4y)){
+        left1 -= 4.0;
+        left2 -= 4.2;
+        left3 -= 4.4;
+        left4 -= 4.6;
+        left5 -= 4.8;
+        left6 -= 5.0;
+        left7 -= 5.2;
+        display();
     }
 }
 void react(unsigned char key, int x, int y){
