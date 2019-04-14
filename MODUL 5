@@ -1,0 +1,243 @@
+NO 1. ==============
+#include <windows.h>
+#ifdef __APPLE__
+#include <GLUT/glut.h>
+#else
+#include <GL/glut.h>
+#endif
+#include <stdlib.h>
+
+void display()
+{
+    glClear(GL_COLOR_BUFFER_BIT);
+    glColor3f(0.0,0.0,1.0);
+
+    for(int i = -12; i < 13; i+=4){
+         for(int j = 0; j < 8; j++){
+         glRecti(-10+i,8,-8+i,10);
+         glTranslated(2.0,-2.0,0.0);
+        }
+        glLoadIdentity();
+    }
+
+    glColor3f(1.0,1.0,0.0);
+    for(int i = -14; i < 16; i+=4){
+         for(int j = 0; j < 8; j++){
+         glRecti(-10+i,8,-8+i,10);
+         glTranslated(2.0,-2.0,0.0);
+        }
+        glLoadIdentity();
+    }
+
+    glFlush();
+}
+
+void myinit()
+{
+glMatrixMode(GL_PROJECTION);
+glLoadIdentity();
+gluOrtho2D(-10.0, 6.0, -6.0, 10.0);
+glMatrixMode(GL_MODELVIEW);
+glClearColor(1.0,1.0,1.0,1.0);
+glColor3f(0.0,0.0,0.0);
+}
+
+int main(int argc, char* argv[])
+{
+glutInit(&argc,argv);
+glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
+glutInitWindowSize(400,400);
+glutInitWindowPosition(100,100);
+glutCreateWindow("Transform");
+glutDisplayFunc(display);
+myinit();
+glutMainLoop();
+return 0;
+}
+
+NO 2=================================
+
+#include <windows.h>
+#ifdef __APPLE__
+#include <GLUT/glut.h>
+#else
+#include <GL/glut.h>
+#endif
+
+void rangka()
+{
+    glBegin(GL_LINE_STRIP);
+
+    glVertex2f(6,0);
+    glVertex2f(5.2,0.2);
+    glVertex2f(4.4,0.2);
+    glVertex2f(4.8,0.6);
+    glVertex2f(4.4,0.6);
+    glVertex2f(4.0,0.2);
+    glVertex2f(3.0,0.2);
+    glVertex2f(3.6,0.8);
+    glVertex2f(3.2,0.8);
+    glVertex2f(2.6,0.2);
+    glVertex2f(1.4,0.2);
+    glVertex2f(2.2,1.0);
+    glVertex2f(1.8,1.0);
+    glVertex2f(1.0,0.2);
+    glVertex2f(0.3,0.2);
+
+    glEnd();
+}
+
+void jadi()
+{
+    rangka();
+    glScaled(1.0,-1.0,0);
+    rangka();
+}
+
+void display()
+{
+    glClear(GL_COLOR_BUFFER_BIT);
+    glColor3f(0.0,0.0,1.0);
+
+    jadi();
+    glRotated(60,0.0,0.0,1.0);
+    jadi();
+    glRotated(120,0.0,0.0,1.0);
+    jadi();
+    glRotated(180,0.0,0.0,1.0);
+    jadi();
+    glRotated(240,0.0,0.0,1.0);
+    jadi();
+    glRotated(300,0.0,0.0,1.0);
+    jadi();
+    glRotated(360,0.0,0.0,1.0);
+    jadi();
+
+    glFlush();
+}
+
+void myinit()
+{
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    gluOrtho2D(-7.0, 7.0, -7.0, 7.0);
+    glMatrixMode(GL_MODELVIEW);
+    glClearColor(1.0,1.0,1.0,1.0);
+    glColor3f(0.0,0.0,0.0);
+}
+
+int main(int argc, char* argv[])
+{
+    glutInit(&argc,argv);
+    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
+    glutInitWindowSize(400,400);
+    glutInitWindowPosition(100,100);
+    glutCreateWindow("Transform");
+    glutDisplayFunc(display);
+    myinit();
+    glutMainLoop();
+    return 0;
+}
+
+NO 3. ========================================
+
+#include <windows.h>
+
+#ifdef __APPLE__
+#include <GLUT/glut.h>
+#else
+#include <GL/glut.h>
+#endif
+
+void rangka1(){
+
+glBegin(GL_LINES);
+glVertex2f(-0.18,0.42);
+glVertex2f(1.3,0.42);
+
+glEnd();
+
+glTranslated(1.3,0.42,0.0);
+glRotated(36,0.0,0.0,1.0);
+glTranslated(-1.3,-0.42,0.0);
+
+glBegin(GL_LINES);
+glVertex2f(0.30,0.42);
+glVertex2f(1.3,0.42);
+
+glEnd();
+glLoadIdentity();
+}
+
+void rangka2(){
+
+glTranslated(0.0,0.01,0.0);
+glScaled(0.7,0.7,0.0);
+glBegin(GL_LINES);
+glVertex2f(-0.30,0.42);
+glVertex2f(1.3,0.42);
+
+glEnd();
+
+glTranslated(1.3,0.42,0.0);
+glRotated(36,0.0,0.0,1.0);
+glTranslated(-1.3,-0.42,0.0);
+
+glBegin(GL_LINES);
+glVertex2f(0.51,0.42);
+glVertex2f(1.3,0.42);
+
+glEnd();
+glLoadIdentity();
+}
+
+void display()
+{
+glClear(GL_COLOR_BUFFER_BIT);
+glColor3f(0.0,0.0,1.0);
+
+rangka1();
+glRotated(72,0.0,0.0,1.0);
+rangka1();
+glRotated(144,0.0,0.0,1.0);
+rangka1();
+glRotated(216,0.0,0.0,1.0);
+rangka1();
+glRotated(288,0.0,0.0,1.0);
+rangka1();
+
+rangka2();
+glRotated(72,0.0,0.0,1.0);
+rangka2();
+glRotated(144,0.0,0.0,1.0);
+rangka2();
+glRotated(216,0.0,0.0,1.0);
+rangka2();
+glRotated(288,0.0,0.0,1.0);
+rangka2();
+glFlush();
+}
+
+void myinit()
+{
+
+glMatrixMode(GL_PROJECTION);
+glLoadIdentity();
+gluOrtho2D(-2.0,2.0,-2.0,2.0);
+glMatrixMode(GL_MODELVIEW);
+glClearColor(1.0,1.0,1.0,1.0);
+glColor3f(0.0,0.0,0.0);
+}
+
+int main(int argc, char* argv[])
+{
+glutInit(&argc,argv);
+glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
+glutInitWindowSize(400,400);
+glutInitWindowPosition(100,100);
+glutCreateWindow("Transform");
+glutDisplayFunc(display);
+myinit();
+glutMainLoop();
+return 0;
+}
