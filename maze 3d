@@ -1,0 +1,4005 @@
+#include <windows.h>
+#ifdef __APPLE__
+#include <GLUT/glut.h>
+#else
+#include <GL/glut.h>
+#endif
+#include <math.h>
+#include <iostream>
+
+using namespace std;
+bool maze = true,dimension = false;
+float posx = 0.0,posy=0.0,rotasi=0.0,d=0.0,inc=0.0,q=-1.5,w=1.5,e=28.5,r=31.5;
+int a=0,b=0,c=0,countt=0;
+
+void nim(){
+        //////////////////////////NIM 0 BAGIAN 1///////////////////////////////
+    //depan
+    glColor3f(0.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(-2.0, 27.0, 1.0);
+    glVertex3f(-1.0, 27.0, 1.0);
+    glVertex3f(-1.0, 27.5, 1.0);
+    glVertex3f(-2.0, 27.5, 1.0);
+    glEnd();
+    //belakang
+    glColor3f(0.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(-1.0, 27.0, -1.0);
+    glVertex3f(-2.0, 27.0, -1.0);
+    glVertex3f(-2.0, 27.5, -1.0);
+    glVertex3f(-1.0, 27.5, -1.0);
+    glEnd();
+    //atas
+    glColor3f(0.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(-2.0, 27.5, 1.0);
+    glVertex3f(-1.0, 27.5, 1.0);
+    glVertex3f(-1.0, 27.5, -1.0);
+    glVertex3f(-2.0, 27.5, -1.0);
+    glEnd();
+    //bawah
+    glColor3f(0.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(-2.0, 27.0, 1.0);
+    glVertex3f(-1.0, 27.0, 1.0);
+    glVertex3f(-1.0, 27.0, -1.0);
+    glVertex3f(-2.0, 27.0, -1.0);
+    glEnd();
+    //kiri
+    glColor3f(0.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(-2.0, 27.5, 1.0);
+    glVertex3f(-2.0, 27.5, -1.0);
+    glVertex3f(-2.0, 27.0, -1.0);
+    glVertex3f(-2.0, 27.0, 1.0);
+    glEnd();
+    //kanan
+    glColor3f(0.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(-1.0, 27.5, 1.0);
+    glVertex3f(-1.0, 27.5, -1.0);
+    glVertex3f(-1.0, 27.0, -1.0);
+    glVertex3f(-1.0, 27.0, 1.0);
+    glEnd();
+
+    //////////////////////////NIM 0 BAGIAN 2///////////////////////////////
+    //depan
+    glColor3f(0.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(-2.0, 23.0, 1.0);
+    glVertex3f(-1.0, 23.0, 1.0);
+    glVertex3f(-1.0, 23.5, 1.0);
+    glVertex3f(-2.0, 23.5, 1.0);
+    glEnd();
+    //belakang
+    glColor3f(0.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(-1.0, 23.0, -1.0);
+    glVertex3f(-2.0, 23.0, -1.0);
+    glVertex3f(-2.0, 23.5, -1.0);
+    glVertex3f(-1.0, 23.5, -1.0);
+    glEnd();
+    //atas
+    glColor3f(0.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(-2.0, 23.5, 1.0);
+    glVertex3f(-1.0, 23.5, 1.0);
+    glVertex3f(-1.0, 23.5, -1.0);
+    glVertex3f(-2.0, 23.5, -1.0);
+    glEnd();
+    //bawah
+    glColor3f(0.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(-2.0, 23.0, 1.0);
+    glVertex3f(-1.0, 23.0, 1.0);
+    glVertex3f(-1.0, 23.0, -1.0);
+    glVertex3f(-2.0, 23.0, -1.0);
+    glEnd();
+    //kiri
+    glColor3f(0.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(-2.0, 23.5, 1.0);
+    glVertex3f(-2.0, 23.5, -1.0);
+    glVertex3f(-2.0, 23.0, -1.0);
+    glVertex3f(-2.0, 23.0, 1.0);
+    glEnd();
+    //kanan
+    glColor3f(0.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(-1.0, 23.5, 1.0);
+    glVertex3f(-1.0, 23.5, -1.0);
+    glVertex3f(-1.0, 23.0, -1.0);
+    glVertex3f(-1.0, 23.0, 1.0);
+    glEnd();
+
+    //////////////////////////NIM 0 BAGIAN 3///////////////////////////////
+    //depan
+    glColor3f(0.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(-2.0, 23.0, 1.0);
+    glVertex3f(-1.8, 23.0, 1.0);
+    glVertex3f(-1.8, 27.5, 1.0);
+    glVertex3f(-2.0, 27.5, 1.0);
+    glEnd();
+    //belakang
+    glColor3f(0.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(-1.8, 23.0, -1.0);
+    glVertex3f(-2.0, 23.0, -1.0);
+    glVertex3f(-2.0, 27.5, -1.0);
+    glVertex3f(-1.8, 27.5, -1.0);
+    glEnd();
+    //atas
+    glColor3f(0.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(-2.8, 27.5, 1.0);
+    glVertex3f(-1.8, 27.5, 1.0);
+    glVertex3f(-1.8, 27.5, -1.0);
+    glVertex3f(-2.8, 27.5, -1.0);
+    glEnd();
+    //bawah
+    glColor3f(0.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(-2.0, 23.0, 1.0);
+    glVertex3f(-1.8, 23.0, 1.0);
+    glVertex3f(-1.8, 23.0, -1.0);
+    glVertex3f(-2.0, 23.0, -1.0);
+    glEnd();
+    //kiri
+    glColor3f(0.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(-2.0, 27.5, 1.0);
+    glVertex3f(-2.0, 27.5, -1.0);
+    glVertex3f(-2.0, 23.0, -1.0);
+    glVertex3f(-2.0, 23.0, 1.0);
+    glEnd();
+    //kanan
+    glColor3f(0.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(-1.8, 27.5, 1.0);
+    glVertex3f(-1.8, 27.5, -1.0);
+    glVertex3f(-1.8, 23.0, -1.0);
+    glVertex3f(-1.8, 23.0, 1.0);
+    glEnd();
+
+    //////////////////////////NIM 0 BAGIAN 4///////////////////////////////
+    //depan
+    glColor3f(0.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(-1.2, 23.0, 1.0);
+    glVertex3f(-1.0, 23.0, 1.0);
+    glVertex3f(-1.0, 27.5, 1.0);
+    glVertex3f(-1.2, 27.5, 1.0);
+    glEnd();
+    //belakang
+    glColor3f(0.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(-1.0, 23.0, -1.0);
+    glVertex3f(-1.2, 23.0, -1.0);
+    glVertex3f(-1.2, 27.5, -1.0);
+    glVertex3f(-1.0, 27.5, -1.0);
+    glEnd();
+    //atas
+    glColor3f(0.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(-1.2, 27.5, 1.0);
+    glVertex3f(-1.0, 27.5, 1.0);
+    glVertex3f(-1.0, 27.5, -1.0);
+    glVertex3f(-1.2, 27.5, -1.0);
+    glEnd();
+    //bawah
+    glColor3f(0.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(-1.2, 23.0, 1.0);
+    glVertex3f(-1.0, 23.0, 1.0);
+    glVertex3f(-1.0, 23.0, -1.0);
+    glVertex3f(-1.2, 23.0, -1.0);
+    glEnd();
+    //kiri
+    glColor3f(0.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(-1.2, 27.5, 1.0);
+    glVertex3f(-1.2, 27.5, -1.0);
+    glVertex3f(-1.2, 23.0, -1.0);
+    glVertex3f(-1.2, 23.0, 1.0);
+    glEnd();
+    //kanan
+    glColor3f(0.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(-1.0, 27.5, 1.0);
+    glVertex3f(-1.0, 27.5, -1.0);
+    glVertex3f(-1.0, 23.0, -1.0);
+    glVertex3f(-1.0, 23.0, 1.0);
+    glEnd();
+
+
+    //////////////////////////NIM 9 BAGIAN 1///////////////////////////////
+    //depan
+    glColor3f(0.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(-0.5, 27.0, 1.0);
+    glVertex3f(1.0, 27.0, 1.0);
+    glVertex3f(1.0, 27.5, 1.0);
+    glVertex3f(-0.5, 27.5, 1.0);
+    glEnd();
+    //belakang
+    glColor3f(0.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(1.0, 27.0, -1.0);
+    glVertex3f(-0.5, 27.0, -1.0);
+    glVertex3f(-0.5, 27.5, -1.0);
+    glVertex3f(1.0, 27.5, -1.0);
+    glEnd();
+    //atas
+    glColor3f(0.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(-0.5, 27.5, 1.0);
+    glVertex3f(1.0, 27.5, 1.0);
+    glVertex3f(1.0, 27.5, -1.0);
+    glVertex3f(-0.5, 27.5, -1.0);
+    glEnd();
+    //bawah
+    glColor3f(0.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(-0.5, 27.0, 1.0);
+    glVertex3f(1.0, 27.0, 1.0);
+    glVertex3f(1.0, 27.0, -1.0);
+    glVertex3f(-0.5, 27.0, -1.0);
+    glEnd();
+    //kiri
+    glColor3f(0.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(-0.5, 27.5, 1.0);
+    glVertex3f(-0.5, 27.5, -1.0);
+    glVertex3f(-0.5, 27.0, -1.0);
+    glVertex3f(-0.5, 27.0, 1.0);
+    glEnd();
+    //kanan
+    glColor3f(0.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(1.0, 27.5, 1.0);
+    glVertex3f(1.0, 27.5, -1.0);
+    glVertex3f(1.0, 27.0, -1.0);
+    glVertex3f(1.0, 27.0, 1.0);
+    glEnd();
+
+
+    //////////////////////////NIM 9 BAGIAN 2///////////////////////////////
+    //depan
+    glColor3f(0.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(-0.5, 25.5, 1.0);
+    glVertex3f(1.0, 25.5, 1.0);
+    glVertex3f(1.0, 26.0, 1.0);
+    glVertex3f(-0.5, 26.0, 1.0);
+    glEnd();
+    //belakang
+    glColor3f(0.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(1.0, 25.5, -1.0);
+    glVertex3f(-0.5, 25.5, -1.0);
+    glVertex3f(-0.5, 26.0, -1.0);
+    glVertex3f(1.0, 26.0, -1.0);
+    glEnd();
+    //atas
+    glColor3f(0.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(-0.5, 26.0, 1.0);
+    glVertex3f(1.0, 26.0, 1.0);
+    glVertex3f(1.0, 26.0, -1.0);
+    glVertex3f(-0.5, 26.0, -1.0);
+    glEnd();
+    //bawah
+    glColor3f(0.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(-0.5, 25.5, 1.0);
+    glVertex3f(1.0, 25.5, 1.0);
+    glVertex3f(1.0, 25.5, -1.0);
+    glVertex3f(-0.5, 25.5, -1.0);
+    glEnd();
+    //kiri
+    glColor3f(0.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(-0.5, 26.0, 1.0);
+    glVertex3f(-0.5, 26.0, -1.0);
+    glVertex3f(-0.5, 25.5, -1.0);
+    glVertex3f(-0.5, 25.5, 1.0);
+    glEnd();
+    //kanan
+    glColor3f(0.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(1.0, 26.0, 1.0);
+    glVertex3f(1.0, 26.0, -1.0);
+    glVertex3f(1.0, 25.5, -1.0);
+    glVertex3f(1.0, 25.5, 1.0);
+    glEnd();
+
+    //////////////////////////NIM 9 BAGIAN 3///////////////////////////////
+    //depan
+    glColor3f(0.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(-0.5, 23.0, 1.0);
+    glVertex3f(1.0, 23.0, 1.0);
+    glVertex3f(1.0, 23.5, 1.0);
+    glVertex3f(-0.5, 23.5, 1.0);
+    glEnd();
+    //belakang
+    glColor3f(0.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(1.0, 23.0, -1.0);
+    glVertex3f(-0.5, 23.0, -1.0);
+    glVertex3f(-0.5, 23.5, -1.0);
+    glVertex3f(1.0, 23.5, -1.0);
+    glEnd();
+    //atas
+    glColor3f(0.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(-0.5, 23.5, 1.0);
+    glVertex3f(1.0, 23.5, 1.0);
+    glVertex3f(1.0, 23.5, -1.0);
+    glVertex3f(-0.5, 23.5, -1.0);
+    glEnd();
+    //bawah
+    glColor3f(0.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(-0.5, 23.0, 1.0);
+    glVertex3f(1.0, 23.0, 1.0);
+    glVertex3f(1.0, 23.0, -1.0);
+    glVertex3f(-0.5, 23.0, -1.0);
+    glEnd();
+    //kiri
+    glColor3f(0.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(-0.5, 23.5, 1.0);
+    glVertex3f(-0.5, 23.5, -1.0);
+    glVertex3f(-0.5, 23.0, -1.0);
+    glVertex3f(-0.5, 23.0, 1.0);
+    glEnd();
+    //kanan
+    glColor3f(0.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(1.0, 23.5, 1.0);
+    glVertex3f(1.0, 23.5, -1.0);
+    glVertex3f(1.0, 23.0, -1.0);
+    glVertex3f(1.0, 23.0, 1.0);
+    glEnd();
+
+    //////////////////////////NIM 9 BAGIAN 4///////////////////////////////
+    //depan
+    glColor3f(0.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(-0.5, 25.5, 1.0);
+    glVertex3f(-0.3, 25.5, 1.0);
+    glVertex3f(-0.3, 27.5, 1.0);
+    glVertex3f(-0.5, 27.5, 1.0);
+    glEnd();
+    //belakang
+    glColor3f(0.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(-0.3, 25.5, -1.0);
+    glVertex3f(-0.5, 25.5, -1.0);
+    glVertex3f(-0.5, 27.5, -1.0);
+    glVertex3f(-0.3, 27.5, -1.0);
+    glEnd();
+    //atas
+    glColor3f(0.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(-0.5, 27.5, 1.0);
+    glVertex3f(-0.3, 27.5, 1.0);
+    glVertex3f(-0.3, 27.5, -1.0);
+    glVertex3f(-0.5, 27.5, -1.0);
+    glEnd();
+    //bawah
+    glColor3f(0.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(-0.5, 25.5, 1.0);
+    glVertex3f(-0.3, 25.5, 1.0);
+    glVertex3f(-0.3, 25.5, -1.0);
+    glVertex3f(-0.5, 25.5, -1.0);
+    glEnd();
+    //kiri
+    glColor3f(0.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(-0.5, 27.5, 1.0);
+    glVertex3f(-0.5, 27.5, -1.0);
+    glVertex3f(-0.5, 25.5, -1.0);
+    glVertex3f(-0.5, 25.5, 1.0);
+    glEnd();
+    //kanan
+    glColor3f(0.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(-0.3, 27.5, 1.0);
+    glVertex3f(-0.3, 27.5, -1.0);
+    glVertex3f(-0.3, 25.5, -1.0);
+    glVertex3f(-0.3, 25.5, 1.0);
+    glEnd();
+
+    //////////////////////////NIM 9 BAGIAN 5///////////////////////////////
+    //depan
+    glColor3f(0.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(0.8, 23.0, 1.0);
+    glVertex3f(0.1, 23.0, 1.0);
+    glVertex3f(0.1, 27.5, 1.0);
+    glVertex3f(0.8, 27.5, 1.0);
+    glEnd();
+    //belakang
+    glColor3f(0.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(0.1, 23.0, -1.0);
+    glVertex3f(0.8, 23.0, -1.0);
+    glVertex3f(0.8, 27.5, -1.0);
+    glVertex3f(0.1, 27.5, -1.0);
+    glEnd();
+    //atas
+    glColor3f(0.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(0.8, 27.5, 1.0);
+    glVertex3f(0.1, 27.5, 1.0);
+    glVertex3f(0.1, 27.5, -1.0);
+    glVertex3f(0.8, 27.5, -1.0);
+    glEnd();
+    //bawah
+    glColor3f(0.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(0.8, 23.0, 1.0);
+    glVertex3f(0.1, 23.0, 1.0);
+    glVertex3f(0.1, 23.0, -1.0);
+    glVertex3f(0.8, 23.0, -1.0);
+    glEnd();
+    //kiri
+    glColor3f(0.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(0.8, 27.5, 1.0);
+    glVertex3f(0.8, 27.5, -1.0);
+    glVertex3f(0.8, 23.0, -1.0);
+    glVertex3f(0.8, 23.0, 1.0);
+    glEnd();
+    //kanan
+    glColor3f(0.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(0.1, 27.5, 1.0);
+    glVertex3f(0.1, 27.5, -1.0);
+    glVertex3f(0.1, 23.0, -1.0);
+    glVertex3f(0.1, 23.0, 1.0);
+    glEnd();
+
+    //////////////////////////NIM 1///////////////////////////////
+    //depan
+    glColor3f(0.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(1.5, 23.0, 1.0);
+    glVertex3f(2.0, 23.0, 1.0);
+    glVertex3f(2.0, 27.5, 1.0);
+    glVertex3f(1.5, 27.5, 1.0);
+    glEnd();
+    //belakang
+    glColor3f(0.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(2.0, 23.0, -1.0);
+    glVertex3f(1.5, 23.0, -1.0);
+    glVertex3f(1.5, 27.5, -1.0);
+    glVertex3f(2.0, 27.5, -1.0);
+    glEnd();
+    //atas
+    glColor3f(0.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(1.5, 27.5, 1.0);
+    glVertex3f(2.0, 27.5, 1.0);
+    glVertex3f(2.0, 27.5, -1.0);
+    glVertex3f(1.5, 27.5, -1.0);
+    glEnd();
+    //bawah
+    glColor3f(0.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(1.5, 23.0, 1.0);
+    glVertex3f(2.0, 23.0, 1.0);
+    glVertex3f(2.0, 23.0, -1.0);
+    glVertex3f(1.5, 23.0, -1.0);
+    glEnd();
+    //kiri
+    glColor3f(0.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(1.5, 27.5, 1.0);
+    glVertex3f(1.5, 27.5, -1.0);
+    glVertex3f(1.5, 23.0, -1.0);
+    glVertex3f(1.5, 23.0, 1.0);
+    glEnd();
+    //kanan
+    glColor3f(0.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(2.0, 27.5, 1.0);
+    glVertex3f(2.0, 27.5, -1.0);
+    glVertex3f(2.0, 23.0, -1.0);
+    glVertex3f(2.0, 23.0, 1.0);
+    glEnd();
+}
+
+void petunjuk(){
+cout<< "Aplikasi maze binary tree\n\nPress 'c' to change the maze layout\nPress 'a', 's', 'd', and 'w' to move the player object\nPress 'v' to switch between views\nPress 'j', 'k', 'l', and 'i' to rotate the maze"<<endl;
+}
+void player(){
+//////////////////////////PLAYER///////////////////////////////
+//depan
+glColor3f(0.0,1.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(q+posx, e+posy, d);
+glVertex3f(w+posx, e+posy, d);
+glVertex3f(w+posx, r+posy, d);
+glVertex3f(q+posx, r+posy, d);
+glEnd();
+//belakang
+glColor3f(1.0,0.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(w+posx, e+posy, -d);
+glVertex3f(q+posx, e+posy, -d);
+glVertex3f(q+posx, r+posy, -d);
+glVertex3f(w+posx, r+posy, -d);
+glEnd();
+//atas
+glColor3f(1.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(q+posx, r+posy, d);
+glVertex3f(w+posx, r+posy, d);
+glVertex3f(w+posx, r+posy, -d);
+glVertex3f(q+posx, r+posy, -d);
+glEnd();
+//bawah
+glColor3f(1.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(q+posx, e+posy, d);
+glVertex3f(w+posx, e+posy, d);
+glVertex3f(w+posx, e+posy, -d);
+glVertex3f(q+posx, e+posy, -d);
+glEnd();
+//kiri
+glColor3f(0.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(q+posx, e+posy, d);
+glVertex3f(q+posx, e+posy, -d);
+glVertex3f(q+posx, e+posy, -d);
+glVertex3f(q+posx, e+posy, d);
+glEnd();
+//kanan
+glColor3f(0.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(q+posx, r+posy, d);
+glVertex3f(q+posx, r+posy, -d);
+glVertex3f(q+posx, e+posy, -d);
+glVertex3f(q+posx, e+posy, d);
+glEnd();
+
+}
+
+void layer1(){
+//////////////////////////TEMBOK KIRI///////////////////////////////
+//depan
+glColor3f(0.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-32.5, 32.5, d);
+glVertex3f(-27.5, 32.5, d);
+glVertex3f(-27.5, -32.5, d);
+glVertex3f(-32.5, -32.5, d);
+glEnd();
+//belakang
+glColor3f(0.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-32.5, 32.5, -d);
+glVertex3f(-27.5, 32.5, -d);
+glVertex3f(-27.5, -32.5, -d);
+glVertex3f(-32.5, -32.5, -d);
+glEnd();
+//atas
+glColor3f(1.0,0.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-32.5, 32.5, d);
+glVertex3f(-32.5, 32.5, -d);
+glVertex3f(-27.5, 32.5, -d);
+glVertex3f(-27.5, 32.5, d);
+glEnd();
+//bawah
+glColor3f(0.0,1.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-32.5, -32.5, d);
+glVertex3f(-32.5, -32.5, -d);
+glVertex3f(-27.5, -32.5, -d);
+glVertex3f(-27.5, -32.5, d);
+glEnd();
+//kiri
+glColor3f(1.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-32.5, 32.5, d);
+glVertex3f(-32.5, 32.5, -d);
+glVertex3f(-32.5, -32.5, -d);
+glVertex3f(-32.5, -32.5, d);
+glEnd();
+//kanan
+glColor3f(1.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-27.5, 32.5, d);
+glVertex3f(-27.5, 32.5, -d);
+glVertex3f(-27.5, -32.5, -d);
+glVertex3f(-27.5, -32.5, d);
+glEnd();
+
+//////////////////////////TEMBOK BAWAH KIRI///////////////////////////////
+//depan
+glColor3f(0.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-32.5, -32.5, d);
+glVertex3f(-2.5, -32.5, d);
+glVertex3f(-2.5, -27.5, d);
+glVertex3f(-32.5, -27.5, d);
+glEnd();
+//belakang
+glColor3f(0.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-32.5, -32.5, -d);
+glVertex3f(-2.5, -32.5, -d);
+glVertex3f(-2.5, -27.5, -d);
+glVertex3f(-32.5, -27.5, -d);
+glEnd();
+//atas
+glColor3f(1.0,0.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-32.5, -27.5, d);
+glVertex3f(-2.5, -27.5, d);
+glVertex3f(-2.5, -27.5, -d);
+glVertex3f(-32.5, -27.5, -d);
+glEnd();
+//bawah
+glColor3f(0.0,1.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-32.5, -32.5, d);
+glVertex3f(-2.5, -32.5, d);
+glVertex3f(-2.5, -32.5, -d);
+glVertex3f(-32.5, -32.5, -d);
+glEnd();
+//kiri
+glColor3f(1.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-32.5, -32.5, d);
+glVertex3f(-32.5, -32.5, -d);
+glVertex3f(-32.5, -32.5, -d);
+glVertex3f(-32.5, -32.5, d);
+glEnd();
+//kanan
+glColor3f(1.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-2.5, -27.5, d);
+glVertex3f(-2.5, -27.5, -d);
+glVertex3f(-2.5, -32.5, -d);
+glVertex3f(-2.5, -32.5, d);
+glEnd();
+
+//////////////////////////TEMBOK BAWAH KANAN///////////////////////////////
+//depan
+glColor3f(0.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(2.5, -32.5, d);
+glVertex3f(32.5, -32.5, d);
+glVertex3f(32.5, -27.5, d);
+glVertex3f(2.5, -27.5, d);
+glEnd();
+//belakang
+glColor3f(0.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(2.5, -32.5, -d);
+glVertex3f(32.5, -32.5, -d);
+glVertex3f(32.5, -27.5, -d);
+glVertex3f(2.5, -27.5, -d);
+glEnd();
+//atas
+glColor3f(1.0,0.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(2.5, -27.5, d);
+glVertex3f(32.5, -27.5, d);
+glVertex3f(32.5, -27.5, -d);
+glVertex3f(2.5, -27.5, -d);
+glEnd();
+//bawah
+glColor3f(0.0,1.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(2.5, -32.5, d);
+glVertex3f(32.5, -32.5, d);
+glVertex3f(32.5, -32.5, -d);
+glVertex3f(2.5, -32.5, -d);
+glEnd();
+//kiri
+glColor3f(1.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(2.5, -32.5, d);
+glVertex3f(2.5, -32.5, -d);
+glVertex3f(2.5, -32.5, -d);
+glVertex3f(2.5, -32.5, d);
+glEnd();
+//kanan
+glColor3f(1.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(32.5, -27.5, d);
+glVertex3f(32.5, -27.5, -d);
+glVertex3f(32.5, -32.5, -d);
+glVertex3f(32.5, -32.5, d);
+glEnd();
+
+//////////////////////////TEMBOK KANAN///////////////////////////////
+//depan
+glColor3f(0.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(27.5, 32.5, d);
+glVertex3f(32.5, 32.5, d);
+glVertex3f(32.5, -32.5, d);
+glVertex3f(27.5, -32.5, d);
+glEnd();
+//belakang
+glColor3f(0.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(27.5, 32.5, -d);
+glVertex3f(32.5, 32.5, -d);
+glVertex3f(32.5, -32.5, -d);
+glVertex3f(27.5, -32.5, -d);
+glEnd();
+//atas
+glColor3f(1.0,0.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(27.5, 32.5, d);
+glVertex3f(27.5, 32.5, -d);
+glVertex3f(32.5, 32.5, -d);
+glVertex3f(32.5, 32.5, d);
+glEnd();
+//bawah
+glColor3f(0.0,1.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(27.5, -32.5, d);
+glVertex3f(27.5, -32.5, -d);
+glVertex3f(32.5, -32.5, -d);
+glVertex3f(32.5, -32.5, d);
+glEnd();
+//kiri
+glColor3f(1.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(27.5, 32.5, d);
+glVertex3f(27.5, 32.5, -d);
+glVertex3f(27.5, -32.5, -d);
+glVertex3f(27.5, -32.5, d);
+glEnd();
+//kanan
+glColor3f(1.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(32.5, 32.5, d);
+glVertex3f(32.5, 32.5, -d);
+glVertex3f(32.5, -32.5, -d);
+glVertex3f(32.5, -32.5, d);
+glEnd();
+
+//////////////////////////TEMBOK ATAS KIRI///////////////////////////////
+//depan
+glColor3f(0.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-32.5, 27.5, d);
+glVertex3f(-2.5, 27.5, d);
+glVertex3f(-2.5, 32.5, d);
+glVertex3f(-32.5, 32.5, d);
+glEnd();
+//belakang
+glColor3f(0.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-32.5, 27.5, -d);
+glVertex3f(-2.5, 27.5, -d);
+glVertex3f(-2.5, 32.5, -d);
+glVertex3f(-32.5, 32.5, -d);
+glEnd();
+//atas
+glColor3f(1.0,0.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-32.5, 32.5, d);
+glVertex3f(-2.5, 32.5, d);
+glVertex3f(-2.5, 32.5, -d);
+glVertex3f(-32.5, 32.5, -d);
+glEnd();
+//bawah
+glColor3f(0.0,1.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-32.5, 27.5, d);
+glVertex3f(-2.5, 27.5, d);
+glVertex3f(-2.5, 27.5, -d);
+glVertex3f(-32.5, 27.5, -d);
+glEnd();
+//kiri
+glColor3f(1.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-32.5, 27.5, d);
+glVertex3f(-32.5, 27.5, -d);
+glVertex3f(-32.5, 27.5, -d);
+glVertex3f(-32.5, 27.5, d);
+glEnd();
+//kanan
+glColor3f(1.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-2.5, 32.5, d);
+glVertex3f(-2.5, 32.5, -d);
+glVertex3f(-2.5, 27.5, -d);
+glVertex3f(-2.5, 27.5, d);
+glEnd();
+
+//////////////////////////TEMBOK ATAS KANAN///////////////////////////////
+//depan
+glColor3f(0.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(2.5, 27.5, d);
+glVertex3f(32.5, 27.5, d);
+glVertex3f(32.5, 32.5, d);
+glVertex3f(2.5, 32.5, d);
+glEnd();
+//belakang
+glColor3f(0.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(2.5, 27.5, -d);
+glVertex3f(32.5, 27.5, -d);
+glVertex3f(32.5, 32.5, -d);
+glVertex3f(2.5, 32.5, -d);
+glEnd();
+//atas
+glColor3f(1.0,0.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(2.5, 32.5, d);
+glVertex3f(32.5, 32.5, d);
+glVertex3f(32.5, 32.5, -d);
+glVertex3f(2.5, 32.5, -d);
+glEnd();
+//bawah
+glColor3f(0.0,1.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(2.5, 27.5, d);
+glVertex3f(32.5, 27.5, d);
+glVertex3f(32.5, 27.5, -d);
+glVertex3f(2.5, 27.5, -d);
+glEnd();
+//kiri
+glColor3f(1.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(2.5, 27.5, d);
+glVertex3f(2.5, 27.5, -d);
+glVertex3f(2.5, 27.5, -d);
+glVertex3f(2.5, 27.5, d);
+glEnd();
+//kanan
+glColor3f(1.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(32.5, 32.5, d);
+glVertex3f(32.5, 32.5, -d);
+glVertex3f(32.5, 27.5, -d);
+glVertex3f(32.5, 27.5, d);
+glEnd();
+
+////////////////////////// DINDING BAGIAN A///////////////////////////////
+//depan
+glColor3f(0.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(7.5, 22.5, d);
+glVertex3f(12.5, 22.5, d);
+glVertex3f(12.5, 27.5, d);
+glVertex3f(7.5, 27.5, d);
+glEnd();
+//belakang
+glColor3f(0.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(7.5, 22.5, -d);
+glVertex3f(12.5, 22.5, -d);
+glVertex3f(12.5, 27.5, -d);
+glVertex3f(7.5, 27.5, -d);
+glEnd();
+//atas
+glColor3f(0.0,1.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(7.5, 27.5, d);
+glVertex3f(12.5, 27.5, d);
+glVertex3f(12.5, 27.5, -d);
+glVertex3f(7.5, 27.5, -d);
+glEnd();
+//bawah
+glColor3f(1.0,0.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(7.5, 22.5, d);
+glVertex3f(12.5, 22.5, d);
+glVertex3f(12.5, 22.5, -d);
+glVertex3f(7.5, 22.5, -d);
+glEnd();
+//kiri
+glColor3f(1.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(7.5, 22.5, d);
+glVertex3f(7.5, 22.5, -d);
+glVertex3f(7.5, 27.5, -d);
+glVertex3f(7.5, 27.5, d);
+glEnd();
+//kanan
+glColor3f(1.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(12.5, 22.5, d);
+glVertex3f(12.5, 22.5, -d);
+glVertex3f(12.5, 27.5, -d);
+glVertex3f(12.5, 27.5, d);
+glEnd();
+
+////////////////////////// DINDING BAGIAN B1///////////////////////////////
+//depan
+glColor3f(0.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-22.5, 22.5, d);
+glVertex3f(-17.5, 22.5, d);
+glVertex3f(-17.5, 17.5, d);
+glVertex3f(-22.5, 17.5, d);
+glEnd();
+//belakang
+glColor3f(0.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-22.5, 22.5, -d);
+glVertex3f(-17.5, 22.5, -d);
+glVertex3f(-17.5, 17.5, -d);
+glVertex3f(-22.5, 17.5, -d);
+glEnd();
+//atas
+glColor3f(0.0,1.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-22.5, 22.5, d);
+glVertex3f(-17.5, 22.5, d);
+glVertex3f(-17.5, 22.5, -d);
+glVertex3f(-22.5, 22.5, -d);
+glEnd();
+//bawah
+glColor3f(1.0,0.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-22.5, 17.5, d);
+glVertex3f(-17.5, 17.5, d);
+glVertex3f(-17.5, 17.5, -d);
+glVertex3f(-22.5, 17.5, -d);
+glEnd();
+//kiri
+glColor3f(1.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-22.5, 22.5, d);
+glVertex3f(-22.5, 22.5, -d);
+glVertex3f(-22.5, 17.5, -d);
+glVertex3f(-22.5, 17.5, d);
+glEnd();
+//kanan
+glColor3f(1.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-17.5, 22.5, d);
+glVertex3f(-17.5, 22.5, -d);
+glVertex3f(-17.5, 17.5, -d);
+glVertex3f(-17.5, 17.5, d);
+glEnd();
+
+////////////////////////// DINDING BAGIAN B2///////////////////////////////
+//depan
+glColor3f(0.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-12.5, 22.5, d);
+glVertex3f(2.5, 22.5, d);
+glVertex3f(2.5, 17.5, d);
+glVertex3f(-12.5, 17.5, d);
+glEnd();
+//belakang
+glColor3f(0.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-12.5, 22.5, -d);
+glVertex3f(2.5, 22.5, -d);
+glVertex3f(2.5, 17.5, -d);
+glVertex3f(-12.5, 17.5, -d);
+glEnd();
+//atas
+glColor3f(0.0,1.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-12.5, 22.5, d);
+glVertex3f(2.5, 22.5, d);
+glVertex3f(2.5, 22.5, -d);
+glVertex3f(-12.5, 22.5, -d);
+glEnd();
+//bawah
+glColor3f(1.0,0.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-12.5, 17.5, d);
+glVertex3f(2.5, 17.5, d);
+glVertex3f(2.5, 17.5, -d);
+glVertex3f(-12.5, 17.5, -d);
+glEnd();
+//kiri
+glColor3f(1.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-12.5, 17.5, d);
+glVertex3f(-12.5, 17.5, -d);
+glVertex3f(-12.5, 22.5, -d);
+glVertex3f(-12.5, 22.5, d);
+glEnd();
+//kanan
+glColor3f(1.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(2.5, 17.5, d);
+glVertex3f(2.5, 17.5, -d);
+glVertex3f(2.5, 22.5, -d);
+glVertex3f(2.5, 22.5, d);
+glEnd();
+
+////////////////////////// DINDING BAGIAN B3///////////////////////////////
+//depan
+glColor3f(0.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(7.5, 22.5, d);
+glVertex3f(12.5, 22.5, d);
+glVertex3f(12.5, 17.5, d);
+glVertex3f(7.5, 17.5, d);
+glEnd();
+//belakang
+glColor3f(0.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(7.5, 22.5, -d);
+glVertex3f(12.5, 22.5, -d);
+glVertex3f(12.5, 17.5, -d);
+glVertex3f(7.5, 17.5, -d);
+glEnd();
+//atas
+glColor3f(0.0,1.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(7.5, 22.5, d);
+glVertex3f(12.5, 22.5, d);
+glVertex3f(12.5, 22.5, -d);
+glVertex3f(7.5, 22.5, -d);
+glEnd();
+//bawah
+glColor3f(1.0,0.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(7.5, 17.5, d);
+glVertex3f(12.5, 17.5, d);
+glVertex3f(12.5, 17.5, -d);
+glVertex3f(7.5, 17.5, -d);
+glEnd();
+//kiri
+glColor3f(1.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(7.5, 22.5, d);
+glVertex3f(7.5, 22.5, -d);
+glVertex3f(7.5, 17.5, -d);
+glVertex3f(7.5, 17.5, d);
+glEnd();
+//kanan
+glColor3f(1.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(12.5, 22.5, d);
+glVertex3f(12.5, 22.5, -d);
+glVertex3f(12.5, 17.5, -d);
+glVertex3f(12.5, 17.5, d);
+glEnd();
+
+////////////////////////// DINDING BAGIAN B4///////////////////////////////
+//depan
+glColor3f(0.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(17.5, 22.5, d);
+glVertex3f(22.5, 22.5, d);
+glVertex3f(22.5, 17.5, d);
+glVertex3f(17.5, 17.5, d);
+glEnd();
+//belakang
+glColor3f(0.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(17.5, 22.5, -d);
+glVertex3f(22.5, 22.5, -d);
+glVertex3f(22.5, 17.5, -d);
+glVertex3f(17.5, 17.5, -d);
+glEnd();
+//atas
+glColor3f(0.0,1.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(17.5, 22.5, d);
+glVertex3f(22.5, 22.5, d);
+glVertex3f(22.5, 22.5, -d);
+glVertex3f(17.5, 22.5, -d);
+glEnd();
+//bawah
+glColor3f(1.0,0.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(17.5, 17.5, d);
+glVertex3f(22.5, 17.5, d);
+glVertex3f(22.5, 17.5, -d);
+glVertex3f(17.5, 17.5, -d);
+glEnd();
+//kiri
+glColor3f(1.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(17.5, 22.5, d);
+glVertex3f(17.5, 22.5, -d);
+glVertex3f(17.5, 17.5, -d);
+glVertex3f(17.5, 17.5, d);
+glEnd();
+//kanan
+glColor3f(1.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(22.5, 22.5, d);
+glVertex3f(22.5, 22.5, -d);
+glVertex3f(22.5, 17.5, -d);
+glVertex3f(22.5, 17.5, d);
+glEnd();
+
+////////////////////////// DINDING BAGIAN C1///////////////////////////////
+//depan
+glColor3f(0.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-27.5, 17.5, d);
+glVertex3f(-22.5, 17.5, d);
+glVertex3f(-22.5, 12.5, d);
+glVertex3f(-27.5, 12.5, d);
+glEnd();
+//belakang
+glColor3f(0.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-27.5, 17.5, -d);
+glVertex3f(-22.5, 17.5, -d);
+glVertex3f(-22.5, 12.5, -d);
+glVertex3f(-27.5, 12.5, -d);
+glEnd();
+//atas
+glColor3f(0.0,1.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-27.5, 17.5, d);
+glVertex3f(-22.5, 17.5, d);
+glVertex3f(-22.5, 17.5, -d);
+glVertex3f(-27.5, 17.5, -d);
+glEnd();
+//bawah
+glColor3f(1.0,0.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-27.5, 12.5, d);
+glVertex3f(-22.5, 12.5, d);
+glVertex3f(-22.5, 12.5, -d);
+glVertex3f(-27.5, 12.5, -d);
+glEnd();
+//kiri
+glColor3f(1.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-27.5, 17.5, d);
+glVertex3f(-27.5, 17.5, -d);
+glVertex3f(-27.5, 12.5, -d);
+glVertex3f(-27.5, 12.5, d);
+glEnd();
+//kanan
+glColor3f(1.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-22.5, 17.5, d);
+glVertex3f(-22.5, 17.5, -d);
+glVertex3f(-22.5, 12.5, -d);
+glVertex3f(-22.5, 12.5, d);
+glEnd();
+
+////////////////////////// DINDING BAGIAN C2///////////////////////////////
+//depan
+glColor3f(0.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-12.5, 17.5, d);
+glVertex3f(-7.5, 17.5, d);
+glVertex3f(-7.5, 12.5, d);
+glVertex3f(-12.5, 12.5, d);
+glEnd();
+//belakang
+glColor3f(0.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-12.5, 17.5, -d);
+glVertex3f(-7.5, 17.5, -d);
+glVertex3f(-7.5, 12.5, -d);
+glVertex3f(-12.5, 12.5, -d);
+glEnd();
+//atas
+glColor3f(0.0,1.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-12.5, 17.5, d);
+glVertex3f(-7.5, 17.5, d);
+glVertex3f(-7.5, 17.5, -d);
+glVertex3f(-12.5, 17.5, -d);
+glEnd();
+//bawah
+glColor3f(1.0,0.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-12.5, 12.5, d);
+glVertex3f(-7.5, 12.5, d);
+glVertex3f(-7.5, 12.5, -d);
+glVertex3f(-12.5, 12.5, -d);
+glEnd();
+//kiri
+glColor3f(1.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-12.5, 17.5, d);
+glVertex3f(-12.5, 17.5, -d);
+glVertex3f(-12.5, 12.5, -d);
+glVertex3f(-12.5, 12.5, d);
+glEnd();
+//kanan
+glColor3f(1.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-7.5, 17.5, d);
+glVertex3f(-7.5, 17.5, -d);
+glVertex3f(-7.5, 12.5, -d);
+glVertex3f(-7.5, 12.5, d);
+glEnd();
+
+////////////////////////// DINDING BAGIAN C3///////////////////////////////
+//depan
+glColor3f(0.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(17.5, 17.5, d);
+glVertex3f(22.5, 17.5, d);
+glVertex3f(22.5, 12.5, d);
+glVertex3f(17.5, 12.5, d);
+glEnd();
+//belakang
+glColor3f(0.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(17.5, 17.5, -d);
+glVertex3f(22.5, 17.5, -d);
+glVertex3f(22.5, 12.5, -d);
+glVertex3f(17.5, 12.5, -d);
+glEnd();
+//atas
+glColor3f(0.0,1.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(17.5, 17.5, d);
+glVertex3f(22.5, 17.5, d);
+glVertex3f(22.5, 17.5, -d);
+glVertex3f(17.5, 17.5, -d);
+glEnd();
+//bawah
+glColor3f(1.0,0.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(17.5, 12.5, d);
+glVertex3f(22.5, 12.5, d);
+glVertex3f(22.5, 12.5, -d);
+glVertex3f(17.5, 12.5, -d);
+glEnd();
+//kiri
+glColor3f(1.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(17.5, 17.5, d);
+glVertex3f(17.5, 17.5, -d);
+glVertex3f(17.5, 12.5, -d);
+glVertex3f(17.5, 12.5, d);
+glEnd();
+//kanan
+glColor3f(1.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(22.5, 17.5, d);
+glVertex3f(22.5, 17.5, -d);
+glVertex3f(22.5, 12.5, -d);
+glVertex3f(22.5, 12.5, d);
+glEnd();
+
+////////////////////////// DINDING BAGIAN D1///////////////////////////////
+//depan
+glColor3f(0.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-27.5, 12.5, d);
+glVertex3f(-7.5, 12.5, d);
+glVertex3f(-7.5, 7.5, d);
+glVertex3f(-27.5, 7.5, d);
+glEnd();
+//belakang
+glColor3f(0.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-27.5, 12.5, -d);
+glVertex3f(-7.5, 12.5, -d);
+glVertex3f(-7.5, 7.5, -d);
+glVertex3f(-27.5, 7.5, -d);
+glEnd();
+//atas
+glColor3f(0.0,1.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-27.5, 12.5, d);
+glVertex3f(-7.5, 12.5, d);
+glVertex3f(-7.5, 12.5, -d);
+glVertex3f(-27.5, 12.5, -d);
+glEnd();
+//bawah
+glColor3f(1.0,0.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-27.5, 7.5, d);
+glVertex3f(-7.5, 7.5, d);
+glVertex3f(-7.5, 7.5, -d);
+glVertex3f(-27.5, 7.5, -d);
+glEnd();
+//kiri
+glColor3f(1.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-27.5, 12.5, d);
+glVertex3f(-27.5, 12.5, -d);
+glVertex3f(-27.5, 7.5, -d);
+glVertex3f(-27.5, 7.5, d);
+glEnd();
+//kanan
+glColor3f(1.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-7.5, 12.5, d);
+glVertex3f(-7.5, 12.5, -d);
+glVertex3f(-7.5, 7.5, -d);
+glVertex3f(-7.5, 7.5, d);
+glEnd();
+
+////////////////////////// DINDING BAGIAN D2///////////////////////////////
+//depan
+glColor3f(0.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-2.5, 12.5, d);
+glVertex3f(22.5, 12.5, d);
+glVertex3f(22.5, 7.5, d);
+glVertex3f(-2.5, 7.5, d);
+glEnd();
+//belakang
+glColor3f(0.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-2.5, 12.5, -d);
+glVertex3f(22.5, 12.5, -d);
+glVertex3f(22.5, 7.5, -d);
+glVertex3f(-2.5, 7.5, -d);
+glEnd();
+//atas
+glColor3f(0.0,1.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-2.5, 12.5, d);
+glVertex3f(22.5, 12.5, d);
+glVertex3f(22.5, 12.5, -d);
+glVertex3f(-2.5, 12.5, -d);
+glEnd();
+//bawah
+glColor3f(1.0,0.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-2.5, 7.5, d);
+glVertex3f(22.5, 7.5, d);
+glVertex3f(22.5, 7.5, -d);
+glVertex3f(-2.5, 7.5, -d);
+glEnd();
+//kiri
+glColor3f(1.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-2.5, 12.5, d);
+glVertex3f(-2.5, 12.5, -d);
+glVertex3f(-2.5, 7.5, -d);
+glVertex3f(-2.5, 7.5, d);
+glEnd();
+//kanan
+glColor3f(1.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(22.5, 12.5, d);
+glVertex3f(22.5, 12.5, -d);
+glVertex3f(22.5, 7.5, -d);
+glVertex3f(22.5, 7.5, d);
+glEnd();
+
+////////////////////////// DINDING BAGIAN E1///////////////////////////////
+//depan
+glColor3f(0.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-7.5, 7.5, d);
+glVertex3f(-2.5, 7.5, d);
+glVertex3f(-2.5, 2.5, d);
+glVertex3f(-7.5, 2.5, d);
+glEnd();
+//belakang
+glColor3f(0.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-7.5, 7.5, -d);
+glVertex3f(-2.5, 7.5, -d);
+glVertex3f(-2.5, 2.5, -d);
+glVertex3f(-7.5, 2.5, -d);
+glEnd();
+//atas
+glColor3f(0.0,1.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-7.5, 7.5, d);
+glVertex3f(-2.5, 7.5, d);
+glVertex3f(-2.5, 7.5, -d);
+glVertex3f(-7.5, 7.5, -d);
+glEnd();
+//bawah
+glColor3f(1.0,0.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-7.5, 2.5, d);
+glVertex3f(-2.5, 2.5, d);
+glVertex3f(-2.5, 2.5, -d);
+glVertex3f(-7.5, 2.5, -d);
+glEnd();
+//kiri
+glColor3f(1.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-7.5, 7.5, d);
+glVertex3f(-7.5, 7.5, -d);
+glVertex3f(-7.5, 2.5, -d);
+glVertex3f(-7.5, 2.5, d);
+glEnd();
+//kanan
+glColor3f(1.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-2.5, 7.5, d);
+glVertex3f(-2.5, 7.5, -d);
+glVertex3f(-2.5, 2.5, -d);
+glVertex3f(-2.5, 2.5, d);
+glEnd();
+
+////////////////////////// DINDING BAGIAN F1///////////////////////////////
+//depan
+glColor3f(0.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-22.5, 2.5, d);
+glVertex3f(-17.5, 2.5, d);
+glVertex3f(-17.5, -2.5, d);
+glVertex3f(-22.5, -2.5, d);
+glEnd();
+//belakang
+glColor3f(0.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-22.5, 2.5, -d);
+glVertex3f(-17.5, 2.5, -d);
+glVertex3f(-17.5, -2.5, -d);
+glVertex3f(-22.5, -2.5, -d);
+glEnd();
+//atas
+glColor3f(0.0,1.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-22.5, 2.5, d);
+glVertex3f(-17.5, 2.5, d);
+glVertex3f(-17.5, 2.5, -d);
+glVertex3f(-22.5, 2.5, -d);
+glEnd();
+//bawah
+glColor3f(1.0,0.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-22.5, -2.5, d);
+glVertex3f(-17.5, -2.5, d);
+glVertex3f(-17.5, -2.5, -d);
+glVertex3f(-22.5, -2.5, -d);
+glEnd();
+//kiri
+glColor3f(1.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-22.5, 2.5, d);
+glVertex3f(-22.5, 2.5, -d);
+glVertex3f(-22.5, -2.5, -d);
+glVertex3f(-22.5, -2.5, d);
+glEnd();
+//kanan
+glColor3f(1.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-17.5, 2.5, d);
+glVertex3f(-17.5, 2.5, -d);
+glVertex3f(-17.5, -2.5, -d);
+glVertex3f(-17.5, -2.5, d);
+glEnd();
+
+////////////////////////// DINDING BAGIAN F2///////////////////////////////
+//depan
+glColor3f(0.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-12.5, 2.5, d);
+glVertex3f(-7.5, 2.5, d);
+glVertex3f(-7.5, -2.5, d);
+glVertex3f(-12.5, -2.5, d);
+glEnd();
+//belakang
+glColor3f(0.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-12.5, 2.5, -d);
+glVertex3f(-7.5, 2.5, -d);
+glVertex3f(-7.5, -2.5, -d);
+glVertex3f(-12.5, -2.5, -d);
+glEnd();
+//atas
+glColor3f(0.0,1.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-12.5, 2.5, d);
+glVertex3f(-7.5, 2.5, d);
+glVertex3f(-7.5, 2.5, -d);
+glVertex3f(-12.5, 2.5, -d);
+glEnd();
+//bawah
+glColor3f(1.0,0.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-12.5, -2.5, d);
+glVertex3f(-7.5, -2.5, d);
+glVertex3f(-7.5, -2.5, -d);
+glVertex3f(-12.5, -2.5, -d);
+glEnd();
+//kiri
+glColor3f(1.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-12.5, 2.5, d);
+glVertex3f(-12.5, 2.5, -d);
+glVertex3f(-12.5, -2.5, -d);
+glVertex3f(-12.5, -2.5, d);
+glEnd();
+//kanan
+glColor3f(1.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-7.5, 2.5, d);
+glVertex3f(-7.5, 2.5, -d);
+glVertex3f(-7.5, -2.5, -d);
+glVertex3f(-7.5, -2.5, d);
+glEnd();
+
+////////////////////////// DINDING BAGIAN F3///////////////////////////////
+//depan
+glColor3f(0.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-2.5, 2.5, d);
+glVertex3f(2.5, 2.5, d);
+glVertex3f(2.5, -2.5, d);
+glVertex3f(-2.5, -2.5, d);
+glEnd();
+//belakang
+glColor3f(0.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-2.5, 2.5, -d);
+glVertex3f(2.5, 2.5, -d);
+glVertex3f(2.5, -2.5, -d);
+glVertex3f(-2.5, -2.5, -d);
+glEnd();
+//atas
+glColor3f(0.0,1.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-2.5, 2.5, d);
+glVertex3f(2.5, 2.5, d);
+glVertex3f(2.5, 2.5, -d);
+glVertex3f(-2.5, 2.5, -d);
+glEnd();
+//bawah
+glColor3f(1.0,0.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-2.5, -2.5, d);
+glVertex3f(2.5, -2.5, d);
+glVertex3f(2.5, -2.5, -d);
+glVertex3f(-2.5, -2.5, -d);
+glEnd();
+//kiri
+glColor3f(1.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-2.5, 2.5, d);
+glVertex3f(-2.5, 2.5, -d);
+glVertex3f(-2.5, -2.5, -d);
+glVertex3f(-2.5, -2.5, d);
+glEnd();
+//kanan
+glColor3f(1.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(2.5, 2.5, d);
+glVertex3f(2.5, 2.5, -d);
+glVertex3f(2.5, -2.5, -d);
+glVertex3f(2.5, -2.5, d);
+glEnd();
+
+////////////////////////// DINDING BAGIAN F4///////////////////////////////
+//depan
+glColor3f(0.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(7.5, 2.5, d);
+glVertex3f(12.5, 2.5, d);
+glVertex3f(12.5, -2.5, d);
+glVertex3f(7.5, -2.5, d);
+glEnd();
+//belakang
+glColor3f(0.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(7.5, 2.5, -d);
+glVertex3f(12.5, 2.5, -d);
+glVertex3f(12.5, -2.5, -d);
+glVertex3f(7.5, -2.5, -d);
+glEnd();
+//atas
+glColor3f(0.0,1.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(7.5, 2.5, d);
+glVertex3f(12.5, 2.5, d);
+glVertex3f(12.5, 2.5, -d);
+glVertex3f(7.5, 2.5, -d);
+glEnd();
+//bawah
+glColor3f(1.0,0.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(7.5, -2.5, d);
+glVertex3f(12.5, -2.5, d);
+glVertex3f(12.5, -2.5, -d);
+glVertex3f(7.5, -2.5, -d);
+glEnd();
+//kiri
+glColor3f(1.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(7.5, 2.5, d);
+glVertex3f(7.5, 2.5, -d);
+glVertex3f(7.5, -2.5, -d);
+glVertex3f(7.5, -2.5, d);
+glEnd();
+//kanan
+glColor3f(1.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(12.5, 2.5, d);
+glVertex3f(12.5, 2.5, -d);
+glVertex3f(12.5, -2.5, -d);
+glVertex3f(12.5, -2.5, d);
+glEnd();
+
+
+////////////////////////// DINDING BAGIAN F5///////////////////////////////
+//depan
+glColor3f(0.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(17.5, 2.5, d);
+glVertex3f(22.5, 2.5, d);
+glVertex3f(22.5, -2.5, d);
+glVertex3f(17.5, -2.5, d);
+glEnd();
+//belakang
+glColor3f(0.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(17.5, 2.5, -d);
+glVertex3f(22.5, 2.5, -d);
+glVertex3f(22.5, -2.5, -d);
+glVertex3f(17.5, -2.5, -d);
+glEnd();
+//atas
+glColor3f(0.0,1.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(17.5, 2.5, d);
+glVertex3f(22.5, 2.5, d);
+glVertex3f(22.5, 2.5, -d);
+glVertex3f(17.5, 2.5, -d);
+glEnd();
+//bawah
+glColor3f(1.0,0.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(17.5, -2.5, d);
+glVertex3f(22.5, -2.5, d);
+glVertex3f(22.5, -2.5, -d);
+glVertex3f(17.5, -2.5, -d);
+glEnd();
+//kiri
+glColor3f(1.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(17.5, 2.5, d);
+glVertex3f(17.5, 2.5, -d);
+glVertex3f(17.5, -2.5, -d);
+glVertex3f(17.5, -2.5, d);
+glEnd();
+//kanan
+glColor3f(1.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(22.5, 2.5, d);
+glVertex3f(22.5, 2.5, -d);
+glVertex3f(22.5, -2.5, -d);
+glVertex3f(22.5, -2.5, d);
+glEnd();
+
+////////////////////////// DINDING BAGIAN G1///////////////////////////////
+//depan
+glColor3f(0.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-27.5, -2.5, d);
+glVertex3f(-22.5, -2.5, d);
+glVertex3f(-22.5, -7.5, d);
+glVertex3f(-27.5, -7.5, d);
+glEnd();
+//belakang
+glColor3f(0.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-27.5, -2.5, -d);
+glVertex3f(-22.5, -2.5, -d);
+glVertex3f(-22.5, -7.5, -d);
+glVertex3f(-27.5, -7.5, -d);
+glEnd();
+//atas
+glColor3f(0.0,1.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-27.5, -2.5, d);
+glVertex3f(-22.5, -2.5, d);
+glVertex3f(-22.5, -2.5, -d);
+glVertex3f(-27.5, -2.5, -d);
+glEnd();
+//bawah
+glColor3f(1.0,0.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-27.5, -7.5, d);
+glVertex3f(-22.5, -7.5, d);
+glVertex3f(-22.5, -7.5, -d);
+glVertex3f(-27.5, -7.5, -d);
+glEnd();
+//kiri
+glColor3f(1.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-27.5, -2.5, d);
+glVertex3f(-27.5, -2.5, -d);
+glVertex3f(-27.5, -7.5, -d);
+glVertex3f(-27.5, -7.5, d);
+glEnd();
+//kanan
+glColor3f(1.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-22.5, -2.5, d);
+glVertex3f(-22.5, -2.5, -d);
+glVertex3f(-22.5, -7.5, -d);
+glVertex3f(-22.5, -7.5, d);
+glEnd();
+
+////////////////////////// DINDING BAGIAN G2///////////////////////////////
+//depan
+glColor3f(0.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(7.5, -2.5, d);
+glVertex3f(12.5, -2.5, d);
+glVertex3f(12.5, -7.5, d);
+glVertex3f(7.5, -7.5, d);
+glEnd();
+
+//belakang
+glColor3f(0.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(7.5, -2.5, -d);
+glVertex3f(12.5, -2.5, -d);
+glVertex3f(12.5, -7.5, -d);
+glVertex3f(7.5, -7.5, -d);
+glEnd();
+//atas
+glColor3f(0.0,1.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(7.5, -2.5, d);
+glVertex3f(12.5, -2.5, d);
+glVertex3f(12.5, -2.5, -d);
+glVertex3f(7.5, -2.5, -d);
+glEnd();
+//bawah
+glColor3f(1.0,0.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(7.5, -7.5, d);
+glVertex3f(12.5, -7.5, d);
+glVertex3f(12.5, -7.5, -d);
+glVertex3f(7.5, -7.5, -d);
+glEnd();
+//kiri
+glColor3f(1.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(7.5, -2.5, d);
+glVertex3f(7.5, -2.5, -d);
+glVertex3f(7.5, -7.5, -d);
+glVertex3f(7.5, -7.5, d);
+glEnd();
+//kanan
+glColor3f(1.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(12.5, -2.5, d);
+glVertex3f(12.5, -2.5, -d);
+glVertex3f(12.5, -7.5, -d);
+glVertex3f(12.5, -7.5, d);
+glEnd();
+
+////////////////////////// DINDING BAGIAN G3///////////////////////////////
+//depan
+glColor3f(0.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(22.5, -2.5, d);
+glVertex3f(27.5, -2.5, d);
+glVertex3f(27.5, -7.5, d);
+glVertex3f(22.5, -7.5, d);
+glEnd();
+
+//belakang
+glColor3f(0.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(22.5, -2.5, -d);
+glVertex3f(27.5, -2.5, -d);
+glVertex3f(27.5, -7.5, -d);
+glVertex3f(22.5, -7.5, -d);
+glEnd();
+//atas
+glColor3f(0.0,1.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(22.5, -2.5, d);
+glVertex3f(27.5, -2.5, d);
+glVertex3f(27.5, -2.5, -d);
+glVertex3f(22.5, -2.5, -d);
+glEnd();
+//bawah
+glColor3f(1.0,0.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(22.5, -7.5, d);
+glVertex3f(27.5, -7.5, d);
+glVertex3f(27.5, -7.5, -d);
+glVertex3f(22.5, -7.5, -d);
+glEnd();
+//kiri
+glColor3f(1.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(22.5, -2.5, d);
+glVertex3f(22.5, -2.5, -d);
+glVertex3f(22.5, -7.5, -d);
+glVertex3f(22.5, -7.5, d);
+glEnd();
+//kanan
+glColor3f(1.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(27.5, -2.5, d);
+glVertex3f(27.5, -2.5, -d);
+glVertex3f(27.5, -7.5, -d);
+glVertex3f(27.5, -7.5, d);
+glEnd();
+
+////////////////////////// DINDING BAGIAN H1///////////////////////////////
+//depan
+glColor3f(0.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-22.5, -7.5, d);
+glVertex3f(-17.5, -7.5, d);
+glVertex3f(-17.5, -12.5, d);
+glVertex3f(-22.5, -12.5, d);
+glEnd();
+//belakang
+glColor3f(0.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-22.5, -7.5, -d);
+glVertex3f(-17.5, -7.5, -d);
+glVertex3f(-17.5, -12.5, -d);
+glVertex3f(-22.5, -12.5, -d);
+glEnd();
+//atas
+glColor3f(0.0,1.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-22.5, -7.5, d);
+glVertex3f(-17.5, -7.5, d);
+glVertex3f(-17.5, -7.5, -d);
+glVertex3f(-22.5, -7.5, -d);
+glEnd();
+//bawah
+glColor3f(1.0,0.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-22.5, -12.5, d);
+glVertex3f(-17.5, -12.5, d);
+glVertex3f(-17.5, -12.5, -d);
+glVertex3f(-22.5, -12.5, -d);
+glEnd();
+//kiri
+glColor3f(1.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-22.5, -7.5, d);
+glVertex3f(-22.5, -7.5, -d);
+glVertex3f(-22.5, -12.5, -d);
+glVertex3f(-22.5, -12.5, d);
+glEnd();
+//kanan
+glColor3f(1.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-17.5, -7.5, d);
+glVertex3f(-17.5, -7.5, -d);
+glVertex3f(-17.5, -12.5, -d);
+glVertex3f(-17.5, -12.5, d);
+glEnd();
+
+////////////////////////// DINDING BAGIAN H2///////////////////////////////
+//depan
+glColor3f(0.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-12.5, -7.5, d);
+glVertex3f(22.5, -7.5, d);
+glVertex3f(22.5, -12.5, d);
+glVertex3f(-12.5, -12.5, d);
+glEnd();
+//belakang
+glColor3f(0.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-12.5, -7.5, -d);
+glVertex3f(22.5, -7.5, -d);
+glVertex3f(22.5, -12.5, -d);
+glVertex3f(-12.5, -12.5, -d);
+glEnd();
+//atas
+glColor3f(0.0,1.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-12.5, -7.5, d);
+glVertex3f(22.5, -7.5, d);
+glVertex3f(22.5, -7.5, -d);
+glVertex3f(-12.5, -7.5, -d);
+glEnd();
+//bawah
+glColor3f(1.0,0.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-12.5, -12.5, d);
+glVertex3f(22.5, -12.5, d);
+glVertex3f(22.5, -12.5, -d);
+glVertex3f(-12.5, -12.5, -d);
+glEnd();
+//kiri
+glColor3f(1.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-12.5, -7.5, d);
+glVertex3f(-12.5, -7.5, -d);
+glVertex3f(-12.5, -12.5, -d);
+glVertex3f(-12.5, -12.5, d);
+glEnd();
+//kanan
+glColor3f(1.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(22.5, -7.5, d);
+glVertex3f(22.5, -7.5, -d);
+glVertex3f(22.5, -12.5, -d);
+glVertex3f(22.5, -12.5, d);
+glEnd();
+
+
+////////////////////////// DINDING BAGIAN J1///////////////////////////////
+//depan
+glColor3f(0.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-22.5, -17.5, d);
+glVertex3f(-17.5, -17.5, d);
+glVertex3f(-17.5, -22.5, d);
+glVertex3f(-22.5, -22.5, d);
+glEnd();
+//belakang
+glColor3f(0.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-22.5, -17.5, -d);
+glVertex3f(-17.5, -17.5, -d);
+glVertex3f(-17.5, -22.5, -d);
+glVertex3f(-22.5, -22.5, -d);
+glEnd();
+//atas
+glColor3f(0.0,1.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-22.5, -17.5, d);
+glVertex3f(-17.5, -17.5, d);
+glVertex3f(-17.5, -17.5, -d);
+glVertex3f(-22.5, -17.5, -d);
+glEnd();
+//bawah
+glColor3f(1.0,0.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-22.5, -22.5, d);
+glVertex3f(-17.5, -22.5, d);
+glVertex3f(-17.5, -22.5, -d);
+glVertex3f(-22.5, -22.5, -d);
+glEnd();
+//kiri
+glColor3f(1.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-22.5, -17.5, d);
+glVertex3f(-22.5, -17.5, -d);
+glVertex3f(-22.5, -22.5, -d);
+glVertex3f(-22.5, -22.5, d);
+glEnd();
+//kanan
+glColor3f(1.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-17.5, -17.5, d);
+glVertex3f(-17.5, -17.5, -d);
+glVertex3f(-17.5, -22.5, -d);
+glVertex3f(-17.5, -22.5, d);
+glEnd();
+
+////////////////////////// DINDING BAGIAN J2///////////////////////////////
+//depan
+glColor3f(0.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-12.5, -17.5, d);
+glVertex3f(-7.5, -17.5, d);
+glVertex3f(-7.5, -22.5, d);
+glVertex3f(-12.5, -22.5, d);
+glEnd();
+//belakang
+glColor3f(0.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-12.5, -17.5, -d);
+glVertex3f(-7.5, -17.5, -d);
+glVertex3f(-7.5, -22.5, -d);
+glVertex3f(-12.5, -22.5, -d);
+glEnd();
+//atas
+glColor3f(0.0,1.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-12.5, -17.5, d);
+glVertex3f(-7.5, -17.5, d);
+glVertex3f(-7.5, -17.5, -d);
+glVertex3f(-12.5, -17.5, -d);
+glEnd();
+//bawah
+glColor3f(1.0,0.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-12.5, -22.5, d);
+glVertex3f(-7.5, -22.5, d);
+glVertex3f(-7.5, -22.5, -d);
+glVertex3f(-12.5, -22.5, -d);
+glEnd();
+//kiri
+glColor3f(1.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-12.5, -17.5, d);
+glVertex3f(-12.5, -17.5, -d);
+glVertex3f(-12.5, -22.5, -d);
+glVertex3f(-12.5, -22.5, d);
+glEnd();
+//kanan
+glColor3f(1.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-7.5, -17.5, d);
+glVertex3f(-7.5, -17.5, -d);
+glVertex3f(-7.5, -22.5, -d);
+glVertex3f(-7.5, -22.5, d);
+glEnd();
+
+
+////////////////////////// DINDING BAGIAN J3///////////////////////////////
+//depan
+glColor3f(0.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-2.5, -17.5, d);
+glVertex3f(2.5, -17.5, d);
+glVertex3f(2.5, -22.5, d);
+glVertex3f(-2.5, -22.5, d);
+glEnd();
+//belakang
+glColor3f(0.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-2.5, -17.5, -d);
+glVertex3f(2.5, -17.5, -d);
+glVertex3f(2.5, -22.5, -d);
+glVertex3f(-2.5, -22.5, -d);
+glEnd();
+//atas
+glColor3f(0.0,1.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-2.5, -17.5, d);
+glVertex3f(2.5, -17.5, d);
+glVertex3f(2.5, -17.5, -d);
+glVertex3f(-2.5, -17.5, -d);
+glEnd();
+//bawah
+glColor3f(1.0,0.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-2.5, -22.5, d);
+glVertex3f(2.5, -22.5, d);
+glVertex3f(2.5, -22.5, -d);
+glVertex3f(-2.5, -22.5, -d);
+glEnd();
+//kiri
+glColor3f(1.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-2.5, -17.5, d);
+glVertex3f(-2.5, -17.5, -d);
+glVertex3f(-2.5, -22.5, -d);
+glVertex3f(-2.5, -22.5, d);
+glEnd();
+//kanan
+glColor3f(1.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(2.5, -17.5, d);
+glVertex3f(2.5, -17.5, -d);
+glVertex3f(2.5, -22.5, -d);
+glVertex3f(2.5, -22.5, d);
+glEnd();
+
+////////////////////////// DINDING BAGIAN J4///////////////////////////////
+//depan
+glColor3f(0.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(7.5, -17.5, d);
+glVertex3f(12.5, -17.5, d);
+glVertex3f(12.5, -22.5, d);
+glVertex3f(7.5, -22.5, d);
+glEnd();
+//belakang
+glColor3f(0.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(7.5, -17.5, -d);
+glVertex3f(12.5, -17.5, -d);
+glVertex3f(12.5, -22.5, -d);
+glVertex3f(7.5, -22.5, -d);
+glEnd();
+//atas
+glColor3f(0.0,1.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(7.5, -17.5, d);
+glVertex3f(12.5, -17.5, d);
+glVertex3f(12.5, -17.5, -d);
+glVertex3f(7.5, -17.5, -d);
+glEnd();
+//bawah
+glColor3f(1.0,0.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(7.5, -22.5, d);
+glVertex3f(12.5, -22.5, d);
+glVertex3f(12.5, -22.5, -d);
+glVertex3f(7.5, -22.5, -d);
+glEnd();
+//kiri
+glColor3f(1.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(7.5, -17.5, d);
+glVertex3f(7.5, -17.5, -d);
+glVertex3f(7.5, -22.5, -d);
+glVertex3f(7.5, -22.5, d);
+glEnd();
+//kanan
+glColor3f(1.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(12.5, -17.5, d);
+glVertex3f(12.5, -17.5, -d);
+glVertex3f(12.5, -22.5, -d);
+glVertex3f(12.5, -22.5, d);
+glEnd();
+
+////////////////////////// DINDING BAGIAN J5///////////////////////////////
+//depan
+glColor3f(0.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(17.5, -17.5, d);
+glVertex3f(22.5, -17.5, d);
+glVertex3f(22.5, -22.5, d);
+glVertex3f(17.5, -22.5, d);
+glEnd();
+//belakang
+glColor3f(0.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(17.5, -17.5, -d);
+glVertex3f(22.5, -17.5, -d);
+glVertex3f(22.5, -22.5, -d);
+glVertex3f(17.5, -22.5, -d);
+glEnd();
+//atas
+glColor3f(0.0,1.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(17.5, -17.5, d);
+glVertex3f(22.5, -17.5, d);
+glVertex3f(22.5, -17.5, -d);
+glVertex3f(17.5, -17.5, -d);
+glEnd();
+//bawah
+glColor3f(1.0,0.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(17.5, -22.5, d);
+glVertex3f(22.5, -22.5, d);
+glVertex3f(22.5, -22.5, -d);
+glVertex3f(17.5, -22.5, -d);
+glEnd();
+//kiri
+glColor3f(1.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(17.5, -17.5, d);
+glVertex3f(17.5, -17.5, -d);
+glVertex3f(17.5, -22.5, -d);
+glVertex3f(17.5, -22.5, d);
+glEnd();
+//kanan
+glColor3f(1.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(22.5, -17.5, d);
+glVertex3f(22.5, -17.5, -d);
+glVertex3f(22.5, -22.5, -d);
+glVertex3f(22.5, -22.5, d);
+glEnd();
+
+
+////////////////////////// DINDING BAGIAN K1///////////////////////////////
+//depan
+glColor3f(0.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-27.5, -22.5, d);
+glVertex3f(-22.5, -22.5, d);
+glVertex3f(-22.5, -27.5, d);
+glVertex3f(-27.5, -27.5, d);
+glEnd();
+//belakang
+glColor3f(0.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-27.5, -22.5, -d);
+glVertex3f(-22.5, -22.5, -d);
+glVertex3f(-22.5, -27.5, -d);
+glVertex3f(-27.5, -27.5, -d);
+glEnd();
+//atas
+glColor3f(0.0,1.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-27.5, -22.5, d);
+glVertex3f(-22.5, -22.5, d);
+glVertex3f(-22.5, -22.5, -d);
+glVertex3f(-27.5, -22.5, -d);
+glEnd();
+//bawah
+glColor3f(1.0,0.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-27.5, -27.5, d);
+glVertex3f(-22.5, -27.5, d);
+glVertex3f(-22.5, -27.5, -d);
+glVertex3f(-27.5, -27.5, -d);
+glEnd();
+//kiri
+glColor3f(1.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-27.5, -22.5, d);
+glVertex3f(-27.5, -22.5, -d);
+glVertex3f(-27.5, -27.5, -d);
+glVertex3f(-27.5, -27.5, d);
+glEnd();
+//kanan
+glColor3f(1.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-22.5, -22.5, d);
+glVertex3f(-22.5, -22.5, -d);
+glVertex3f(-22.5, -27.5, -d);
+glVertex3f(-22.5, -27.5, d);
+glEnd();
+
+////////////////////////// DINDING BAGIAN K2///////////////////////////////
+//depan
+glColor3f(0.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-7.5, -22.5, d);
+glVertex3f(-2.5, -22.5, d);
+glVertex3f(-2.5, -27.5, d);
+glVertex3f(-7.5, -27.5, d);
+glEnd();
+//belakang
+glColor3f(0.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-7.5, -22.5, -d);
+glVertex3f(-2.5, -22.5, -d);
+glVertex3f(-2.5, -27.5, -d);
+glVertex3f(-7.5, -27.5, -d);
+glEnd();
+//atas
+glColor3f(0.0,1.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-7.5, -22.5, d);
+glVertex3f(-2.5, -22.5, d);
+glVertex3f(-2.5, -22.5, -d);
+glVertex3f(-7.5, -22.5, -d);
+glEnd();
+//bawah
+glColor3f(1.0,0.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-7.5, -27.5, d);
+glVertex3f(-2.5, -27.5, d);
+glVertex3f(-2.5, -27.5, -d);
+glVertex3f(-7.5, -27.5, -d);
+glEnd();
+//kiri
+glColor3f(1.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-7.5, -22.5, d);
+glVertex3f(-7.5, -22.5, -d);
+glVertex3f(-7.5, -27.5, -d);
+glVertex3f(-7.5, -27.5, d);
+glEnd();
+//kanan
+glColor3f(1.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-2.5, -22.5, d);
+glVertex3f(-2.5, -22.5, -d);
+glVertex3f(-2.5, -27.5, -d);
+glVertex3f(-2.5, -27.5, d);
+glEnd();
+
+
+////////////////////////// DINDING BAGIAN K3///////////////////////////////
+//depan
+glColor3f(0.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(17.5, -22.5, d);
+glVertex3f(22.5, -22.5, d);
+glVertex3f(22.5, -27.5, d);
+glVertex3f(17.5, -27.5, d);
+glEnd();
+//belakang
+glColor3f(0.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(17.5, -22.5, -d);
+glVertex3f(22.5, -22.5, -d);
+glVertex3f(22.5, -27.5, -d);
+glVertex3f(17.5, -27.5, -d);
+glEnd();
+//atas
+glColor3f(0.0,1.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(17.5, -22.5, d);
+glVertex3f(22.5, -22.5, d);
+glVertex3f(22.5, -22.5, -d);
+glVertex3f(17.5, -22.5, -d);
+glEnd();
+//bawah
+glColor3f(1.0,0.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(17.5, -27.5, d);
+glVertex3f(22.5, -27.5, d);
+glVertex3f(22.5, -27.5, -d);
+glVertex3f(17.5, -27.5, -d);
+glEnd();
+//kiri
+glColor3f(1.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(17.5, -22.5, d);
+glVertex3f(17.5, -22.5, -d);
+glVertex3f(17.5, -27.5, -d);
+glVertex3f(17.5, -27.5, d);
+glEnd();
+//kanan
+glColor3f(1.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(22.5, -22.5, d);
+glVertex3f(22.5, -22.5, -d);
+glVertex3f(22.5, -27.5, -d);
+glVertex3f(22.5, -27.5, d);
+glEnd();
+}
+
+void layer2(){
+
+//////////////////////////TEMBOK KIRI///////////////////////////////
+//depan
+glColor3f(0.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-32.5, 32.5, d);
+glVertex3f(-27.5, 32.5, d);
+glVertex3f(-27.5, -32.5, d);
+glVertex3f(-32.5, -32.5, d);
+glEnd();
+//belakang
+glColor3f(0.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-32.5, 32.5, -d);
+glVertex3f(-27.5, 32.5, -d);
+glVertex3f(-27.5, -32.5, -d);
+glVertex3f(-32.5, -32.5, -d);
+glEnd();
+//atas
+glColor3f(1.0,0.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-32.5, 32.5, d);
+glVertex3f(-32.5, 32.5, -d);
+glVertex3f(-27.5, 32.5, -d);
+glVertex3f(-27.5, 32.5, d);
+glEnd();
+//bawah
+glColor3f(0.0,1.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-32.5, -32.5, d);
+glVertex3f(-32.5, -32.5, -d);
+glVertex3f(-27.5, -32.5, -d);
+glVertex3f(-27.5, -32.5, d);
+glEnd();
+//kiri
+glColor3f(1.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-32.5, 32.5, d);
+glVertex3f(-32.5, 32.5, -d);
+glVertex3f(-32.5, -32.5, -d);
+glVertex3f(-32.5, -32.5, d);
+glEnd();
+//kanan
+glColor3f(1.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-27.5, 32.5, d);
+glVertex3f(-27.5, 32.5, -d);
+glVertex3f(-27.5, -32.5, -d);
+glVertex3f(-27.5, -32.5, d);
+glEnd();
+
+//////////////////////////TEMBOK BAWAH KIRI///////////////////////////////
+//depan
+glColor3f(0.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-32.5, -32.5, d);
+glVertex3f(-2.5, -32.5, d);
+glVertex3f(-2.5, -27.5, d);
+glVertex3f(-32.5, -27.5, d);
+glEnd();
+//belakang
+glColor3f(0.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-32.5, -32.5, -d);
+glVertex3f(-2.5, -32.5, -d);
+glVertex3f(-2.5, -27.5, -d);
+glVertex3f(-32.5, -27.5, -d);
+glEnd();
+//atas
+glColor3f(1.0,0.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-32.5, -27.5, d);
+glVertex3f(-2.5, -27.5, d);
+glVertex3f(-2.5, -27.5, -d);
+glVertex3f(-32.5, -27.5, -d);
+glEnd();
+//bawah
+glColor3f(0.0,1.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-32.5, -32.5, d);
+glVertex3f(-2.5, -32.5, d);
+glVertex3f(-2.5, -32.5, -d);
+glVertex3f(-32.5, -32.5, -d);
+glEnd();
+//kiri
+glColor3f(1.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-32.5, -32.5, d);
+glVertex3f(-32.5, -32.5, -d);
+glVertex3f(-32.5, -32.5, -d);
+glVertex3f(-32.5, -32.5, d);
+glEnd();
+//kanan
+glColor3f(1.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-2.5, -27.5, d);
+glVertex3f(-2.5, -27.5, -d);
+glVertex3f(-2.5, -32.5, -d);
+glVertex3f(-2.5, -32.5, d);
+glEnd();
+
+//////////////////////////TEMBOK BAWAH KANAN///////////////////////////////
+//depan
+glColor3f(0.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(2.5, -32.5, d);
+glVertex3f(32.5, -32.5, d);
+glVertex3f(32.5, -27.5, d);
+glVertex3f(2.5, -27.5, d);
+glEnd();
+//belakang
+glColor3f(0.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(2.5, -32.5, -d);
+glVertex3f(32.5, -32.5, -d);
+glVertex3f(32.5, -27.5, -d);
+glVertex3f(2.5, -27.5, -d);
+glEnd();
+//atas
+glColor3f(1.0,0.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(2.5, -27.5, d);
+glVertex3f(32.5, -27.5, d);
+glVertex3f(32.5, -27.5, -d);
+glVertex3f(2.5, -27.5, -d);
+glEnd();
+//bawah
+glColor3f(0.0,1.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(2.5, -32.5, d);
+glVertex3f(32.5, -32.5, d);
+glVertex3f(32.5, -32.5, -d);
+glVertex3f(2.5, -32.5, -d);
+glEnd();
+//kiri
+glColor3f(1.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(2.5, -32.5, d);
+glVertex3f(2.5, -32.5, -d);
+glVertex3f(2.5, -32.5, -d);
+glVertex3f(2.5, -32.5, d);
+glEnd();
+//kanan
+glColor3f(1.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(32.5, -27.5, d);
+glVertex3f(32.5, -27.5, -d);
+glVertex3f(32.5, -32.5, -d);
+glVertex3f(32.5, -32.5, d);
+glEnd();
+
+//////////////////////////TEMBOK KANAN///////////////////////////////
+//depan
+glColor3f(0.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(27.5, 32.5, d);
+glVertex3f(32.5, 32.5, d);
+glVertex3f(32.5, -32.5, d);
+glVertex3f(27.5, -32.5, d);
+glEnd();
+//belakang
+glColor3f(0.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(27.5, 32.5, -d);
+glVertex3f(32.5, 32.5, -d);
+glVertex3f(32.5, -32.5, -d);
+glVertex3f(27.5, -32.5, -d);
+glEnd();
+//atas
+glColor3f(1.0,0.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(27.5, 32.5, d);
+glVertex3f(27.5, 32.5, -d);
+glVertex3f(32.5, 32.5, -d);
+glVertex3f(32.5, 32.5, d);
+glEnd();
+//bawah
+glColor3f(0.0,1.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(27.5, -32.5, d);
+glVertex3f(27.5, -32.5, -d);
+glVertex3f(32.5, -32.5, -d);
+glVertex3f(32.5, -32.5, d);
+glEnd();
+//kiri
+glColor3f(1.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(27.5, 32.5, d);
+glVertex3f(27.5, 32.5, -d);
+glVertex3f(27.5, -32.5, -d);
+glVertex3f(27.5, -32.5, d);
+glEnd();
+//kanan
+glColor3f(1.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(32.5, 32.5, d);
+glVertex3f(32.5, 32.5, -d);
+glVertex3f(32.5, -32.5, -d);
+glVertex3f(32.5, -32.5, d);
+glEnd();
+
+//////////////////////////TEMBOK ATAS KIRI///////////////////////////////
+//depan
+glColor3f(0.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-32.5, 27.5, d);
+glVertex3f(-2.5, 27.5, d);
+glVertex3f(-2.5, 32.5, d);
+glVertex3f(-32.5, 32.5, d);
+glEnd();
+//belakang
+glColor3f(0.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-32.5, 27.5, -d);
+glVertex3f(-2.5, 27.5, -d);
+glVertex3f(-2.5, 32.5, -d);
+glVertex3f(-32.5, 32.5, -d);
+glEnd();
+//atas
+glColor3f(1.0,0.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-32.5, 32.5, d);
+glVertex3f(-2.5, 32.5, d);
+glVertex3f(-2.5, 32.5, -d);
+glVertex3f(-32.5, 32.5, -d);
+glEnd();
+//bawah
+glColor3f(0.0,1.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-32.5, 27.5, d);
+glVertex3f(-2.5, 27.5, d);
+glVertex3f(-2.5, 27.5, -d);
+glVertex3f(-32.5, 27.5, -d);
+glEnd();
+//kiri
+glColor3f(1.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-32.5, 27.5, d);
+glVertex3f(-32.5, 27.5, -d);
+glVertex3f(-32.5, 27.5, -d);
+glVertex3f(-32.5, 27.5, d);
+glEnd();
+//kanan
+glColor3f(1.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-2.5, 32.5, d);
+glVertex3f(-2.5, 32.5, -d);
+glVertex3f(-2.5, 27.5, -d);
+glVertex3f(-2.5, 27.5, d);
+glEnd();
+
+//////////////////////////TEMBOK ATAS KANAN///////////////////////////////
+//depan
+glColor3f(0.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(2.5, 27.5, d);
+glVertex3f(32.5, 27.5, d);
+glVertex3f(32.5, 32.5, d);
+glVertex3f(2.5, 32.5, d);
+glEnd();
+//belakang
+glColor3f(0.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(2.5, 27.5, -d);
+glVertex3f(32.5, 27.5, -d);
+glVertex3f(32.5, 32.5, -d);
+glVertex3f(2.5, 32.5, -d);
+glEnd();
+//atas
+glColor3f(1.0,0.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(2.5, 32.5, d);
+glVertex3f(32.5, 32.5, d);
+glVertex3f(32.5, 32.5, -d);
+glVertex3f(2.5, 32.5, -d);
+glEnd();
+//bawah
+glColor3f(0.0,1.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(2.5, 27.5, d);
+glVertex3f(32.5, 27.5, d);
+glVertex3f(32.5, 27.5, -d);
+glVertex3f(2.5, 27.5, -d);
+glEnd();
+//kiri
+glColor3f(1.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(2.5, 27.5, d);
+glVertex3f(2.5, 27.5, -d);
+glVertex3f(2.5, 27.5, -d);
+glVertex3f(2.5, 27.5, d);
+glEnd();
+//kanan
+glColor3f(1.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(32.5, 32.5, d);
+glVertex3f(32.5, 32.5, -d);
+glVertex3f(32.5, 27.5, -d);
+glVertex3f(32.5, 27.5, d);
+glEnd();
+
+////////////////////////// DINDING BAGIAN B1///////////////////////////////
+//depan
+glColor3f(0.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-22.5, 22.5, d);
+glVertex3f(-17.5, 22.5, d);
+glVertex3f(-17.5, 17.5, d);
+glVertex3f(-22.5, 17.5, d);
+glEnd();
+//belakang
+glColor3f(0.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-22.5, 22.5, -d);
+glVertex3f(-17.5, 22.5, -d);
+glVertex3f(-17.5, 17.5, -d);
+glVertex3f(-22.5, 17.5, -d);
+glEnd();
+//atas
+glColor3f(0.0,1.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-22.5, 22.5, d);
+glVertex3f(-17.5, 22.5, d);
+glVertex3f(-17.5, 22.5, -d);
+glVertex3f(-22.5, 22.5, -d);
+glEnd();
+//bawah
+glColor3f(1.0,0.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-22.5, 17.5, d);
+glVertex3f(-17.5, 17.5, d);
+glVertex3f(-17.5, 17.5, -d);
+glVertex3f(-22.5, 17.5, -d);
+glEnd();
+//kiri
+glColor3f(1.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-22.5, 22.5, d);
+glVertex3f(-22.5, 22.5, -d);
+glVertex3f(-22.5, 17.5, -d);
+glVertex3f(-22.5, 17.5, d);
+glEnd();
+//kanan
+glColor3f(1.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-17.5, 22.5, d);
+glVertex3f(-17.5, 22.5, -d);
+glVertex3f(-17.5, 17.5, -d);
+glVertex3f(-17.5, 17.5, d);
+glEnd();
+
+////////////////////////// DINDING BAGIAN B2///////////////////////////////
+//depan
+glColor3f(0.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-12.5, 22.5, d);
+glVertex3f(-7.5, 22.5, d);
+glVertex3f(-7.5, 17.5, d);
+glVertex3f(-12.5, 17.5, d);
+glEnd();
+//belakang
+glColor3f(0.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-12.5, 22.5, -d);
+glVertex3f(-7.5, 22.5, -d);
+glVertex3f(-7.5, 17.5, -d);
+glVertex3f(-12.5, 17.5, -d);
+glEnd();
+//atas
+glColor3f(0.0,1.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-12.5, 22.5, d);
+glVertex3f(-7.5, 22.5, d);
+glVertex3f(-7.5, 22.5, -d);
+glVertex3f(-12.5, 22.5, -d);
+glEnd();
+//bawah
+glColor3f(1.0,0.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-12.5, 17.5, d);
+glVertex3f(-7.5, 17.5, d);
+glVertex3f(-7.5, 17.5, -d);
+glVertex3f(-12.5, 17.5, -d);
+glEnd();
+//kiri
+glColor3f(1.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-12.5, 22.5, d);
+glVertex3f(-12.5, 22.5, -d);
+glVertex3f(-12.5, 17.5, -d);
+glVertex3f(-12.5, 17.5, d);
+glEnd();
+//kanan
+glColor3f(1.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-7.5, 22.5, d);
+glVertex3f(-7.5, 22.5, -d);
+glVertex3f(-7.5, 17.5, -d);
+glVertex3f(-7.5, 17.5, d);
+glEnd();
+
+////////////////////////// DINDING BAGIAN B3///////////////////////////////
+//depan
+glColor3f(0.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-2.5, 22.5, d);
+glVertex3f(2.5, 22.5, d);
+glVertex3f(2.5, 17.5, d);
+glVertex3f(-2.5, 17.5, d);
+glEnd();
+//belakang
+glColor3f(0.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-2.5, 22.5, -d);
+glVertex3f(2.5, 22.5, -d);
+glVertex3f(2.5, 17.5, -d);
+glVertex3f(-2.5, 17.5, -d);
+glEnd();
+//atas
+glColor3f(0.0,1.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-2.5, 22.5, d);
+glVertex3f(2.5, 22.5, d);
+glVertex3f(2.5, 22.5, -d);
+glVertex3f(-2.5, 22.5, -d);
+glEnd();
+//bawah
+glColor3f(1.0,0.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-2.5, 17.5, d);
+glVertex3f(2.5, 17.5, d);
+glVertex3f(2.5, 17.5, -d);
+glVertex3f(-2.5, 17.5, -d);
+glEnd();
+//kiri
+glColor3f(1.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-2.5, 22.5, d);
+glVertex3f(-2.5, 22.5, -d);
+glVertex3f(-2.5, 17.5, -d);
+glVertex3f(-2.5, 17.5, d);
+glEnd();
+//kanan
+glColor3f(1.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(2.5, 22.5, d);
+glVertex3f(2.5, 22.5, -d);
+glVertex3f(2.5, 17.5, -d);
+glVertex3f(2.5, 17.5, d);
+glEnd();
+
+////////////////////////// DINDING BAGIAN B4///////////////////////////////
+//depan
+glColor3f(0.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(7.5, 22.5, d);
+glVertex3f(12.5, 22.5, d);
+glVertex3f(12.5, 17.5, d);
+glVertex3f(7.5, 17.5, d);
+glEnd();
+//belakang
+glColor3f(0.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(7.5, 22.5, -d);
+glVertex3f(12.5, 22.5, -d);
+glVertex3f(12.5, 17.5, -d);
+glVertex3f(7.5, 17.5, -d);
+glEnd();
+//atas
+glColor3f(0.0,1.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(7.5, 22.5, d);
+glVertex3f(12.5, 22.5, d);
+glVertex3f(12.5, 22.5, -d);
+glVertex3f(7.5, 22.5, -d);
+glEnd();
+//bawah
+glColor3f(1.0,0.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(7.5, 17.5, d);
+glVertex3f(12.5, 17.5, d);
+glVertex3f(12.5, 17.5, -d);
+glVertex3f(7.5, 17.5, -d);
+glEnd();
+//kiri
+glColor3f(1.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(7.5, 22.5, d);
+glVertex3f(7.5, 22.5, -d);
+glVertex3f(7.5, 17.5, -d);
+glVertex3f(7.5, 17.5, d);
+glEnd();
+//kanan
+glColor3f(1.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(12.5, 22.5, d);
+glVertex3f(12.5, 22.5, -d);
+glVertex3f(12.5, 17.5, -d);
+glVertex3f(12.5, 17.5, d);
+glEnd();
+
+////////////////////////// DINDING BAGIAN B4///////////////////////////////
+//depan
+glColor3f(0.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(17.5, 22.5, d);
+glVertex3f(22.5, 22.5, d);
+glVertex3f(22.5, 17.5, d);
+glVertex3f(17.5, 17.5, d);
+glEnd();
+//belakang
+glColor3f(0.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(17.5, 22.5, -d);
+glVertex3f(22.5, 22.5, -d);
+glVertex3f(22.5, 17.5, -d);
+glVertex3f(17.5, 17.5, -d);
+glEnd();
+//atas
+glColor3f(0.0,1.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(17.5, 22.5, d);
+glVertex3f(22.5, 22.5, d);
+glVertex3f(22.5, 22.5, -d);
+glVertex3f(17.5, 22.5, -d);
+glEnd();
+//bawah
+glColor3f(1.0,0.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(17.5, 17.5, d);
+glVertex3f(22.5, 17.5, d);
+glVertex3f(22.5, 17.5, -d);
+glVertex3f(17.5, 17.5, -d);
+glEnd();
+//kiri
+glColor3f(1.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(17.5, 22.5, d);
+glVertex3f(17.5, 22.5, -d);
+glVertex3f(17.5, 17.5, -d);
+glVertex3f(17.5, 17.5, d);
+glEnd();
+//kanan
+glColor3f(1.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(22.5, 22.5, d);
+glVertex3f(22.5, 22.5, -d);
+glVertex3f(22.5, 17.5, -d);
+glVertex3f(22.5, 17.5, d);
+glEnd();
+
+////////////////////////// DINDING BAGIAN C1///////////////////////////////
+//depan
+glColor3f(0.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-17.5, 17.5, d);
+glVertex3f(-12.5, 17.5, d);
+glVertex3f(-12.5, 12.5, d);
+glVertex3f(-17.5, 12.5, d);
+glEnd();
+//belakang
+glColor3f(0.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-17.5, 17.5, -d);
+glVertex3f(-12.5, 17.5, -d);
+glVertex3f(-12.5, 12.5, -d);
+glVertex3f(-17.5, 12.5, -d);
+glEnd();
+//atas
+glColor3f(0.0,1.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-17.5, 17.5, d);
+glVertex3f(-12.5, 17.5, d);
+glVertex3f(-12.5, 17.5, -d);
+glVertex3f(-17.5, 17.5, -d);
+glEnd();
+//bawah
+glColor3f(1.0,0.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-17.5, 12.5, d);
+glVertex3f(-12.5, 12.5, d);
+glVertex3f(-12.5, 12.5, -d);
+glVertex3f(-17.5, 12.5, -d);
+glEnd();
+//kiri
+glColor3f(1.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-17.5, 17.5, d);
+glVertex3f(-17.5, 17.5, -d);
+glVertex3f(-17.5, 12.5, -d);
+glVertex3f(-17.5, 12.5, d);
+glEnd();
+//kanan
+glColor3f(1.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-12.5, 17.5, d);
+glVertex3f(-12.5, 17.5, -d);
+glVertex3f(-12.5, 12.5, -d);
+glVertex3f(-12.5, 12.5, d);
+glEnd();
+
+////////////////////////// DINDING BAGIAN C2///////////////////////////////
+//depan
+glColor3f(0.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(2.5, 17.5, d);
+glVertex3f(7.5, 17.5, d);
+glVertex3f(7.5, 12.5, d);
+glVertex3f(2.5, 12.5, d);
+glEnd();
+//belakang
+glColor3f(0.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(2.5, 17.5, -d);
+glVertex3f(7.5, 17.5, -d);
+glVertex3f(7.5, 12.5, -d);
+glVertex3f(2.5, 12.5, -d);
+glEnd();
+//atas
+glColor3f(0.0,1.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(2.5, 17.5, d);
+glVertex3f(7.5, 17.5, d);
+glVertex3f(7.5, 17.5, -d);
+glVertex3f(2.5, 17.5, -d);
+glEnd();
+//bawah
+glColor3f(1.0,0.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(2.5, 12.5, d);
+glVertex3f(7.5, 12.5, d);
+glVertex3f(7.5, 12.5, -d);
+glVertex3f(2.5, 12.5, -d);
+glEnd();
+//kiri
+glColor3f(1.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(2.5, 17.5, d);
+glVertex3f(2.5, 17.5, -d);
+glVertex3f(2.5, 12.5, -d);
+glVertex3f(2.5, 12.5, d);
+glEnd();
+//kanan
+glColor3f(1.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(7.5, 17.5, d);
+glVertex3f(7.5, 17.5, -d);
+glVertex3f(7.5, 12.5, -d);
+glVertex3f(7.5, 12.5, d);
+glEnd();
+
+////////////////////////// DINDING BAGIAN D1///////////////////////////////
+//depan
+glColor3f(0.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-27.5, 12.5, d);
+glVertex3f(-17.5, 12.5, d);
+glVertex3f(-17.5, 7.5, d);
+glVertex3f(-27.5, 7.5, d);
+glEnd();
+//belakang
+glColor3f(0.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-27.5, 12.5, -d);
+glVertex3f(-17.5, 12.5, -d);
+glVertex3f(-17.5, 7.5, -d);
+glVertex3f(-27.5, 7.5, -d);
+glEnd();
+//atas
+glColor3f(0.0,1.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-27.5, 12.5, d);
+glVertex3f(-17.5, 12.5, d);
+glVertex3f(-17.5, 12.5, -d);
+glVertex3f(-27.5, 12.5, -d);
+glEnd();
+//bawah
+glColor3f(1.0,0.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-27.5, 7.5, d);
+glVertex3f(-17.5, 7.5, d);
+glVertex3f(-17.5, 7.5, -d);
+glVertex3f(-27.5, 7.5, -d);
+glEnd();
+//kiri
+glColor3f(1.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-27.5, 12.5, d);
+glVertex3f(-27.5, 12.5, -d);
+glVertex3f(-27.5, 7.5, -d);
+glVertex3f(-27.5, 7.5, d);
+glEnd();
+//kanan
+glColor3f(1.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-17.5, 12.5, d);
+glVertex3f(-17.5, 12.5, -d);
+glVertex3f(-17.5, 7.5, -d);
+glVertex3f(-17.5, 7.5, d);
+glEnd();
+
+////////////////////////// DINDING BAGIAN D2///////////////////////////////
+//depan
+glColor3f(0.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-12.5, 12.5, d);
+glVertex3f(2.5, 12.5, d);
+glVertex3f(2.5, 7.5, d);
+glVertex3f(-12.5, 7.5, d);
+glEnd();
+//belakang
+glColor3f(0.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-12.5, 12.5, -d);
+glVertex3f(2.5, 12.5, -d);
+glVertex3f(2.5, 7.5, -d);
+glVertex3f(-12.5, 7.5, -d);
+glEnd();
+//atas
+glColor3f(0.0,1.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-12.5, 12.5, d);
+glVertex3f(2.5, 12.5, d);
+glVertex3f(2.5, 12.5, -d);
+glVertex3f(-12.5, 12.5, -d);
+glEnd();
+//bawah
+glColor3f(1.0,0.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-12.5, 7.5, d);
+glVertex3f(2.5, 7.5, d);
+glVertex3f(2.5, 7.5, -d);
+glVertex3f(-12.5, 7.5, -d);
+glEnd();
+//kiri
+glColor3f(1.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-12.5, 12.5, d);
+glVertex3f(-12.5, 12.5, -d);
+glVertex3f(-12.5, 7.5, -d);
+glVertex3f(-12.5, 7.5, d);
+glEnd();
+//kanan
+glColor3f(1.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(2.5, 12.5, d);
+glVertex3f(2.5, 12.5, -d);
+glVertex3f(2.5, 7.5, -d);
+glVertex3f(2.5, 7.5, d);
+glEnd();
+
+////////////////////////// DINDING BAGIAN D3///////////////////////////////
+//depan
+glColor3f(0.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(7.5, 12.5, d);
+glVertex3f(12.5, 12.5, d);
+glVertex3f(12.5, 7.5, d);
+glVertex3f(7.5, 7.5, d);
+glEnd();
+//belakang
+glColor3f(0.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(7.5, 12.5, -d);
+glVertex3f(12.5, 12.5, -d);
+glVertex3f(12.5, 7.5, -d);
+glVertex3f(7.5, 7.5, -d);
+glEnd();
+//atas
+glColor3f(0.0,1.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(7.5, 12.5, d);
+glVertex3f(12.5, 12.5, d);
+glVertex3f(12.5, 12.5, -d);
+glVertex3f(7.5, 12.5, -d);
+glEnd();
+//bawah
+glColor3f(1.0,0.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(7.5, 7.5, d);
+glVertex3f(12.5, 7.5, d);
+glVertex3f(12.5, 7.5, -d);
+glVertex3f(7.5, 7.5, -d);
+glEnd();
+//kiri
+glColor3f(1.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(7.5, 12.5, d);
+glVertex3f(7.5, 12.5, -d);
+glVertex3f(7.5, 7.5, -d);
+glVertex3f(7.5, 7.5, d);
+glEnd();
+//kanan
+glColor3f(1.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(12.5, 12.5, d);
+glVertex3f(12.5, 12.5, -d);
+glVertex3f(12.5, 7.5, -d);
+glVertex3f(12.5, 7.5, d);
+glEnd();
+
+////////////////////////// DINDING BAGIAN D4///////////////////////////////
+//depan
+glColor3f(0.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(17.5, 12.5, d);
+glVertex3f(22.5, 12.5, d);
+glVertex3f(22.5, 7.5, d);
+glVertex3f(17.5, 7.5, d);
+glEnd();
+//belakang
+glColor3f(0.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(17.5, 12.5, -d);
+glVertex3f(22.5, 12.5, -d);
+glVertex3f(22.5, 7.5, -d);
+glVertex3f(17.5, 7.5, -d);
+glEnd();
+//atas
+glColor3f(0.0,1.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(17.5, 12.5, d);
+glVertex3f(22.5, 12.5, d);
+glVertex3f(22.5, 12.5, -d);
+glVertex3f(17.5, 12.5, -d);
+glEnd();
+//bawah
+glColor3f(1.0,0.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(17.5, 7.5, d);
+glVertex3f(22.5, 7.5, d);
+glVertex3f(22.5, 7.5, -d);
+glVertex3f(17.5, 7.5, -d);
+glEnd();
+//kiri
+glColor3f(1.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(17.5, 12.5, d);
+glVertex3f(17.5, 12.5, -d);
+glVertex3f(17.5, 7.5, -d);
+glVertex3f(17.5, 7.5, d);
+glEnd();
+//kanan
+glColor3f(1.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(22.5, 12.5, d);
+glVertex3f(22.5, 12.5, -d);
+glVertex3f(22.5, 7.5, -d);
+glVertex3f(22.5, 7.5, d);
+glEnd();
+
+////////////////////////// DINDING BAGIAN E1///////////////////////////////
+//depan
+glColor3f(0.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(22.5, 7.5, d);
+glVertex3f(27.5, 7.5, d);
+glVertex3f(27.5, 2.5, d);
+glVertex3f(22.5, 2.5, d);
+glEnd();
+//belakang
+glColor3f(0.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(27.5, 7.5, -d);
+glVertex3f(22.5, 7.5, -d);
+glVertex3f(22.5, 2.5, -d);
+glVertex3f(27.5, 2.5, -d);
+glEnd();
+//atas
+glColor3f(0.0,1.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(22.5, 7.5, d);
+glVertex3f(27.5, 7.5, d);
+glVertex3f(27.5, 7.5, -d);
+glVertex3f(22.5, 7.5, -d);
+glEnd();
+//bawah
+glColor3f(1.0,0.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(22.5, 2.5, d);
+glVertex3f(27.5, 2.5, d);
+glVertex3f(27.5, 2.5, -d);
+glVertex3f(22.5, 2.5, -d);
+glEnd();
+//kiri
+glColor3f(1.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(22.5, 7.5, d);
+glVertex3f(22.5, 7.5, -d);
+glVertex3f(22.5, 2.5, -d);
+glVertex3f(22.5, 2.5, d);
+glEnd();
+//kanan
+glColor3f(1.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(27.5, 7.5, d);
+glVertex3f(27.5, 7.5, -d);
+glVertex3f(27.5, 2.5, -d);
+glVertex3f(27.5, 2.5, d);
+glEnd();
+
+////////////////////////// DINDING BAGIAN F1///////////////////////////////
+//depan
+glColor3f(0.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-22.5, 2.5, d);
+glVertex3f(-17.5, 2.5, d);
+glVertex3f(-17.5, -2.5, d);
+glVertex3f(-22.5, -2.5, d);
+glEnd();
+//belakang
+glColor3f(0.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-22.5, 2.5, -d);
+glVertex3f(-17.5, 2.5, -d);
+glVertex3f(-17.5, -2.5, -d);
+glVertex3f(-22.5, -2.5, -d);
+glEnd();
+//atas
+glColor3f(0.0,1.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-22.5, 2.5, d);
+glVertex3f(-17.5, 2.5, d);
+glVertex3f(-17.5, 2.5, -d);
+glVertex3f(-22.5, 2.5, -d);
+glEnd();
+//bawah
+glColor3f(1.0,0.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-22.5, -2.5, d);
+glVertex3f(-17.5, -2.5, d);
+glVertex3f(-17.5, -2.5, -d);
+glVertex3f(-22.5, -2.5, -d);
+glEnd();
+//kiri
+glColor3f(1.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-22.5, 2.5, d);
+glVertex3f(-22.5, 2.5, -d);
+glVertex3f(-22.5, -2.5, -d);
+glVertex3f(-22.5, -2.5, d);
+glEnd();
+//kanan
+glColor3f(1.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-17.5, 2.5, d);
+glVertex3f(-17.5, 2.5, -d);
+glVertex3f(-17.5, -2.5, -d);
+glVertex3f(-17.5, -2.5, d);
+glEnd();
+
+////////////////////////// DINDING BAGIAN F2///////////////////////////////
+//depan
+glColor3f(0.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-12.5, 2.5, d);
+glVertex3f(-7.5, 2.5, d);
+glVertex3f(-7.5, -2.5, d);
+glVertex3f(-12.5, -2.5, d);
+glEnd();
+//belakang
+glColor3f(0.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-12.5, 2.5, -d);
+glVertex3f(-7.5, 2.5, -d);
+glVertex3f(-7.5, -2.5, -d);
+glVertex3f(-12.5, -2.5, -d);
+glEnd();
+//atas
+glColor3f(0.0,1.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-12.5, 2.5, d);
+glVertex3f(-7.5, 2.5, d);
+glVertex3f(-7.5, 2.5, -d);
+glVertex3f(-12.5, 2.5, -d);
+glEnd();
+//bawah
+glColor3f(1.0,0.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-12.5, -2.5, d);
+glVertex3f(-7.5, -2.5, d);
+glVertex3f(-7.5, -2.5, -d);
+glVertex3f(-12.5, -2.5, -d);
+glEnd();
+//kiri
+glColor3f(1.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-12.5, 2.5, d);
+glVertex3f(-12.5, 2.5, -d);
+glVertex3f(-12.5, -2.5, -d);
+glVertex3f(-12.5, -2.5, d);
+glEnd();
+//kanan
+glColor3f(1.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-7.5, 2.5, d);
+glVertex3f(-7.5, 2.5, -d);
+glVertex3f(-7.5, -2.5, -d);
+glVertex3f(-7.5, -2.5, d);
+glEnd();
+
+////////////////////////// DINDING BAGIAN F3///////////////////////////////
+//depan
+glColor3f(0.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-2.5, 2.5, d);
+glVertex3f(17.5, 2.5, d);
+glVertex3f(17.5, -2.5, d);
+glVertex3f(-2.5, -2.5, d);
+glEnd();
+//belakang
+glColor3f(0.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-2.5, 2.5, -d);
+glVertex3f(17.5, 2.5, -d);
+glVertex3f(17.5, -2.5, -d);
+glVertex3f(-2.5, -2.5, -d);
+glEnd();
+//atas
+glColor3f(0.0,1.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-2.5, 2.5, d);
+glVertex3f(17.5, 2.5, d);
+glVertex3f(17.5, 2.5, -d);
+glVertex3f(-2.5, 2.5, -d);
+glEnd();
+//bawah
+glColor3f(1.0,0.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-2.5, -2.5, d);
+glVertex3f(17.5, -2.5, d);
+glVertex3f(17.5, -2.5, -d);
+glVertex3f(-2.5, -2.5, -d);
+glEnd();
+//kiri
+glColor3f(1.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-2.5, 2.5, d);
+glVertex3f(-2.5, 2.5, -d);
+glVertex3f(-2.5, -2.5, -d);
+glVertex3f(-2.5, -2.5, d);
+glEnd();
+//kanan
+glColor3f(1.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(17.5, 2.5, d);
+glVertex3f(17.5, 2.5, -d);
+glVertex3f(17.5, -2.5, -d);
+glVertex3f(17.5, -2.5, d);
+glEnd();
+
+////////////////////////// DINDING BAGIAN G1///////////////////////////////
+//depan
+glColor3f(0.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-22.5, -2.5, d);
+glVertex3f(-17.5, -2.5, d);
+glVertex3f(-17.5, -7.5, d);
+glVertex3f(-22.5, -7.5, d);
+glEnd();
+//belakang
+glColor3f(0.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-22.5, -2.5, -d);
+glVertex3f(-17.5, -2.5, -d);
+glVertex3f(-17.5, -7.5, -d);
+glVertex3f(-22.5, -7.5, -d);
+glEnd();
+//atas
+glColor3f(0.0,1.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-22.5, -2.5, d);
+glVertex3f(-17.5, -2.5, d);
+glVertex3f(-17.5, -2.5, -d);
+glVertex3f(-22.5, -2.5, -d);
+glEnd();
+//bawah
+glColor3f(1.0,0.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-22.5, -7.5, d);
+glVertex3f(-17.5, -7.5, d);
+glVertex3f(-17.5, -7.5, -d);
+glVertex3f(-22.5, -7.5, -d);
+glEnd();
+//kiri
+glColor3f(1.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-22.5, -2.5, d);
+glVertex3f(-22.5, -2.5, -d);
+glVertex3f(-22.5, -7.5, -d);
+glVertex3f(-22.5, -7.5, d);
+glEnd();
+//kanan
+glColor3f(1.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-17.5, -2.5, d);
+glVertex3f(-17.5, -2.5, -d);
+glVertex3f(-17.5, -7.5, -d);
+glVertex3f(-17.5, -7.5, d);
+glEnd();
+
+////////////////////////// DINDING BAGIAN G2///////////////////////////////
+//depan
+glColor3f(0.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-7.5, -2.5, d);
+glVertex3f(-2.5, -2.5, d);
+glVertex3f(-2.5, -7.5, d);
+glVertex3f(-7.5, -7.5, d);
+glEnd();
+
+//belakang
+glColor3f(0.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-7.5, -2.5, -d);
+glVertex3f(-2.5, -2.5, -d);
+glVertex3f(-2.5, -7.5, -d);
+glVertex3f(-7.5, -7.5, -d);
+glEnd();
+//atas
+glColor3f(0.0,1.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-7.5, -2.5, d);
+glVertex3f(-2.5, -2.5, d);
+glVertex3f(-2.5, -2.5, -d);
+glVertex3f(-7.5, -2.5, -d);
+glEnd();
+//bawah
+glColor3f(1.0,0.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-7.5, -7.5, d);
+glVertex3f(-2.5, -7.5, d);
+glVertex3f(-2.5, -7.5, -d);
+glVertex3f(-7.5, -7.5, -d);
+glEnd();
+//kiri
+glColor3f(1.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-7.5, -2.5, d);
+glVertex3f(-7.5, -2.5, -d);
+glVertex3f(-7.5, -7.5, -d);
+glVertex3f(-7.5, -7.5, d);
+glEnd();
+//kanan
+glColor3f(1.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-2.5, -2.5, d);
+glVertex3f(-2.5, -2.5, -d);
+glVertex3f(-2.5, -7.5, -d);
+glVertex3f(-2.5, -7.5, d);
+glEnd();
+
+////////////////////////// DINDING BAGIAN H1///////////////////////////////
+//depan
+glColor3f(0.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-22.5, -7.5, d);
+glVertex3f(-7.5, -7.5, d);
+glVertex3f(-7.5, -12.5, d);
+glVertex3f(-22.5, -12.5, d);
+glEnd();
+//belakang
+glColor3f(0.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-22.5, -7.5, -d);
+glVertex3f(-7.5, -7.5, -d);
+glVertex3f(-7.5, -12.5, -d);
+glVertex3f(-22.5, -12.5, -d);
+glEnd();
+//atas
+glColor3f(0.0,1.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-22.5, -7.5, d);
+glVertex3f(-7.5, -7.5, d);
+glVertex3f(-7.5, -7.5, -d);
+glVertex3f(-22.5, -7.5, -d);
+glEnd();
+//bawah
+glColor3f(1.0,0.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-22.5, -12.5, d);
+glVertex3f(-7.5, -12.5, d);
+glVertex3f(-7.5, -12.5, -d);
+glVertex3f(-22.5, -12.5, -d);
+glEnd();
+//kiri
+glColor3f(1.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-22.5, -7.5, d);
+glVertex3f(-22.5, -7.5, -d);
+glVertex3f(-22.5, -12.5, -d);
+glVertex3f(-22.5, -12.5, d);
+glEnd();
+//kanan
+glColor3f(1.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-7.5, -7.5, d);
+glVertex3f(-7.5, -7.5, -d);
+glVertex3f(-7.5, -12.5, -d);
+glVertex3f(-7.5, -12.5, d);
+glEnd();
+
+////////////////////////// DINDING BAGIAN H2///////////////////////////////
+//depan
+glColor3f(0.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-2.5, -7.5, d);
+glVertex3f(2.5, -7.5, d);
+glVertex3f(2.5, -12.5, d);
+glVertex3f(-2.5, -12.5, d);
+glEnd();
+//belakang
+glColor3f(0.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-2.5, -7.5, -d);
+glVertex3f(2.5, -7.5, -d);
+glVertex3f(2.5, -12.5, -d);
+glVertex3f(-2.5, -12.5, -d);
+glEnd();
+//atas
+glColor3f(0.0,1.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-2.5, -7.5, d);
+glVertex3f(2.5, -7.5, d);
+glVertex3f(2.5, -7.5, -d);
+glVertex3f(-2.5, -7.5, -d);
+glEnd();
+//bawah
+glColor3f(1.0,0.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-2.5, -12.5, d);
+glVertex3f(2.5, -12.5, d);
+glVertex3f(2.5, -12.5, -d);
+glVertex3f(-2.5, -12.5, -d);
+glEnd();
+//kiri
+glColor3f(1.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-2.5, -7.5, d);
+glVertex3f(-2.5, -7.5, -d);
+glVertex3f(-2.5, -12.5, -d);
+glVertex3f(-2.5, -12.5, d);
+glEnd();
+//kanan
+glColor3f(1.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(2.5, -7.5, d);
+glVertex3f(2.5, -7.5, -d);
+glVertex3f(2.5, -12.5, -d);
+glVertex3f(2.5, -12.5, d);
+glEnd();
+
+////////////////////////// DINDING BAGIAN H3///////////////////////////////
+//depan
+glColor3f(0.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(7.5, -7.5, d);
+glVertex3f(12.5, -7.5, d);
+glVertex3f(12.5, -12.5, d);
+glVertex3f(7.5, -12.5, d);
+glEnd();
+//belakang
+glColor3f(0.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(7.5, -7.5, -d);
+glVertex3f(12.5, -7.5, -d);
+glVertex3f(12.5, -12.5, -d);
+glVertex3f(7.5, -12.5, -d);
+glEnd();
+//atas
+glColor3f(0.0,1.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(7.5, -7.5, d);
+glVertex3f(12.5, -7.5, d);
+glVertex3f(12.5, -7.5, -d);
+glVertex3f(7.5, -7.5, -d);
+glEnd();
+//bawah
+glColor3f(1.0,0.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(7.5, -12.5, d);
+glVertex3f(12.5, -12.5, d);
+glVertex3f(12.5, -12.5, -d);
+glVertex3f(7.5, -12.5, -d);
+glEnd();
+//kiri
+glColor3f(1.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(7.5, -7.5, d);
+glVertex3f(7.5, -7.5, -d);
+glVertex3f(7.5, -12.5, -d);
+glVertex3f(7.5, -12.5, d);
+glEnd();
+//kanan
+glColor3f(1.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(12.5, -7.5, d);
+glVertex3f(12.5, -7.5, -d);
+glVertex3f(12.5, -12.5, -d);
+glVertex3f(12.5, -12.5, d);
+glEnd();
+
+////////////////////////// DINDING BAGIAN H4///////////////////////////////
+//depan
+glColor3f(0.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(17.5, -7.5, d);
+glVertex3f(27.5, -7.5, d);
+glVertex3f(27.5, -12.5, d);
+glVertex3f(17.5, -12.5, d);
+glEnd();
+//belakang
+glColor3f(0.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(17.5, -7.5, -d);
+glVertex3f(27.5, -7.5, -d);
+glVertex3f(27.5, -12.5, -d);
+glVertex3f(17.5, -12.5, -d);
+glEnd();
+//atas
+glColor3f(0.0,1.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(17.5, -7.5, d);
+glVertex3f(27.5, -7.5, d);
+glVertex3f(27.5, -7.5, -d);
+glVertex3f(17.5, -7.5, -d);
+glEnd();
+//bawah
+glColor3f(1.0,0.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(17.5, -12.5, d);
+glVertex3f(27.5, -12.5, d);
+glVertex3f(27.5, -12.5, -d);
+glVertex3f(17.5, -12.5, -d);
+glEnd();
+//kiri
+glColor3f(1.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(17.5, -7.5, d);
+glVertex3f(17.5, -7.5, -d);
+glVertex3f(17.5, -12.5, -d);
+glVertex3f(17.5, -12.5, d);
+glEnd();
+//kanan
+glColor3f(1.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(27.5, -7.5, d);
+glVertex3f(27.5, -7.5, -d);
+glVertex3f(27.5, -12.5, -d);
+glVertex3f(27.5, -12.5, d);
+glEnd();
+
+////////////////////////// DINDING BAGIAN I1///////////////////////////////
+//depan
+glColor3f(0.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(7.5, -12.5, d);
+glVertex3f(12.5, -12.5, d);
+glVertex3f(12.5, -17.5, d);
+glVertex3f(7.5, -17.5, d);
+glEnd();
+//belakang
+glColor3f(0.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(7.5, -12.5, -d);
+glVertex3f(12.5, -12.5, -d);
+glVertex3f(12.5, -17.5, -d);
+glVertex3f(7.5, -17.5, -d);
+glEnd();
+//atas
+glColor3f(0.0,1.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(7.5, -12.5, d);
+glVertex3f(12.5, -12.5, d);
+glVertex3f(12.5, -12.5, -d);
+glVertex3f(7.5, -12.5, -d);
+glEnd();
+//bawah
+glColor3f(1.0,0.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(7.5, -17.5, d);
+glVertex3f(12.5, -17.5, d);
+glVertex3f(12.5, -17.5, -d);
+glVertex3f(7.5, -17.5, -d);
+glEnd();
+//kiri
+glColor3f(1.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(7.5, -12.5, d);
+glVertex3f(7.5, -12.5, -d);
+glVertex3f(7.5, -17.5, -d);
+glVertex3f(7.5, -17.5, d);
+glEnd();
+//kanan
+glColor3f(1.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(12.5, -12.5, d);
+glVertex3f(12.5, -12.5, -d);
+glVertex3f(12.5, -17.5, -d);
+glVertex3f(12.5, -17.5, d);
+glEnd();
+
+////////////////////////// DINDING BAGIAN J1///////////////////////////////
+//depan
+glColor3f(0.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-27.5, -17.5, d);
+glVertex3f(-17.5, -17.5, d);
+glVertex3f(-17.5, -22.5, d);
+glVertex3f(-27.5, -22.5, d);
+glEnd();
+//belakang
+glColor3f(0.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-27.5, -17.5, -d);
+glVertex3f(-17.5, -17.5, -d);
+glVertex3f(-17.5, -22.5, -d);
+glVertex3f(-27.5, -22.5, -d);
+glEnd();
+//atas
+glColor3f(0.0,1.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-27.5, -17.5, d);
+glVertex3f(-17.5, -17.5, d);
+glVertex3f(-17.5, -17.5, -d);
+glVertex3f(-27.5, -17.5, -d);
+glEnd();
+//bawah
+glColor3f(1.0,0.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-27.5, -22.5, d);
+glVertex3f(-17.5, -22.5, d);
+glVertex3f(-17.5, -22.5, -d);
+glVertex3f(-27.5, -22.5, -d);
+glEnd();
+//kiri
+glColor3f(1.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-27.5, -17.5, d);
+glVertex3f(-27.5, -17.5, -d);
+glVertex3f(-27.5, -22.5, -d);
+glVertex3f(-27.5, -22.5, d);
+glEnd();
+//kanan
+glColor3f(1.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-17.5, -17.5, d);
+glVertex3f(-17.5, -17.5, -d);
+glVertex3f(-17.5, -22.5, -d);
+glVertex3f(-17.5, -22.5, d);
+glEnd();
+
+////////////////////////// DINDING BAGIAN J2///////////////////////////////
+//depan
+glColor3f(0.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-12.5, -17.5, d);
+glVertex3f(22.5, -17.5, d);
+glVertex3f(22.5, -22.5, d);
+glVertex3f(-12.5, -22.5, d);
+glEnd();
+//belakang
+glColor3f(0.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-12.5, -17.5, -d);
+glVertex3f(22.5, -17.5, -d);
+glVertex3f(22.5, -22.5, -d);
+glVertex3f(-12.5, -22.5, -d);
+glEnd();
+//atas
+glColor3f(0.0,1.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-12.5, -17.5, d);
+glVertex3f(22.5, -17.5, d);
+glVertex3f(22.5, -17.5, -d);
+glVertex3f(-12.5, -17.5, -d);
+glEnd();
+//bawah
+glColor3f(1.0,0.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-12.5, -22.5, d);
+glVertex3f(22.5, -22.5, d);
+glVertex3f(22.5, -22.5, -d);
+glVertex3f(-12.5, -22.5, -d);
+glEnd();
+//kiri
+glColor3f(1.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-12.5, -17.5, d);
+glVertex3f(-12.5, -17.5, -d);
+glVertex3f(-12.5, -22.5, -d);
+glVertex3f(-12.5, -22.5, d);
+glEnd();
+//kanan
+glColor3f(1.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(22.5, -17.5, d);
+glVertex3f(22.5, -17.5, -d);
+glVertex3f(22.5, -22.5, -d);
+glVertex3f(22.5, -22.5, d);
+glEnd();
+
+
+////////////////////////// DINDING BAGIAN K1///////////////////////////////
+//depan
+glColor3f(0.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-12.5, -22.5, d);
+glVertex3f(-7.5, -22.5, d);
+glVertex3f(-7.5, -27.5, d);
+glVertex3f(-12.5, -27.5, d);
+glEnd();
+//belakang
+glColor3f(0.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-12.5, -22.5, -d);
+glVertex3f(-7.5, -22.5, -d);
+glVertex3f(-7.5, -27.5, -d);
+glVertex3f(-12.5, -27.5, -d);
+glEnd();
+//atas
+glColor3f(0.0,1.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-12.5, -22.5, d);
+glVertex3f(-7.5, -22.5, d);
+glVertex3f(-7.5, -22.5, -d);
+glVertex3f(-12.5, -22.5, -d);
+glEnd();
+//bawah
+glColor3f(1.0,0.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-12.5, -27.5, d);
+glVertex3f(-7.5, -27.5, d);
+glVertex3f(-7.5, -27.5, -d);
+glVertex3f(-12.5, -27.5, -d);
+glEnd();
+//kiri
+glColor3f(1.0,1.0,0.0);
+glBegin(GL_POLYGON);
+glVertex3f(-12.5, -22.5, d);
+glVertex3f(-12.5, -22.5, -d);
+glVertex3f(-12.5, -27.5, -d);
+glVertex3f(-12.5, -27.5, d);
+glEnd();
+//kanan
+glColor3f(1.0,0.0,1.0);
+glBegin(GL_POLYGON);
+glVertex3f(-7.5, -22.5, d);
+glVertex3f(-7.5, -22.5, -d);
+glVertex3f(-7.5, -27.5, -d);
+glVertex3f(-7.5, -27.5, d);
+glEnd();
+}
+
+void display(){
+glClear(GL_COLOR_BUFFER_BIT| GL_DEPTH_BUFFER_BIT);
+    if(maze == true){
+        glPushMatrix();
+        glRotated(rotasi,a,b,c);
+        layer1();
+        player();
+        glPopMatrix();
+    }else{
+        glPushMatrix();
+        glRotated(rotasi,a,b,c);
+        layer2();
+        player();
+        glPopMatrix();
+    }
+    nim();
+glFlush();
+}
+
+void inputan(unsigned char key,int x,int y){
+    if(key == 'w' || key == 'W'){
+        posy+=0.5;
+    }else if(key == 'a' || key == 'A'){
+        posx-=0.5;
+    }else if(key == 's' || key == 'S'){
+        posy-=0.5;
+    }else if(key == 'd' || key == 'D'){
+        posx+=0.5;
+    }else if(key == 'j' || key == 'J'){
+        rotasi+=inc;
+        a=0;
+        b=1;
+        c=1;
+    }else if(key == 'l' || key == 'L'){
+        rotasi-=inc;
+        a=0;
+        b=1;
+        c=1;
+    }else if(key == 'i' || key == 'I'){
+        rotasi+=inc;
+        a=1;
+        b=0;
+        c=1;
+    }else if(key == 'k' || key == 'K'){
+        rotasi-=inc;
+        a=1;
+        b=0;
+        c=1;
+    }else if(key == 'v' || key == 'V'){
+        countt+=1;
+        if(countt%2==1){
+            d=1.0;
+            inc=3.0;
+            rotasi = 30;
+            a=1;
+            b=0;
+            c=0;
+        }else if(countt%2==0){
+            d=0;
+            inc=0;
+            rotasi = 0;
+            a=0;
+            b=0;
+            c=0;
+        }
+    }else if(key == 'c' || key == 'C'){
+        if(maze == true){
+            maze = false;
+        }else{
+            maze = true;
+        }
+        posx=0;
+        posy=0;
+    }
+
+   // reaksi
+//glVertex3f(-2.5, 32.5, d);
+//glVertex3f(-2.5, 32.5, -d);
+//glVertex3f(-2.5, 27.5, -d);
+//glVertex3f(-2.5, 27.5, d);
+
+//glVertex3f(-1.5+posx, 28.5+posy, d);
+//glVertex3f(-1.5+posx, 28.5+posy, -d);
+//glVertex3f(-1.5+posx, 28.5+posy, -d);
+//glVertex3f(-1.5+posx, 28.5+posy, d);
+
+//q=-1.5,w=1.5,e=28.5,r=31.5;
+
+    if((q+posx == -2.5 && e+posy == 32.5) && (q+posx == -2.5 && e+posy == 32.5)){
+        q = -2.5;
+    }
+    petunjuk();
+    player();
+    display();
+}
+void myinit(){
+glMatrixMode(GL_PROJECTION);
+glLoadIdentity();
+glOrtho(-43.0,43.0,-43.0,43.0,43.0,-43.0);
+glMatrixMode(GL_MODELVIEW);
+glClearColor(1.0,1.0,1.0,1.0);
+glColor3f(0.0,0.0,0.0);
+glShadeModel(GL_FLAT);
+glEnable(GL_DEPTH_TEST);
+}
+int main(int argc, char* argv[]){
+glutInit(&argc,argv);
+glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB | GLUT_DEPTH);
+glutInitWindowSize(500,500);
+glutInitWindowPosition(100,100);
+glutCreateWindow("Kotak");
+glutDisplayFunc(display);
+glutKeyboardFunc(inputan);
+myinit();
+glutMainLoop();
+return 0;
+}
