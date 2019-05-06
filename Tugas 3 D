@@ -518,8 +518,11 @@ void nim(){
 }
 
 void petunjuk(){
-cout<< "nilai x"<<q+posx <<endl;
-cout<< "nilai y"<<e+posy <<endl;
+cout<< "nilai x1 = "<<q+posx <<endl;
+cout<< "nilai y1 = "<<e+posy <<endl;
+cout<< "nilai x2 = "<<w+posx <<endl;
+cout<< "nilai y2 = "<<r+posy <<endl;
+cout<< "================" <<endl;
 }
 void player(){
 //////////////////////////PLAYER///////////////////////////////
@@ -3980,25 +3983,13 @@ void inputan(unsigned char key,int x,int y){
         posx=0;
         posy=0;
     }
-
-   // reaksi
-//glVertex3f(-2.5, 32.5, d);
-//glVertex3f(-2.5, 32.5, -d);
-//glVertex3f(-2.5, 27.5, -d);
-//glVertex3f(-2.5, 27.5, d);
-
-//glVertex3f(-1.5+posx, 28.5+posy, d);
-//glVertex3f(-1.5+posx, 28.5+posy, -d);
-//glVertex3f(-1.5+posx, 28.5+posy, -d);
-//glVertex3f(-1.5+posx, 28.5+posy, d);
-
-//q=-1.5,w=1.5,e=28.5,r=31.5;
-
-    if(q+posx == -2.5 && (e+posy >= 27.5 || e+posy == 29.5) && maze == true){
-        movement=0;
+        // unutk tidak nabrak
+    if((q+posx >= -27.5 && w+posx <= -2.5) && (e+posy == 24.5 || r+posy == 27.5) && maze == true){
+        atas=0;
     }else{
-        movement=0.5;
+        atas=0.5;
     }
+
     petunjuk();
     player();
     display();
