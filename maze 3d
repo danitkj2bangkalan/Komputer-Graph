@@ -9,208 +9,209 @@
 
 using namespace std;
 bool maze = true,dimension = false;
-float posx = 0.0,posy=0.0,rotasi=0.0,d=0.0,inc=0.0,q=-1.5,w=1.5,e=28.5,r=31.5,rotatet=30.0;
+float posx = 0.0,posy=0.0,rotasi=0.0,d=0.0,inc=0.0,q=-1.5,w=1.5,e=28.5,r=31.5,rotatet=30.0,theta = 0.0,incrotate=0.0,randX = (rand()%28)+5,randY = (rand()%28)+5,atas=0.5,kiri=0.5,kanan=0.5,bawah=0.5;
 int a=0,b=0,c=0,countt=0;
 
 void nim(){
         //////////////////////////NIM 0 BAGIAN 1///////////////////////////////
+    glRotated(theta,0,1,0);
     //depan
-        glColor3f(0.0,0.0,0.0);
-    glBegin(GL_POLYGON);
-    glVertex3f(-2.0, 27.0, d);
-    glVertex3f(-1.0, 27.0, d);
-    glVertex3f(-1.0, 27.5, d);
-    glVertex3f(-2.0, 27.5, d);
-    glEnd();
-    //belakang
     glColor3f(0.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glVertex3f(-1.0, 27.0, -d);
-    glVertex3f(-2.0, 27.0, -d);
-    glVertex3f(-2.0, 27.5, -d);
-    glVertex3f(-1.0, 27.5, -d);
+    glVertex3f(-2.0+randX, 27.0+randY, d);
+    glVertex3f(-1.0+randX, 27.0+randY, d);
+    glVertex3f(-1.0+randX, 27.5+randY, d);
+    glVertex3f(-2.0+randX, 27.5+randY, d);
+    glEnd();
+    //belakang
+    //glColor3f(0.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(-1.0+randX, 27.0+randY, -d);
+    glVertex3f(-2.0+randX, 27.0+randY, -d);
+    glVertex3f(-2.0+randX, 27.5+randY, -d);
+    glVertex3f(-1.0+randX, 27.5+randY, -d);
     glEnd();
     //atas
     glColor3f(0.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glVertex3f(-2.0, 27.5, d);
-    glVertex3f(-1.0, 27.5, d);
-    glVertex3f(-1.0, 27.5, -d);
-    glVertex3f(-2.0, 27.5, -d);
+    glVertex3f(-2.0+randX, 27.5+randY, d);
+    glVertex3f(-1.0+randX, 27.5+randY, d);
+    glVertex3f(-1.0+randX, 27.5+randY, -d);
+    glVertex3f(-2.0+randX, 27.5+randY, -d);
     glEnd();
     //bawah
     glColor3f(0.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glVertex3f(-2.0, 27.0, d);
-    glVertex3f(-1.0, 27.0, d);
-    glVertex3f(-1.0, 27.0, -d);
-    glVertex3f(-2.0, 27.0, -d);
+    glVertex3f(-2.0+randX, 27.0+randY, d);
+    glVertex3f(-1.0+randX, 27.0+randY, d);
+    glVertex3f(-1.0+randX, 27.0+randY, -d);
+    glVertex3f(-2.0+randX, 27.0+randY, -d);
     glEnd();
     //kiri
     glColor3f(0.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glVertex3f(-2.0, 27.5, d);
-    glVertex3f(-2.0, 27.5, -d);
-    glVertex3f(-2.0, 27.0, -d);
-    glVertex3f(-2.0, 27.0, d);
+    glVertex3f(-2.0+randX, 27.5+randY, d);
+    glVertex3f(-2.0+randX, 27.5+randY, -d);
+    glVertex3f(-2.0+randX, 27.0+randY, -d);
+    glVertex3f(-2.0+randX, 27.0+randY, d);
     glEnd();
     //kanan
     glColor3f(0.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glVertex3f(-1.0, 27.5, d);
-    glVertex3f(-1.0, 27.5, -d);
-    glVertex3f(-1.0, 27.0, -d);
-    glVertex3f(-1.0, 27.0, d);
+    glVertex3f(-1.0+randX, 27.5+randY, d);
+    glVertex3f(-1.0+randX, 27.5+randY, -d);
+    glVertex3f(-1.0+randX, 27.0+randY, -d);
+    glVertex3f(-1.0+randX, 27.0+randY, d);
     glEnd();
 
     //////////////////////////NIM 0 BAGIAN 2///////////////////////////////
     //depan
     glColor3f(0.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glVertex3f(-2.0, 23.0, d);
-    glVertex3f(-1.0, 23.0, d);
-    glVertex3f(-1.0, 23.5, d);
-    glVertex3f(-2.0, 23.5, d);
+    glVertex3f(-2.0+randX, 23.0+randY, d);
+    glVertex3f(-1.0+randX, 23.0+randY, d);
+    glVertex3f(-1.0+randX, 23.5+randY, d);
+    glVertex3f(-2.0+randX, 23.5+randY, d);
     glEnd();
     //belakang
     glColor3f(0.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glVertex3f(-1.0, 23.0, -d);
-    glVertex3f(-2.0, 23.0, -d);
-    glVertex3f(-2.0, 23.5, -d);
-    glVertex3f(-1.0, 23.5, -d);
+    glVertex3f(-1.0+randX, 23.0+randY, -d);
+    glVertex3f(-2.0+randX, 23.0+randY, -d);
+    glVertex3f(-2.0+randX, 23.5+randY, -d);
+    glVertex3f(-1.0+randX, 23.5+randY, -d);
     glEnd();
     //atas
     glColor3f(0.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glVertex3f(-2.0, 23.5, d);
-    glVertex3f(-1.0, 23.5, d);
-    glVertex3f(-1.0, 23.5, -d);
-    glVertex3f(-2.0, 23.5, -d);
+    glVertex3f(-2.0+randX, 23.5+randY, d);
+    glVertex3f(-1.0+randX, 23.5+randY, d);
+    glVertex3f(-1.0+randX, 23.5+randY, -d);
+    glVertex3f(-2.0+randX, 23.5+randY, -d);
     glEnd();
     //bawah
     glColor3f(0.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glVertex3f(-2.0, 23.0, d);
-    glVertex3f(-1.0, 23.0, d);
-    glVertex3f(-1.0, 23.0, -d);
-    glVertex3f(-2.0, 23.0, -d);
+    glVertex3f(-2.0+randX, 23.0+randY, d);
+    glVertex3f(-1.0+randX, 23.0+randY, d);
+    glVertex3f(-1.0+randX, 23.0+randY, -d);
+    glVertex3f(-2.0+randX, 23.0+randY, -d);
     glEnd();
     //kiri
     glColor3f(0.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glVertex3f(-2.0, 23.5, d);
-    glVertex3f(-2.0, 23.5, -d);
-    glVertex3f(-2.0, 23.0, -d);
-    glVertex3f(-2.0, 23.0, d);
+    glVertex3f(-2.0+randX, 23.5+randY, d);
+    glVertex3f(-2.0+randX, 23.5+randY, -d);
+    glVertex3f(-2.0+randX, 23.0+randY, -d);
+    glVertex3f(-2.0+randX, 23.0+randY, d);
     glEnd();
     //kanan
     glColor3f(0.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glVertex3f(-1.0, 23.5, d);
-    glVertex3f(-1.0, 23.5, -d);
-    glVertex3f(-1.0, 23.0, -d);
-    glVertex3f(-1.0, 23.0, d);
+    glVertex3f(-1.0+randX, 23.5+randY, d);
+    glVertex3f(-1.0+randX, 23.5+randY, -d);
+    glVertex3f(-1.0+randX, 23.0+randY, -d);
+    glVertex3f(-1.0+randX, 23.0+randY, d);
     glEnd();
 
     //////////////////////////NIM 0 BAGIAN 3///////////////////////////////
     //depan
     glColor3f(0.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glVertex3f(-2.0, 23.0, d);
-    glVertex3f(-1.8, 23.0, d);
-    glVertex3f(-1.8, 27.5, d);
-    glVertex3f(-2.0, 27.5, d);
+    glVertex3f(-2.0+randX, 23.0+randY, d);
+    glVertex3f(-1.8+randX, 23.0+randY, d);
+    glVertex3f(-1.8+randX, 27.5+randY, d);
+    glVertex3f(-2.0+randX, 27.5+randY, d);
     glEnd();
     //belakang
     glColor3f(0.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glVertex3f(-1.8, 23.0, -d);
-    glVertex3f(-2.0, 23.0, -d);
-    glVertex3f(-2.0, 27.5, -d);
-    glVertex3f(-1.8, 27.5, -d);
+    glVertex3f(-1.8+randX, 23.0+randY, -d);
+    glVertex3f(-2.0+randX, 23.0+randY, -d);
+    glVertex3f(-2.0+randX, 27.5+randY, -d);
+    glVertex3f(-1.8+randX, 27.5+randY, -d);
     glEnd();
     //atas
     glColor3f(0.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glVertex3f(-2.8, 27.5, d);
-    glVertex3f(-1.8, 27.5, d);
-    glVertex3f(-1.8, 27.5, -d);
-    glVertex3f(-2.8, 27.5, -d);
+    glVertex3f(-2.8+randX, 27.5+randY, d);
+    glVertex3f(-1.8+randX, 27.5+randY, d);
+    glVertex3f(-1.8+randX, 27.5+randY, -d);
+    glVertex3f(-2.8+randX, 27.5+randY, -d);
     glEnd();
     //bawah
     glColor3f(0.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glVertex3f(-2.0, 23.0, d);
-    glVertex3f(-1.8, 23.0, d);
-    glVertex3f(-1.8, 23.0, -d);
-    glVertex3f(-2.0, 23.0, -d);
+    glVertex3f(-2.0+randX, 23.0+randY, d);
+    glVertex3f(-1.8+randX, 23.0+randY, d);
+    glVertex3f(-1.8+randX, 23.0+randY, -d);
+    glVertex3f(-2.0+randX, 23.0+randY, -d);
     glEnd();
     //kiri
     glColor3f(0.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glVertex3f(-2.0, 27.5, d);
-    glVertex3f(-2.0, 27.5, -d);
-    glVertex3f(-2.0, 23.0, -d);
-    glVertex3f(-2.0, 23.0, d);
+    glVertex3f(-2.0+randX, 27.5+randY, d);
+    glVertex3f(-2.0+randX, 27.5+randY, -d);
+    glVertex3f(-2.0+randX, 23.0+randY, -d);
+    glVertex3f(-2.0+randX, 23.0+randY, d);
     glEnd();
     //kanan
     glColor3f(0.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glVertex3f(-1.8, 27.5, d);
-    glVertex3f(-1.8, 27.5, -d);
-    glVertex3f(-1.8, 23.0, -d);
-    glVertex3f(-1.8, 23.0, d);
+    glVertex3f(-1.8+randX, 27.5+randY, d);
+    glVertex3f(-1.8+randX, 27.5+randY, -d);
+    glVertex3f(-1.8+randX, 23.0+randY, -d);
+    glVertex3f(-1.8+randX, 23.0+randY, d);
     glEnd();
 
     //////////////////////////NIM 0 BAGIAN 4///////////////////////////////
     //depan
     glColor3f(0.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glVertex3f(-1.2, 23.0, d);
-    glVertex3f(-1.0, 23.0, d);
-    glVertex3f(-1.0, 27.5, d);
-    glVertex3f(-1.2, 27.5, d);
+    glVertex3f(-1.2+randX, 23.0, d);
+    glVertex3f(-1.0+randX, 23.0, d);
+    glVertex3f(-1.0+randX, 27.5, d);
+    glVertex3f(-1.2+randX, 27.5, d);
     glEnd();
     //belakang
     glColor3f(0.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glVertex3f(-1.0, 23.0, -d);
-    glVertex3f(-1.2, 23.0, -d);
-    glVertex3f(-1.2, 27.5, -d);
-    glVertex3f(-1.0, 27.5, -d);
+    glVertex3f(-1.0+randX, 23.0+randY, -d);
+    glVertex3f(-1.2+randX, 23.0+randY, -d);
+    glVertex3f(-1.2+randX, 27.5+randY, -d);
+    glVertex3f(-1.0+randX, 27.5+randY, -d);
     glEnd();
     //atas
     glColor3f(0.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glVertex3f(-1.2, 27.5, d);
-    glVertex3f(-1.0, 27.5, d);
-    glVertex3f(-1.0, 27.5, -d);
-    glVertex3f(-1.2, 27.5, -d);
+    glVertex3f(-1.2+randX, 27.5+randY, d);
+    glVertex3f(-1.0+randX, 27.5+randY, d);
+    glVertex3f(-1.0+randX, 27.5+randY, -d);
+    glVertex3f(-1.2+randX, 27.5+randY, -d);
     glEnd();
     //bawah
     glColor3f(0.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glVertex3f(-1.2, 23.0, d);
-    glVertex3f(-1.0, 23.0, d);
-    glVertex3f(-1.0, 23.0, -d);
-    glVertex3f(-1.2, 23.0, -d);
+    glVertex3f(-1.2+randX, 23.0+randY, d);
+    glVertex3f(-1.0+randX, 23.0+randY, d);
+    glVertex3f(-1.0+randX, 23.0+randY, -d);
+    glVertex3f(-1.2+randX, 23.0+randY, -d);
     glEnd();
     //kiri
     glColor3f(0.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glVertex3f(-1.2, 27.5, d);
-    glVertex3f(-1.2, 27.5, -d);
-    glVertex3f(-1.2, 23.0, -d);
-    glVertex3f(-1.2, 23.0, d);
+    glVertex3f(-1.2+randX, 27.5+randY, d);
+    glVertex3f(-1.2+randX, 27.5+randY, -d);
+    glVertex3f(-1.2+randX, 23.0+randY, -d);
+    glVertex3f(-1.2+randX, 23.0+randY, d);
     glEnd();
     //kanan
     glColor3f(0.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glVertex3f(-1.0, 27.5, d);
-    glVertex3f(-1.0, 27.5, -d);
-    glVertex3f(-1.0, 23.0, -d);
-    glVertex3f(-1.0, 23.0, d);
+    glVertex3f(-1.0+randX, 27.5+randY, d);
+    glVertex3f(-1.0+randX, 27.5+randY, -d);
+    glVertex3f(-1.0+randX, 23.0+randY, -d);
+    glVertex3f(-1.0+randX, 23.0+randY, d);
     glEnd();
 
 
@@ -218,50 +219,50 @@ void nim(){
     //depan
     glColor3f(0.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glVertex3f(-0.5, 27.0, d);
-    glVertex3f(1.0, 27.0, d);
-    glVertex3f(1.0, 27.5, d);
-    glVertex3f(-0.5, 27.5, d);
+    glVertex3f(-0.5+randX, 27.0+randY, d);
+    glVertex3f(1.0+randX, 27.0+randY, d);
+    glVertex3f(1.0+randX, 27.5+randY, d);
+    glVertex3f(-0.5+randX, 27.5+randY, d);
     glEnd();
     //belakang
     glColor3f(0.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glVertex3f(1.0, 27.0, -d);
-    glVertex3f(-0.5, 27.0, -d);
-    glVertex3f(-0.5, 27.5, -d);
-    glVertex3f(1.0, 27.5, -d);
+    glVertex3f(1.0+randX, 27.0+randY, -d);
+    glVertex3f(-0.5+randX, 27.0+randY, -d);
+    glVertex3f(-0.5+randX, 27.5+randY, -d);
+    glVertex3f(1.0+randX, 27.5+randY, -d);
     glEnd();
     //atas
     glColor3f(0.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glVertex3f(-0.5, 27.5, d);
-    glVertex3f(1.0, 27.5, d);
-    glVertex3f(1.0, 27.5, -d);
-    glVertex3f(-0.5, 27.5, -d);
+    glVertex3f(-0.5+randX, 27.5+randY, d);
+    glVertex3f(1.0+randX, 27.5+randY, d);
+    glVertex3f(1.0+randX, 27.5+randY, -d);
+    glVertex3f(-0.5+randX, 27.5+randY, -d);
     glEnd();
     //bawah
     glColor3f(0.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glVertex3f(-0.5, 27.0, d);
-    glVertex3f(1.0, 27.0, d);
-    glVertex3f(1.0, 27.0, -d);
-    glVertex3f(-0.5, 27.0, -d);
+    glVertex3f(-0.5+randX, 27.0+randY, d);
+    glVertex3f(1.0+randX, 27.0+randY, d);
+    glVertex3f(1.0+randX, 27.0+randY, -d);
+    glVertex3f(-0.5+randX, 27.0+randY, -d);
     glEnd();
     //kiri
     glColor3f(0.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glVertex3f(-0.5, 27.5, d);
-    glVertex3f(-0.5, 27.5, -d);
-    glVertex3f(-0.5, 27.0, -d);
-    glVertex3f(-0.5, 27.0, d);
+    glVertex3f(-0.5+randX, 27.5+randY, d);
+    glVertex3f(-0.5+randX, 27.5+randY, -d);
+    glVertex3f(-0.5+randX, 27.0+randY, -d);
+    glVertex3f(-0.5+randX, 27.0+randY, d);
     glEnd();
     //kanan
     glColor3f(0.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glVertex3f(1.0, 27.5, d);
-    glVertex3f(1.0, 27.5, -d);
-    glVertex3f(1.0, 27.0, -d);
-    glVertex3f(1.0, 27.0, d);
+    glVertex3f(1.0+randX, 27.5+randY, d);
+    glVertex3f(1.0+randX, 27.5+randY, -d);
+    glVertex3f(1.0+randX, 27.0+randY, -d);
+    glVertex3f(1.0+randX, 27.0+randY, d);
     glEnd();
 
 
@@ -269,256 +270,259 @@ void nim(){
     //depan
     glColor3f(0.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glVertex3f(-0.5, 25.5, d);
-    glVertex3f(1.0, 25.5, d);
-    glVertex3f(1.0, 26.0, d);
-    glVertex3f(-0.5, 26.0, d);
+    glVertex3f(-0.5+randX, 25.5+randY, d);
+    glVertex3f(1.0+randX, 25.5+randY, d);
+    glVertex3f(1.0+randX, 26.0+randY, d);
+    glVertex3f(-0.5+randX, 26.0+randY, d);
     glEnd();
     //belakang
     glColor3f(0.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glVertex3f(1.0, 25.5, -d);
-    glVertex3f(-0.5, 25.5, -d);
-    glVertex3f(-0.5, 26.0, -d);
-    glVertex3f(1.0, 26.0, -d);
+    glVertex3f(1.0+randX, 25.5+randY, -d);
+    glVertex3f(-0.5+randX, 25.5+randY, -d);
+    glVertex3f(-0.5+randX, 26.0+randY, -d);
+    glVertex3f(1.0+randX, 26.0+randY, -d);
     glEnd();
     //atas
     glColor3f(0.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glVertex3f(-0.5, 26.0, d);
-    glVertex3f(1.0, 26.0, d);
-    glVertex3f(1.0, 26.0, -d);
-    glVertex3f(-0.5, 26.0, -d);
+    glVertex3f(-0.5+randX, 26.0+randY, d);
+    glVertex3f(1.0+randX, 26.0+randY, d);
+    glVertex3f(1.0+randX, 26.0+randY, -d);
+    glVertex3f(-0.5+randX, 26.0+randY, -d);
     glEnd();
     //bawah
     glColor3f(0.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glVertex3f(-0.5, 25.5, d);
-    glVertex3f(1.0, 25.5, d);
-    glVertex3f(1.0, 25.5, -d);
-    glVertex3f(-0.5, 25.5, -d);
+    glVertex3f(-0.5+randX, 25.5+randY, d);
+    glVertex3f(1.0+randX, 25.5+randY, d);
+    glVertex3f(1.0+randX, 25.5+randY, -d);
+    glVertex3f(-0.5+randX, 25.5+randY, -d);
     glEnd();
     //kiri
     glColor3f(0.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glVertex3f(-0.5, 26.0, d);
-    glVertex3f(-0.5, 26.0, -d);
-    glVertex3f(-0.5, 25.5, -d);
-    glVertex3f(-0.5, 25.5, d);
+    glVertex3f(-0.5+randX, 26.0+randY, d);
+    glVertex3f(-0.5+randX, 26.0+randY, -d);
+    glVertex3f(-0.5+randX, 25.5+randY, -d);
+    glVertex3f(-0.5+randX, 25.5+randY, d);
     glEnd();
     //kanan
     glColor3f(0.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glVertex3f(1.0, 26.0, d);
-    glVertex3f(1.0, 26.0, -d);
-    glVertex3f(1.0, 25.5, -d);
-    glVertex3f(1.0, 25.5, d);
+    glVertex3f(1.0+randX, 26.0+randY, d);
+    glVertex3f(1.0+randX, 26.0+randY, -d);
+    glVertex3f(1.0+randX, 25.5+randY, -d);
+    glVertex3f(1.0+randX, 25.5+randY, d);
     glEnd();
 
     //////////////////////////NIM 9 BAGIAN 3///////////////////////////////
     //depan
     glColor3f(0.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glVertex3f(-0.5, 23.0, d);
-    glVertex3f(1.0, 23.0, d);
-    glVertex3f(1.0, 23.5, d);
-    glVertex3f(-0.5, 23.5, d);
+    glVertex3f(-0.5+randX, 23.0+randY, d);
+    glVertex3f(1.0+randX, 23.0+randY, d);
+    glVertex3f(1.0+randX, 23.5+randY, d);
+    glVertex3f(-0.5+randX, 23.5+randY, d);
     glEnd();
     //belakang
     glColor3f(0.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glVertex3f(1.0, 23.0, -d);
-    glVertex3f(-0.5, 23.0, -d);
-    glVertex3f(-0.5, 23.5, -d);
-    glVertex3f(1.0, 23.5, -d);
+    glVertex3f(1.0+randX, 23.0+randY, -d);
+    glVertex3f(-0.5+randX, 23.0+randY, -d);
+    glVertex3f(-0.5+randX, 23.5+randY, -d);
+    glVertex3f(1.0+randX, 23.5+randY, -d);
     glEnd();
     //atas
     glColor3f(0.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glVertex3f(-0.5, 23.5, d);
-    glVertex3f(1.0, 23.5, d);
-    glVertex3f(1.0, 23.5, -d);
-    glVertex3f(-0.5, 23.5, -d);
+    glVertex3f(-0.5+randX, 23.5+randY, d);
+    glVertex3f(1.0+randX, 23.5+randY, d);
+    glVertex3f(1.0+randX, 23.5+randY, -d);
+    glVertex3f(-0.5+randX, 23.5+randY, -d);
     glEnd();
     //bawah
     glColor3f(0.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glVertex3f(-0.5, 23.0, d);
-    glVertex3f(1.0, 23.0, d);
-    glVertex3f(1.0, 23.0, -d);
-    glVertex3f(-0.5, 23.0, -d);
+    glVertex3f(-0.5+randX, 23.0+randY, d);
+    glVertex3f(1.0+randX, 23.0+randY, d);
+    glVertex3f(1.0+randX, 23.0+randY, -d);
+    glVertex3f(-0.5+randX, 23.0+randY, -d);
     glEnd();
     //kiri
     glColor3f(0.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glVertex3f(-0.5, 23.5, d);
-    glVertex3f(-0.5, 23.5, -d);
-    glVertex3f(-0.5, 23.0, -d);
-    glVertex3f(-0.5, 23.0, d);
+    glVertex3f(-0.5+randX, 23.5+randY, d);
+    glVertex3f(-0.5+randX, 23.5+randY, -d);
+    glVertex3f(-0.5+randX, 23.0+randY, -d);
+    glVertex3f(-0.5+randX, 23.0+randY, d);
     glEnd();
     //kanan
     glColor3f(0.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glVertex3f(1.0, 23.5, d);
-    glVertex3f(1.0, 23.5, -d);
-    glVertex3f(1.0, 23.0, -d);
-    glVertex3f(1.0, 23.0, d);
+    glVertex3f(1.0+randX, 23.5+randY, d);
+    glVertex3f(1.0+randX, 23.5+randY, -d);
+    glVertex3f(1.0+randX, 23.0+randY, -d);
+    glVertex3f(1.0+randX, 23.0+randY, d);
     glEnd();
 
     //////////////////////////NIM 9 BAGIAN 4///////////////////////////////
     //depan
     glColor3f(0.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glVertex3f(-0.5, 25.5, d);
-    glVertex3f(-0.3, 25.5, d);
-    glVertex3f(-0.3, 27.5, d);
-    glVertex3f(-0.5, 27.5, d);
+    glVertex3f(-0.5+randX, 25.5+randY, d);
+    glVertex3f(-0.3+randX, 25.5+randY, d);
+    glVertex3f(-0.3+randX, 27.5+randY, d);
+    glVertex3f(-0.5+randX, 27.5+randY, d);
     glEnd();
     //belakang
     glColor3f(0.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glVertex3f(-0.3, 25.5, -d);
-    glVertex3f(-0.5, 25.5, -d);
-    glVertex3f(-0.5, 27.5, -d);
-    glVertex3f(-0.3, 27.5, -d);
+    glVertex3f(-0.3+randX, 25.5+randY, -d);
+    glVertex3f(-0.5+randX, 25.5+randY, -d);
+    glVertex3f(-0.5+randX, 27.5+randY, -d);
+    glVertex3f(-0.3+randX, 27.5+randY, -d);
     glEnd();
     //atas
     glColor3f(0.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glVertex3f(-0.5, 27.5, d);
-    glVertex3f(-0.3, 27.5, d);
-    glVertex3f(-0.3, 27.5, -d);
-    glVertex3f(-0.5, 27.5, -d);
+    glVertex3f(-0.5+randX, 27.5+randY, d);
+    glVertex3f(-0.3+randX, 27.5+randY, d);
+    glVertex3f(-0.3+randX, 27.5+randY, -d);
+    glVertex3f(-0.5+randX, 27.5+randY, -d);
     glEnd();
     //bawah
     glColor3f(0.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glVertex3f(-0.5, 25.5, d);
-    glVertex3f(-0.3, 25.5, d);
-    glVertex3f(-0.3, 25.5, -d);
-    glVertex3f(-0.5, 25.5, -d);
+    glVertex3f(-0.5+randX, 25.5+randY, d);
+    glVertex3f(-0.3+randX, 25.5+randY, d);
+    glVertex3f(-0.3+randX, 25.5+randY, -d);
+    glVertex3f(-0.5+randX, 25.5+randY, -d);
     glEnd();
     //kiri
     glColor3f(0.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glVertex3f(-0.5, 27.5, d);
-    glVertex3f(-0.5, 27.5, -d);
-    glVertex3f(-0.5, 25.5, -d);
-    glVertex3f(-0.5, 25.5, d);
+    glVertex3f(-0.5+randX, 27.5+randY, d);
+    glVertex3f(-0.5+randX, 27.5+randY, -d);
+    glVertex3f(-0.5+randX, 25.5+randY, -d);
+    glVertex3f(-0.5+randX, 25.5+randY, d);
     glEnd();
     //kanan
     glColor3f(0.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glVertex3f(-0.3, 27.5, d);
-    glVertex3f(-0.3, 27.5, -d);
-    glVertex3f(-0.3, 25.5, -d);
-    glVertex3f(-0.3, 25.5, d);
+    glVertex3f(-0.3+randX, 27.5+randY, d);
+    glVertex3f(-0.3+randX, 27.5+randY, -d);
+    glVertex3f(-0.3+randX, 25.5+randY, -d);
+    glVertex3f(-0.3+randX, 25.5+randY, d);
     glEnd();
 
     //////////////////////////NIM 9 BAGIAN 5///////////////////////////////
     //depan
     glColor3f(0.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glVertex3f(0.8, 23.0, d);
-    glVertex3f(0.1, 23.0, d);
-    glVertex3f(0.1, 27.5, d);
-    glVertex3f(0.8, 27.5, d);
+    glVertex3f(0.8+randX, 23.0+randY, d);
+    glVertex3f(0.1+randX, 23.0+randY, d);
+    glVertex3f(0.1+randX, 27.5+randY, d);
+    glVertex3f(0.8+randX, 27.5+randY, d);
     glEnd();
     //belakang
     glColor3f(0.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glVertex3f(0.1, 23.0, -d);
-    glVertex3f(0.8, 23.0, -d);
-    glVertex3f(0.8, 27.5, -d);
-    glVertex3f(0.1, 27.5, -d);
+    glVertex3f(0.1+randX, 23.0+randY, -d);
+    glVertex3f(0.8+randX, 23.0+randY, -d);
+    glVertex3f(0.8+randX, 27.5+randY, -d);
+    glVertex3f(0.1+randX, 27.5+randY, -d);
     glEnd();
     //atas
     glColor3f(0.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glVertex3f(0.8, 27.5, d);
-    glVertex3f(0.1, 27.5, d);
-    glVertex3f(0.1, 27.5, -d);
-    glVertex3f(0.8, 27.5, -d);
+    glVertex3f(0.8+randX, 27.5+randY, d);
+    glVertex3f(0.1+randX, 27.5+randY, d);
+    glVertex3f(0.1+randX, 27.5+randY, -d);
+    glVertex3f(0.8+randX, 27.5+randY, -d);
     glEnd();
     //bawah
     glColor3f(0.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glVertex3f(0.8, 23.0, d);
-    glVertex3f(0.1, 23.0, d);
-    glVertex3f(0.1, 23.0, -d);
-    glVertex3f(0.8, 23.0, -d);
+    glVertex3f(0.8+randX, 23.0+randY, d);
+    glVertex3f(0.1+randX, 23.0+randY, d);
+    glVertex3f(0.1+randX, 23.0+randY, -d);
+    glVertex3f(0.8+randX, 23.0+randY, -d);
     glEnd();
     //kiri
     glColor3f(0.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glVertex3f(0.8, 27.5, d);
-    glVertex3f(0.8, 27.5, -d);
-    glVertex3f(0.8, 23.0, -d);
-    glVertex3f(0.8, 23.0, d);
+    glVertex3f(0.8+randX, 27.5+randY, d);
+    glVertex3f(0.8+randX, 27.5+randY, -d);
+    glVertex3f(0.8+randX, 23.0+randY, -d);
+    glVertex3f(0.8+randX, 23.0+randY, d);
     glEnd();
     //kanan
     glColor3f(0.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glVertex3f(0.1, 27.5, d);
-    glVertex3f(0.1, 27.5, -d);
-    glVertex3f(0.1, 23.0, -d);
-    glVertex3f(0.1, 23.0, d);
+    glVertex3f(0.1+randX, 27.5+randY, d);
+    glVertex3f(0.1+randX, 27.5+randY, -d);
+    glVertex3f(0.1+randX, 23.0+randY, -d);
+    glVertex3f(0.1+randX, 23.0+randY, d);
     glEnd();
 
     //////////////////////////NIM 1///////////////////////////////
     //depan
     glColor3f(0.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glVertex3f(1.5, 23.0, d);
-    glVertex3f(2.0, 23.0, d);
-    glVertex3f(2.0, 27.5, d);
-    glVertex3f(1.5, 27.5, d);
+    glVertex3f(1.5+randX, 23.0+randY, d);
+    glVertex3f(2.0+randX, 23.0+randY, d);
+    glVertex3f(2.0+randX, 27.5+randY, d);
+    glVertex3f(1.5+randX, 27.5+randY, d);
     glEnd();
     //belakang
     glColor3f(0.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glVertex3f(2.0, 23.0, -d);
-    glVertex3f(1.5, 23.0, -d);
-    glVertex3f(1.5, 27.5, -d);
-    glVertex3f(2.0, 27.5, -d);
+    glVertex3f(2.0+randX, 23.0+randY, -d);
+    glVertex3f(1.5+randX, 23.0+randY, -d);
+    glVertex3f(1.5+randX, 27.5+randY, -d);
+    glVertex3f(2.0+randX, 27.5+randY, -d);
     glEnd();
     //atas
     glColor3f(0.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glVertex3f(1.5, 27.5, d);
-    glVertex3f(2.0, 27.5, d);
-    glVertex3f(2.0, 27.5, -d);
-    glVertex3f(1.5, 27.5, -d);
+    glVertex3f(1.5+randX, 27.5+randY, d);
+    glVertex3f(2.0+randX, 27.5+randY, d);
+    glVertex3f(2.0+randX, 27.5+randY, -d);
+    glVertex3f(1.5+randX, 27.5+randY, -d);
     glEnd();
     //bawah
     glColor3f(0.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glVertex3f(1.5, 23.0, d);
-    glVertex3f(2.0, 23.0, d);
-    glVertex3f(2.0, 23.0, -d);
-    glVertex3f(1.5, 23.0, -d);
+    glVertex3f(1.5+randX, 23.0+randY, d);
+    glVertex3f(2.0+randX, 23.0+randY, d);
+    glVertex3f(2.0+randX, 23.0+randY, -d);
+    glVertex3f(1.5+randX, 23.0+randY, -d);
     glEnd();
     //kiri
     glColor3f(0.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glVertex3f(1.5, 27.5, d);
-    glVertex3f(1.5, 27.5, -d);
-    glVertex3f(1.5, 23.0, -d);
-    glVertex3f(1.5, 23.0, d);
+    glVertex3f(1.5+randX, 27.5+randY, d);
+    glVertex3f(1.5+randX, 27.5+randY, -d);
+    glVertex3f(1.5+randX, 23.0+randY, -d);
+    glVertex3f(1.5+randX, 23.0+randY, d);
     glEnd();
     //kanan
     glColor3f(0.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glVertex3f(2.0, 27.5, d);
-    glVertex3f(2.0, 27.5, -d);
-    glVertex3f(2.0, 23.0, -d);
-    glVertex3f(2.0, 23.0, d);
+    glVertex3f(2.0+randX, 27.5+randY, d);
+    glVertex3f(2.0+randX, 27.5+randY, -d);
+    glVertex3f(2.0+randX, 23.0+randY, -d);
+    glVertex3f(2.0+randX, 23.0+randY, d);
     glEnd();
 }
 
 void petunjuk(){
-cout<< "nilai x"<<q+posx <<endl;
-cout<< "nilai y"<<e+posy <<endl;
+cout<< "nilai x1 = "<<q+posx <<endl;
+cout<< "nilai y1 = "<<e+posy <<endl;
+cout<< "nilai x2 = "<<w+posx <<endl;
+cout<< "nilai y2 = "<<r+posy <<endl;
+cout<< "================" <<endl;
 }
 void player(){
 //////////////////////////PLAYER///////////////////////////////
@@ -3910,13 +3914,13 @@ glFlush();
 
 void inputan(unsigned char key,int x,int y){
     if(key == 'w' || key == 'W'){
-        posy+=0.5;
+        posy+=atas;
     }else if(key == 'a' || key == 'A'){
-        posx-=0.5;
+        posx-=kiri;
     }else if(key == 's' || key == 'S'){
-        posy-=0.5;
+        posy-=bawah;
     }else if(key == 'd' || key == 'D'){
-        posx+=0.5;
+        posx+=kanan;
     }else if(key == 'j' || key == 'J'){
         rotasi+=inc;
         rotatet=rotasi;
@@ -3950,6 +3954,9 @@ void inputan(unsigned char key,int x,int y){
             a=1;
             b=0;
             c=0;
+            randX = 0;
+            randY = 0;
+            incrotate = 0.03;
         }else if(countt%2==0){
             d=0;
             inc=0;
@@ -3957,37 +3964,44 @@ void inputan(unsigned char key,int x,int y){
             a=0;
             b=0;
             c=0;
+            incrotate = 0.0;
+            theta= 0.0;
         }
     }else if(key == 'c' || key == 'C'){
-        if(maze == true){
+        if(maze == true ){
             maze = false;
         }else{
             maze = true;
         }
+        if( d==1.0 ){
+            randX = 0;
+            randY = 0;
+        }else{
+            randX = (rand()%28)+5;
+            randY = (rand()%28)+5;
+        }
         posx=0;
         posy=0;
     }
-
-   // reaksi
-//glVertex3f(-2.5, 32.5, d);
-//glVertex3f(-2.5, 32.5, -d);
-//glVertex3f(-2.5, 27.5, -d);
-//glVertex3f(-2.5, 27.5, d);
-
-//glVertex3f(-1.5+posx, 28.5+posy, d);
-//glVertex3f(-1.5+posx, 28.5+posy, -d);
-//glVertex3f(-1.5+posx, 28.5+posy, -d);
-//glVertex3f(-1.5+posx, 28.5+posy, d);
-
-//q=-1.5,w=1.5,e=28.5,r=31.5;
-
-    if(q+posx == -2.5 && (e+posy == 28.5 && e+posy == 32.5)){
-        posx+=0;
+        // unutk tidak nabrak
+    if((q+posx >= -27.5 && w+posx <= -2.5) && (e+posy == 24.5 || r+posy == 27.5) && maze == true){
+        atas=0;
+    }else if((q+posx >= -2.5 && w+posx <= 2.5) && (e+posy == 29.5 || r+posy == 22.5) && maze == true){
+        atas=0;
+    }else{
+        atas=0.5;
     }
+
     petunjuk();
     player();
     display();
 }
+
+void myIdle(){
+    theta +=incrotate;
+    display();
+}
+
 void myinit(){
 glMatrixMode(GL_PROJECTION);
 glLoadIdentity();
@@ -4006,6 +4020,7 @@ glutInitWindowPosition(100,100);
 glutCreateWindow("Maze 3D");
 glutDisplayFunc(display);
 glutKeyboardFunc(inputan);
+glutIdleFunc(myIdle);
 myinit();
 glutMainLoop();
 return 0;
