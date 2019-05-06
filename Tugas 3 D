@@ -3986,6 +3986,8 @@ void inputan(unsigned char key,int x,int y){
         // unutk tidak nabrak
     if((q+posx >= -27.5 && w+posx <= -2.5) && (e+posy == 24.5 || r+posy == 27.5) && maze == true){
         atas=0;
+    }else if((q+posx >= -2.5 && w+posx <= 2.5) && (e+posy == 29.5 || r+posy == 22.5) && maze == true){
+        atas=0;
     }else{
         atas=0.5;
     }
