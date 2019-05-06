@@ -9,7 +9,7 @@
 
 using namespace std;
 bool maze = true,dimension = false;
-float posx = 0.0,posy=0.0,rotasi=0.0,d=0.0,inc=0.0,q=-1.5,w=1.5,e=28.5,r=31.5,rotatet=30.0,theta = 0.0,incrotate=0.0,randX = (rand()%4)+1,randY = (rand()%4)+1;
+float posx = 0.0,posy=0.0,rotasi=0.0,d=0.0,inc=0.0,q=-1.5,w=1.5,e=28.5,r=31.5,rotatet=30.0,theta = 0.0,incrotate=0.0,randX = (rand()%28)+5,randY = (rand()%28)+5;
 int a=0,b=0,c=0,countt=0;
 
 void nim(){
@@ -3974,8 +3974,8 @@ void inputan(unsigned char key,int x,int y){
             randX = 0;
             randY = 0;
         }else{
-            randX = (rand()%4)+1;
-            randY = (rand()%4)+1;
+            randX = (rand()%28)+5;
+            randY = (rand()%28)+5;
         }
         posx=0;
         posy=0;
