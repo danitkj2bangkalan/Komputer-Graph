@@ -9,7 +9,7 @@
 
 using namespace std;
 bool maze = true,dimension = false;
-float posx = 0.0,posy=0.0,rotasi=0.0,d=0.0,inc=0.0,q=-1.5,w=1.5,e=28.5,r=31.5,rotatet=30.0,theta = 0.0,incrotate=0.0,randX = (rand()%28)+5,randY = (rand()%28)+5;
+float posx = 0.0,posy=0.0,rotasi=0.0,d=0.0,inc=0.0,q=-1.5,w=1.5,e=28.5,r=31.5,rotatet=30.0,theta = 0.0,incrotate=0.0,randX = (rand()%28)+5,randY = (rand()%28)+5,atas=0.5,kiri=0.5,kanan=0.5,bawah=0.5;
 int a=0,b=0,c=0,countt=0;
 
 void nim(){
@@ -3911,13 +3911,13 @@ glFlush();
 
 void inputan(unsigned char key,int x,int y){
     if(key == 'w' || key == 'W'){
-        posy+=0.5;
+        posy+=atas;
     }else if(key == 'a' || key == 'A'){
-        posx-=0.5;
+        posx-=kiri;
     }else if(key == 's' || key == 'S'){
-        posy-=0.5;
+        posy-=bawah;
     }else if(key == 'd' || key == 'D'){
-        posx+=0.5;
+        posx+=kanan;
     }else if(key == 'j' || key == 'J'){
         rotasi+=inc;
         rotatet=rotasi;
@@ -3994,8 +3994,10 @@ void inputan(unsigned char key,int x,int y){
 
 //q=-1.5,w=1.5,e=28.5,r=31.5;
 
-    if(q+posx == -2.5 && (e+posy == 28.5 && e+posy == 32.5)){
-        posx+=0;
+    if(q+posx == -2.5 && (e+posy >= 27.5 || e+posy == 29.5) && maze == true){
+        movement=0;
+    }else{
+        movement=0.5;
     }
     petunjuk();
     player();
