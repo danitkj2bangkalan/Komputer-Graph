@@ -1,0 +1,337 @@
+#ifdef __APPLE__
+#include <GLUT/glut.h>
+#else
+#include <GL/glut.h>
+#endif
+
+#include <stdlib.h>
+#include <math.h>
+
+bool diff = true, spec = true, amb = true;
+float theta = 0.0;
+float scale=16;
+float c1=0.5,c2=0.5,c3=0.5,sz=1;
+
+void rect3d(float x1,float y1, float z1, float x2,float y2, float z2)
+{
+    glColor3f(c1,c2,c3);
+//    atas bawah
+    glBegin(GL_POLYGON);
+    glNormal3f(0,1,0);
+    glVertex3f(x1,y1,z1);
+    glVertex3f(-x1,y1,z1);
+    glVertex3f(-x2,y2,z2);
+    glVertex3f(x2,y2,z2);
+    glEnd();
+    glBegin(GL_POLYGON);
+    glNormal3f(0,-1,0);
+    glVertex3f(x1,-y1,z1);
+    glVertex3f(-x1,-y1,z1);
+    glVertex3f(-x2,-y2,z2);
+    glVertex3f(x2,-y2,z2);
+    glEnd();
+
+//    depan blakang
+    glBegin(GL_POLYGON);
+    glNormal3f(0,0,1);
+    glVertex3f(x1,y1,z1);
+    glVertex3f(-x1,y1,z1);
+    glVertex3f(-x1,-y1,z1);
+    glVertex3f(x1,-y1,z1);
+    glEnd();
+    glBegin(GL_POLYGON);
+    glNormal3f(0,0,-1);
+    glVertex3f(x2,y2,z2);
+    glVertex3f(-x2,y2,z2);
+    glVertex3f(-x2,-y2,z2);
+    glVertex3f(x2,-y2,z2);
+    glEnd();
+
+//    kanan kiri
+    glBegin(GL_POLYGON);
+    glNormal3f(1,0,0);
+    glVertex3f(x1,y1,z1);
+    glVertex3f(x1,-y1,z1);
+    glVertex3f(x2,-y2,z2);
+    glVertex3f(x2,y2,z2);
+    glEnd();
+    glBegin(GL_POLYGON);
+    glNormal3f(-1,0,0);
+    glVertex3f(-x1,y1,z1);
+    glVertex3f(-x1,-y1,z1);
+    glVertex3f(-x2,-y2,z2);
+    glVertex3f(-x2,y2,z2);
+    glEnd();
+
+}
+
+void model()
+{
+    glLoadIdentity();
+    glRotated(-15, 1,1,0);
+    GLfloat mat_specular[] = { 0.7, 0.7, 0.7, 1.0 };
+    GLfloat mat_shininess[] = { 10.0 };
+    GLfloat mat_diffuse[] = { 0.7, 0.7, 0.7, 1.0 };
+    glMaterialfv(GL_FRONT, GL_SPECULAR, mat_specular);
+    glMaterialfv(GL_FRONT, GL_SHININESS, mat_shininess);
+    glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_diffuse);
+    glRotatef(theta, 1,1,1);
+}
+void balokH(void){
+    rect3d(3,1,1,3,1,-1);
+}
+void balokH2(void){
+    rect3d(1.5,1,1,1.5,1,-1);
+}
+void balokV(void){
+    rect3d(1,4,1,1,4,-1);
+}
+void balokV2(void){
+    rect3d(1,2,1,1,2,-1);
+}
+void objek(void){
+    glPushMatrix();
+    glScaled(sz,sz,sz);
+//    0
+    glPushMatrix();
+    glTranslated(-7,0,0);
+    glPushMatrix();
+    glTranslated(0,3,0);
+    balokH();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(0,-3,0);
+    balokH();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(2,0,0);
+    balokV();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(-2,0,0);
+    balokV();
+    glPopMatrix();
+    glPopMatrix();
+
+//    2
+    glPushMatrix();
+    glTranslated(0,0,0);
+    glPushMatrix();
+    glTranslated(0,3,0);
+    balokH();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(0,-3,0);
+    balokH();
+    glPopMatrix();
+
+    glPushMatrix();
+    balokH();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(2,2,0);
+    balokV2();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(-2,-2,0);
+    balokV2();
+    glPopMatrix();
+    glPopMatrix();
+
+//    3
+    glPushMatrix();
+    glTranslated(7,0,0);
+    glPushMatrix();
+    glTranslated(0,3,0);
+    balokH();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(0,-3,0);
+    balokH();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(2,0,0);
+    balokV();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(0,0,0);
+    balokH2();
+    glPopMatrix();
+    glPopMatrix();
+
+    glPopMatrix();
+}
+
+
+
+void display()
+{
+    glClear(GL_COLOR_BUFFER_BIT| GL_DEPTH_BUFFER_BIT);
+    model();
+    glPushMatrix();
+    objek();
+    glPopMatrix();
+    glFlush();
+}
+
+
+
+
+
+void reshape (int w, int h)
+{
+    glViewport (0, 0, (GLsizei) w, (GLsizei) h);
+    glMatrixMode (GL_PROJECTION);
+    glLoadIdentity();
+    if (w <= h)
+        glOrtho (-scale, scale, -scale*(GLfloat)h/(GLfloat)w,
+                 scale*(GLfloat)h/(GLfloat)w, scale, -scale);
+    else
+        glOrtho (-scale*(GLfloat)w/(GLfloat)h, scale*(GLfloat)w/(GLfloat)h, -
+                 scale, scale, scale, -scale);
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+}
+void cahaya()
+{
+    GLfloat light_position_spec[] = {1, 0, 0, 0.0 };
+    GLfloat specular_light[] = {1.0, 0, 0, 0.0 };
+    glLightfv(GL_LIGHT0, GL_POSITION, light_position_spec);
+    glLightfv(GL_LIGHT0, GL_SPECULAR, specular_light);
+
+    GLfloat light_position_diff[] = {1, 0, 0, 0.0};
+    GLfloat diffuse_light[] = {1.0, 0, 0, 0.0 };
+    glLightfv(GL_LIGHT1, GL_POSITION, light_position_diff);
+    glLightfv(GL_LIGHT1, GL_DIFFUSE, diffuse_light);
+
+    GLfloat light_position_spec2[] = {-1, 0, 0, 0.0 };
+    GLfloat specular_light2[] = {1.0, 1, 0, 1.0 };
+    glLightfv(GL_LIGHT2, GL_POSITION, light_position_spec2);
+    glLightfv(GL_LIGHT2, GL_SPECULAR, specular_light2);
+
+    GLfloat light_position_diff2[] = {-1, 0, 0, 0.0};
+    GLfloat diffuse_light2[] = {1.0, 1, 0, 1.0 };
+    glLightfv(GL_LIGHT3, GL_POSITION, light_position_diff2);
+    glLightfv(GL_LIGHT3, GL_DIFFUSE, diffuse_light2);
+
+    GLfloat light_position_spec3[] = {0, 1, 0, 0.0 };
+    GLfloat specular_light3[] = {0.0, 1, 0, 0.0 };
+    glLightfv(GL_LIGHT4, GL_POSITION, light_position_spec3);
+    glLightfv(GL_LIGHT4, GL_SPECULAR, specular_light3);
+
+    GLfloat light_position_diff3[] = {0, 1, 0, 0.0};
+    GLfloat diffuse_light3[] = {0.0, 1, 0, 0.0 };
+    glLightfv(GL_LIGHT5, GL_POSITION, light_position_diff3);
+    glLightfv(GL_LIGHT5, GL_DIFFUSE, diffuse_light3);
+
+    GLfloat light_position_spec4[] = {0, 0, -1, 0.0 };
+    GLfloat specular_light4[] = {1.0, 0, 1, 1.0 };
+    glLightfv(GL_LIGHT6, GL_POSITION, light_position_spec4);
+    glLightfv(GL_LIGHT6, GL_SPECULAR, specular_light4);
+
+    GLfloat light_position_diff4[] = {0, 0, -1, 0.0};
+    GLfloat diffuse_light4[] = {1, 0, 1, 1.0 };
+    glLightfv(GL_LIGHT7, GL_POSITION, light_position_diff4);
+    glLightfv(GL_LIGHT7, GL_DIFFUSE, diffuse_light4);
+
+    GLfloat ambient_light[] = {0.7, 0.7, 0.7, 1.0};
+    glLightModelfv(GL_LIGHT_MODEL_AMBIENT, ambient_light);
+
+    glEnable(GL_LIGHTING);
+    glEnable(GL_LIGHT0);
+    glEnable(GL_LIGHT1);
+    glEnable(GL_LIGHT2);
+    glEnable(GL_LIGHT3);
+    glEnable(GL_LIGHT4);
+    glEnable(GL_LIGHT5);
+    glEnable(GL_LIGHT6);
+    glEnable(GL_LIGHT7);
+    glEnable(GL_COLOR_MATERIAL);
+}
+void myinit()
+{
+    glClearColor (0, 0, 0, 0.3);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    glOrtho(-50, 50, -50, 50, -50, 50);
+    glMatrixMode(GL_MODELVIEW);
+    glEnable(GL_BLEND);
+    glEnable(GL_DEPTH_TEST);
+    glShadeModel (GL_FLAT);
+
+}
+void myIdle()
+{
+    theta +=0.003;
+    display();
+}
+void mykey(unsigned char key, int mouseX, int mouseY)
+{
+    if (key=='1')
+    {
+        if (amb == true)
+        {
+            GLfloat ambient_light[] = { 0.3, 0.3, 0.3, 1.0 };
+            glLightModelfv(GL_LIGHT_MODEL_AMBIENT,ambient_light);
+            amb = false;
+        }
+        else
+        {
+            GLfloat ambient_light[] = { 0.9, 0.9, 0.9, 1.0 };
+            glLightModelfv(GL_LIGHT_MODEL_AMBIENT,ambient_light);
+            amb = true;
+        }
+    }
+    if (key=='2')
+    {
+        if (diff == true)
+        {
+            glDisable(GL_LIGHT0);
+            diff = false;
+        }
+        else
+        {
+            glEnable(GL_LIGHT0);
+            diff = true;
+        }
+    }
+    if (key=='3')
+    {
+        if (spec == true)
+        {
+            glDisable(GL_LIGHT1);
+            spec = false;
+        }
+        else
+        {
+            glEnable(GL_LIGHT1);
+            spec = true;
+        }
+    }
+    display();
+}
+int main(int argc, char* argv[])
+{
+    glutInit(&argc,argv);
+    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB | GLUT_DEPTH);
+    glutInitWindowSize(400,400);
+    glutInitWindowPosition(100,100);
+    glutCreateWindow("170411100023_MuhammadMushlihS.");
+    cahaya();
+    glutDisplayFunc(display);
+    glutReshapeFunc(reshape);
+    glutIdleFunc(myIdle);
+    glutKeyboardFunc(mykey);
+    myinit();
+    glutMainLoop();
+    return 0;
+}
